@@ -1,4 +1,5 @@
 import Category from "../model/Category";
+import Recipe from '../model/recipe'
 //import {verifyAccessToken} from "../middleware/check-auth";
 //create category,read category,delete category
 
@@ -49,6 +50,7 @@ export const deleteCategory = async (req, res, next) => {
   const id = req.params.id;
         try{
           const result=await Category.findByIdAndDelete(id);
+          await Recipe.findOneAndDelete({ category:id })
            res.send(result);
         }catch(error){
             res.send(error.message);
