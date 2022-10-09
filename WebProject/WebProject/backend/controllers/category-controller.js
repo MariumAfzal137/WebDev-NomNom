@@ -1,5 +1,5 @@
 import Category from "../model/Category";
-import {verifyAccessToken} from "../middleware/check-auth";
+//import {verifyAccessToken} from "../middleware/check-auth";
 //create category,read category,delete category
 
 export const addCategory = async (req, res, next) => {
@@ -31,7 +31,7 @@ export const addCategory = async (req, res, next) => {
   //read categories
 
   export const getAllCategories = async (req, res, next) => {
-    let users;
+    let categories;
     try {
       categories = await Category.find();
     } catch (err) {
@@ -45,15 +45,12 @@ export const addCategory = async (req, res, next) => {
 
 //delete category
 
-// export const deleteCategory = async (req, res, next) => {
-//     let id= re.params.id;
-//     try {
-//       categories = await Category.find();
-//     } catch (err) {
-//       console.log(err);
-//     }
-//     if (!categories) {
-//       return res.status(404).json({ message: "No categories found" });
-//     }
-//     return res.status(200).json({ categories });
-//   };
+export const deleteCategory = async (req, res, next) => {
+  const id = req.params.id;
+        try{
+          const result=await Category.findByIdAndDelete(id);
+           res.send(result);
+        }catch(error){
+            res.send(error.message);
+        }
+};

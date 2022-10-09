@@ -1,7 +1,7 @@
 import User from "../model/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import {signAccessToken, signRefreshToken} from "../middleware/check-auth";
+import {signAccessToken,signAdminAccessToken} from "../middleware/check-auth";
 
 
 export const getAllUser = async (req, res, next) => {
@@ -64,8 +64,14 @@ export const login = async (req, res, next) => {
   if (!isPasswordCorrect) {
     return res.status(400).json({ message: "Incorrect Password" });
   }
-
-  const accessToken = await signAccessToken(existingUser.id)
+  let accessToken
+  if(existingUser.role==="admin"){
+    accessToken = await signAdminAccessToken(existingUser.id)
+  }
+  else{
+    accessToken = await signAccessToken(existingUser.id)
+  }
+  
 
   return res
     .status(200)

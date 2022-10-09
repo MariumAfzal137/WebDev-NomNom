@@ -46,7 +46,7 @@ export function verifyAccessToken (req, res, next) {
       const payload = {}
       const secret = process.env.JWT_KEY
       const options = {
-        expiresIn: '1h',
+        expiresIn: '3h',
         issuer: 'pickurpage.com',
         audience: userId,
       }
@@ -58,6 +58,41 @@ export function verifyAccessToken (req, res, next) {
         }
         resolve(token)
       })
+    })
+  }
+  export function signAdminAccessToken (AdminId)  {
+    return new Promise((resolve, reject) => {
+      const payload = {}
+      const secret = process.env.JWT_KEY_ADMIN
+      const options = {
+        expiresIn: '3h',
+        issuer: 'pickurpage.com',
+        audience: AdminId,
+      }
+      JWT.sign(payload, secret, options, (err, token) => {
+        if (err) {
+          console.log(err.message)
+          //reject(createError.InternalServerError())
+          return
+        }
+        resolve(token)
+      })
+    })
+  }
+  export function verifyAdminAccessToken (req, res, next) {
+    if (!req.headers['authorization']) return next(createError.Unauthorized())
+    const authHeader = req.headers['authorization']
+    const bearerToken = authHeader.split(' ')
+    const token = bearerToken[1]
+    console.log(token);
+    JWT.verify(token, process.env.JWT_KEY_ADMIN, (err, payload) => {
+      if (err) {
+        const message =
+          err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message
+        return next(createError.Unauthorized(message))
+      }
+      req.payload = payload
+      next()
     })
   }
 

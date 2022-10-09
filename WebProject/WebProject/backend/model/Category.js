@@ -8,6 +8,6 @@ const categorySchema = new Schema({
     type: String,
     required: true,
   }
-  //blogs: [{ type: mongoose.Types.ObjectId, ref: "Blog", required: true }],
+  
 });
 export default mongoose.model("Category", categorySchema);
