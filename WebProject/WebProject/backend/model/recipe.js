@@ -8,12 +8,23 @@ const recipeSchema = new Schema({
       },
       approved: {
         type: Boolean,
+<<<<<<< Updated upstream
         required: 'This field is required.'
+=======
+        default: false,
+        required: true
+>>>>>>> Stashed changes
       },
       cookingtime: {
         type: String,
         required: 'This field is required.'
       },
+      ingredients: [
+        {
+          ingredient: String,
+           qty: String
+        }
+      ],
       description: {
         type: String,
         required: 'This field is required.'

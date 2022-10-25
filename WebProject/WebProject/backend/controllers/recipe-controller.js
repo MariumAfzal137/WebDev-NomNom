@@ -2,6 +2,7 @@ const createError=require('http-errors')
 const Recipe = require('../model/recipe')
 
 
+<<<<<<< Updated upstream
 module.exports = {
     postrecipe: async(req,res,next)=> {
         try{
@@ -20,6 +21,25 @@ module.exports = {
             //const accessToken = await signAccessToken(savedUser.id)
            // const refreshToken = await signRefreshToken(savedUser.id)
             res.send(savedRecipe)
+=======
+export async function postrecipe(req, res, next) {
+    const { name,cookingtime,description,category } = req.body;
+    try {
+        const result = new Recipe({
+            name: req.body.name,
+            cookingtime: req.body.cookingtime,
+            ingredients: req.body.ingredients,
+            description: req.body.description,
+            category: req.body.category,
+            image: req.file.path,
+            approved: "false"
+        })
+        console.log(result)
+
+        const recipe = new Recipe(result)
+        const savedRecipe = await recipe.save()
+        res.send(savedRecipe)
+>>>>>>> Stashed changes
         //    res.send({accessToken, refreshToken})
         }
         catch(error){
