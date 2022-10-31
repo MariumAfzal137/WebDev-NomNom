@@ -1,5 +1,5 @@
-import createError from 'http-errors'
-import Recipe from '../model/recipe'
+const createError=require('http-errors')
+const Recipe = require('../model/recipe')
 
 
 export async function postrecipe(req, res, next) {
@@ -8,6 +8,7 @@ export async function postrecipe(req, res, next) {
         const result = new Recipe({
             name: req.body.name,
             cookingtime: req.body.cookingtime,
+            ingredients: req.body.ingredients,
             description: req.body.description,
             category: req.body.category,
             image: req.file.path,
