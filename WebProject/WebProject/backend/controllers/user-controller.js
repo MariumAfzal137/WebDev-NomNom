@@ -1,7 +1,11 @@
-import User from "../model/User";
+import User from "../model/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+<<<<<<< Updated upstream
 import {signAccessToken, signRefreshToken} from "../middleware/check-auth";
+=======
+import {signAccessToken,signAdminAccessToken} from "../middleware/check-auth.js";
+>>>>>>> Stashed changes
 
 
 export const getAllUser = async (req, res, next) => {

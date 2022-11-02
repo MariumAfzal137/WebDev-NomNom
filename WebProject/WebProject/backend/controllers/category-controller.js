@@ -1,5 +1,5 @@
-import Category from "../model/Category";
-import Recipe from '../model/recipe'
+import Category from "../model/Category.js";
+import Recipe from '../model/recipe.js'
 //import {verifyAccessToken} from "../middleware/check-auth";
 //create category,read category,delete category
 

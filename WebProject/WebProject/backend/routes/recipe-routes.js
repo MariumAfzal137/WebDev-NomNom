@@ -1,7 +1,15 @@
+<<<<<<< Updated upstream
 const express = require('express');
 const router= express.Router();
 const Controller = require('../controllers/recipe-controller')
 import {verifyAccessToken} from "../middleware/check-auth";
+=======
+import { Router } from 'express';
+const router= Router();
+import multer from 'multer';
+import { postrecipe, adminpostrecipe, allrecipes, getadminrecipes, approverecipe, recipedetails, updaterecipe, deleterecipe } from '../controllers/recipe-controller.js';
+import { verifyAccessToken, verifyAdminAccessToken} from '../middleware/check-auth.js';
+>>>>>>> Stashed changes
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/uploads');
@@ -12,6 +20,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage}).single('Image');
 
+<<<<<<< Updated upstream
 router.post('/postrecipe', upload, verifyAccessToken, Controller.postrecipe);
 router.get('/allrecipes',  Controller.allrecipes);
 router.get('/:id',  Controller.recipedetails);
@@ -19,3 +28,17 @@ router.patch('/:id', verifyAccessToken, Controller.updaterecipe);
 router.delete('/:id', verifyAccessToken, Controller.deleterecipe);
 
 module.exports = router;
+=======
+//User Routes
+router.post('/adminpostrecipe', upload,verifyAccessToken, postrecipe);
+router.get('/allrecipes', allrecipes);
+router.get('/:id',  recipedetails);
+router.patch('/:id',verifyAccessToken, updaterecipe);
+router.delete('/:id', verifyAccessToken,deleterecipe);
+
+//Admin Routes
+router.post('/admin/adminpostrecipe', upload,verifyAdminAccessToken, adminpostrecipe);
+router.get('/admin/getadminrecipes',verifyAdminAccessToken, getadminrecipes);
+router.patch('/approverecipe/:id',verifyAdminAccessToken, approverecipe);
+export default router;
+>>>>>>> Stashed changes

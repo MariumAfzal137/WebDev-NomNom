@@ -1,6 +1,6 @@
 import express from "express";
-import { getAllCategories, addCategory,deleteCategory } from "../controllers/category-controller";
-import {verifyAdminAccessToken} from "../middleware/check-auth";
+import { getAllCategories, addCategory,deleteCategory } from "../controllers/category-controller.js";
+import {verifyAdminAccessToken} from "../middleware/check-auth.js";
 const router = express.Router();
 
 router.get("/getAllCategories",verifyAdminAccessToken, getAllCategories);
