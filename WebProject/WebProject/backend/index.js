@@ -1,18 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
 
-<<<<<<< Updated upstream
-import router from "./routes/user-routes";
-=======
 import categoryRouter from "./routes/category-routes.js";
 import userRouter from "./routes/user-routes.js";
 
 import recipeRouter from "./routes/recipe-routes.js";
->>>>>>> Stashed changes
+
 
 const app = express();
 app.use(express.json());
-app.use("/api/user", router);
+app.use("/user", userRouter);
+app.use("/category", categoryRouter);
+app.use("/recipe", recipeRouter);
 
 
 

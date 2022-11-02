@@ -19,13 +19,6 @@ export async function postrecipe(req, res, next) {
         const savedRecipe = await recipe.save()
         res.send(savedRecipe)
         //    res.send({accessToken, refreshToken})
-<<<<<<< Updated upstream
-        }
-        catch(error){
-            console.log(error.message);
-        }
-    },
-=======
     }
     catch (error) {
         console.log(error.message)
@@ -42,22 +35,8 @@ export async function allrecipes(req, res, next) {
     }
 }
 
-export async function recipedetails(req, res, next) {
-    const id = req.params.id
-    try {
-        const result = await Recipe.findById({ _id: id })
->>>>>>> Stashed changes
 
-    allrecipes: async (req, res, next) => {
-      try{
-        const result = await Recipe.find({}, { __v:0 })
-        res.send(result)
-      }catch(error) {
-        console.log(error.message);
-      }
-    },
-
-    recipedetails: async (req, res, next) => {
+    export async function recipedetails (req, res, next) {
         const id = req.params.id;
         try{
            const result = await Recipe.findById({_id : id});
@@ -66,9 +45,9 @@ export async function recipedetails(req, res, next) {
         }catch(error){
             console.log(error.message);
         }
-    },
+    }
 
-    deleterecipe: async (req, res, next) => {
+    export async function deleterecipe (req, res, next) {
         const id = req.params.id;
         try{
            const result = await Recipe.findByIdAndDelete(id);
@@ -77,9 +56,9 @@ export async function recipedetails(req, res, next) {
         }catch(error){
             console.log(error.message);
         }
-    },
+    }
     
-    updaterecipe: async(req, res,next) => {
+    export async function updaterecipe(req, res,next) {
         try {
             const id = req.params.id;
             const updates = req.body;
@@ -92,11 +71,7 @@ export async function recipedetails(req, res, next) {
             console.log(error.message);
         }
     }
-<<<<<<< Updated upstream
 
-    
-=======
-}
 
 //ADMIN APIS
 export async function adminpostrecipe(req, res, next) {
@@ -142,5 +117,4 @@ export async function approverecipe(req, res, next) {
     } catch (error) {
         console.log(error.message)
     }
->>>>>>> Stashed changes
 }
