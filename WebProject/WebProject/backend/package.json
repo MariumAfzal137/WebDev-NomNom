@@ -4,22 +4,11 @@
   "description": "",
   "main": "backend/ index.js",
   "type": "module",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
-=======
+
+
   "script": {
     "start": "nodemon --experimental-modules --es-module-specifier-resolution=node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> Stashed changes
-=======
-  
-  "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "start": "nodemon index.js"
->>>>>>> Stashed changes
   },
   "author": "",
   "license": "ISC",
@@ -27,16 +16,12 @@
     "bcryptjs": "^2.4.3",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
-<<<<<<< Updated upstream
-    "mongoose": "^6.6.2"
-=======
     "mongoose": "^6.6.2",
     "multer": "^1.4.5-lts.1"
    
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
->>>>>>> Stashed changes
   }
   
 }
