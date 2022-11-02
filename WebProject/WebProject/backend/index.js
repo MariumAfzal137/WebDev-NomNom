@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 
 import categoryRouter from "./routes/category-routes.js";
 import userRouter from "./routes/user-routes.js";
-
 import recipeRouter from "./routes/recipe-routes.js";
 
 
