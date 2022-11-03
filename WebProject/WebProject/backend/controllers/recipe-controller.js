@@ -1,11 +1,5 @@
-<<<<<<< Updated upstream
 //const createError=require('http-errors')
 import Recipe from '../model/recipe.js'
-=======
-//const createError = require('http-errors.js')
-const Recipe = require('../model/recipe')
-
->>>>>>> Stashed changes
 
 export async function postrecipe(req, res, next) {
     const { name,cookingtime,description,category } = req.body;
