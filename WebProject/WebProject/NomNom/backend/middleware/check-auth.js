@@ -71,7 +71,7 @@ export function verifyAccessToken (req, res, next) {
       }
       JWT.sign(payload, secret, options, (err, token) => {
         if (err) {
-          console.log(err.message)
+          console.log(err.message )
           //reject(createError.InternalServerError())
           return
         }
