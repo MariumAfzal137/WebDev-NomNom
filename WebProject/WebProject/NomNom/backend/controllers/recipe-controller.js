@@ -1,5 +1,6 @@
 //const createError=require('http-errors')
 import Recipe from '../model/recipe.js'
+import ApiFeatures from '../utils/apifeatures.js';
 
 export async function postrecipe(req, res, next) {
     const { name,cookingtime,description,category } = req.body;
@@ -25,9 +26,14 @@ export async function postrecipe(req, res, next) {
     }
 }
 
-export async function allrecipes(req, res, next) {
+export async function searchrecipes(req, res, next) {
     try {
-        const result = await Recipe.find({}, { __v: 0 })
+        const resultperpage=5;
+        const apiFeature=new ApiFeatures(Recipe.find(),req.query)
+        .search()
+        .filter()
+        .pagination(resultperpage);
+        const result = await apiFeature.query;
         res.send(result)
     } catch (error) {
         console.log(error.message)

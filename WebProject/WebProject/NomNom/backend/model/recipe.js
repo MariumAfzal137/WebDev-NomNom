@@ -9,7 +9,7 @@ const recipeSchema = new Schema({
       },
       approved: {
         type: Boolean,
-        required: true
+        default: false
       },
       ingredients:[
         {

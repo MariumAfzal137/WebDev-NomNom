@@ -1,9 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import userRouter from "./routes/user-routes.js";
-import categoryRouter from "./routes/category-routes.js";
-import recipeRouter from "./routes/recipe-routes.js";
+import userRouter from "./backend/routes/user-routes.js";
+import categoryRouter from "./backend/routes/category-routes.js";
+import recipeRouter from "./backend/routes/recipe-routes.js";
 
 const app = express();
 app.use(express.json());

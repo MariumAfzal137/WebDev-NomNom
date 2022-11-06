@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router= Router();
 import multer from 'multer';
-import { postrecipe, adminpostrecipe, allrecipes, getadminrecipes, approverecipe, 
+import { postrecipe, adminpostrecipe, searchrecipes, getadminrecipes, approverecipe, 
     recipedetails, updaterecipe, deleterecipe } from '../controllers/recipe-controller.js';
 import { verifyAccessToken, verifyAdminAccessToken} from '../middleware/check-auth.js';
 const storage = multer.diskStorage({
@@ -12,11 +12,11 @@ const storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
-const upload = multer({storage: storage}).single('Image');
+const upload = multer({storage: storage}).single('image');
 
 //User Routes
-router.post('/adminpostrecipe', upload,verifyAccessToken, postrecipe);
-router.get('/allrecipes', allrecipes);
+router.post('/postrecipe', upload,verifyAccessToken, postrecipe);
+router.get('/searchrecipes', searchrecipes);
 router.get('/:id',  recipedetails);
 router.patch('/:id',verifyAccessToken, updaterecipe);
 router.delete('/:id', verifyAccessToken,deleterecipe);
