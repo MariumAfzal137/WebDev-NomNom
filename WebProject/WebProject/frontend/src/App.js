@@ -1,5 +1,6 @@
 //import './App.css';
 import Login from './user/Login';
+import Signup from './user/Signup';
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
     //     <Route exact path="/login" component={Login}/>
     // </Router>
     <div className="page">
-        <Login />
+        <Signup />
     </div>
   );
 }
