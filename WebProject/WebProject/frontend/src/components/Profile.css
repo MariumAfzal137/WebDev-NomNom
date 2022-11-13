@@ -1,0 +1,91 @@
+img#profile {
+    border-radius: 50%;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 462px;
+    top: 200px;
+  }
+
+h1#profile{
+    position: absolute;
+    width: 182px;
+    height: 77px;
+    left: 741px;
+    top: 280px;
+
+    font-family: 'Cantata One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 35px;
+    /* or 125% */
+
+
+    color: #000000;
+}
+
+
+
+a{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+input#profile{
+    position: absolute;
+    width: 440px;
+    height: 50px;
+
+    padding: .4cm;
+    background: #F8F8F8;
+    border: 0px solid ;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 35px;
+}
+
+form#profile{
+    left: 462px;
+    top: 450px;
+    position: absolute;
+    
+}
+
+h6{
+    font-family: 'Raleway';
+    letter-spacing: 0cm;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 35px;
+
+}
+
+
+.profile-btn {
+    width: 440px;
+    height: 50px;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 25rem;
+    border: #303030;
+    cursor: pointer;
+    font-family: 'Raleway';
+    letter-spacing: 0cm;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 35px;
+    color: #F8F8F8;
+}
