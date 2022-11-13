@@ -2,12 +2,13 @@ import './App.css';
 import Header from './components/Header';
 import Profile from './components/Profile';
 import RecipeDetail from './components/RecipeDetail';
-//import Login from './user/Login';
+import Signup from './user/Signup';
+import Login from './user/Login';
 //import { BrowserRouter as Router }
 
 function App() {
 
-  return <RecipeDetail/>;
+  return <Login/>;
 
   // return (
   //   // <Router>

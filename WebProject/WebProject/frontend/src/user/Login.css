@@ -6,15 +6,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-image: url("/public/background4.jpg");
-     background-size: cover; */
+    font-size: large;
   }
 h1{
     color: #FFFF;
     top: 3em;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-top: -5px;
-    margin-bottom: 15px;
+    font-family: 'Cantata One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+     margin-top: -5px;
+    margin-bottom: 12px;
 }
 .loginForm {
     margin-top: 20px;
@@ -25,8 +27,8 @@ h1{
 input{
     font-family: 'Times New Roman', Times, serif;
     background-color: rgb(254, 254, 254);
-    height: 1em;
-    width: 18em;
+    height: 3.5em;
+    width: 20em;
     border-radius: 0.3em;
     text-align: left;
     padding: 1em;
@@ -73,4 +75,15 @@ button:hover { transform: scale(1.05);}
     position: relative;
     bottom: -2em;
     color: #FFFF;
+}
+
+.signup-page{
+    color: #FFFF;
+    font-family: 'Cantata One';
+}
+
+.span{
+    margin-left: -3em;
+    color: #FFFF;
+    font-family: 'Cantata One';
 }
