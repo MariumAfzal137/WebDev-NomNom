@@ -9,7 +9,7 @@ export const Login = (props) =>{
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        userRef.current.focus();
+        useRef.current.focus();
     }, [])
 
     useEffect(() => {

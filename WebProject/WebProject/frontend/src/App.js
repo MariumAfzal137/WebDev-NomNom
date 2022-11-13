@@ -8,7 +8,7 @@ import Login from './user/Login';
 
 function App() {
 
-  return <Login/>;
+  return <Signup/>;
 
   // return (
   //   // <Router>

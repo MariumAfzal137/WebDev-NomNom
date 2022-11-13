@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 
-export const Signup = (props) =>{
+export const Signup = () =>{
 
     const [user, setUser] = useState({
         name: "",
@@ -27,12 +27,12 @@ export const Signup = (props) =>{
       };
 
     return (
-        <div >
+        <div className="register">
              
         <form className="register-form" onSubmit={registerSubmit}>
-        <h1>Signup to post new recipes</h1>
-        <label htmlFor="password">Name</label>
-        <div className="signUpName">
+        <div className="heading">Signup to post new recipes</div>
+
+        <label htmlFor="name">Name</label>
                   <input
                     type="text"
                     required
@@ -40,9 +40,8 @@ export const Signup = (props) =>{
                     value={name}
                     onChange={registerDataChange}
                   />
-                </div>
-                <label htmlFor="password">Email</label>
-                <div className="signUpEmail">
+                
+                <label htmlFor="email">Email</label>
                   <input
                     type="email"
                     required
@@ -50,9 +49,8 @@ export const Signup = (props) =>{
                     value={email}
                     onChange={registerDataChange}
                   />
-                </div>
+                
                 <label htmlFor="password">Password</label>
-                <div className="signUpPassword">
                   <input
                     type="password"
                     required
@@ -60,10 +58,10 @@ export const Signup = (props) =>{
                     value={password}
                     onChange={registerDataChange}
                   />
-                </div>
+
             <button>SIGN UP</button>
             <p>
-              Already have an Account?<br />
+              Already have an Account?
                <span className="line">
                   <a href="/Login">Login</a>
                 </span>
