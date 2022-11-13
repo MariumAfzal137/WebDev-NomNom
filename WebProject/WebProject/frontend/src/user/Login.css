@@ -1,58 +1,73 @@
 
 
-* {
-    margin: 0;
-    box-sizing: border-box;
-    
-    /* font-family: "CustomFont"; */
-}
-
-/* @font-face {
-    font-family: "CustomFont";
-    src: url("../fonts/RolexLight.woff2");
-} */
+.login {
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url("/public/background4.jpg");
+     background-size: cover; */
+  }
 h1{
     color: #FFFF;
+    top: 3em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: -5px;
+    margin-bottom: 15px;
 }
+.loginForm {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
 
 input{
     font-family: 'Times New Roman', Times, serif;
     background-color: rgb(254, 254, 254);
-    height: 3em;
-    width: 20em;
-    border-radius: 0.5em;
+    height: 1em;
+    width: 18em;
+    border-radius: 0.3em;
     text-align: left;
-    padding: 1.5em;
+    padding: 1em;
+    bottom: 15em;
+    margin-bottom: 8px;
 }
 input:focus{
     outline-color: rgb(32, 177, 255);
 }
-.page{
+#inputdefault {
+    margin-bottom: 20px; 
+  }
+
+/* .page{
     height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+}*/
 
 body{
-    background-image: url("/public/background2.jpg");
+    background-image: url("/public/background4.jpg");
     background-size: cover;
-}
+} 
 
-.login-btn {
+button {
     width: 40%;
-    height: 2.5em;
+    height: 3em;
     background-color: rgb(217, 217, 217);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.5s;
-    border-radius: 0.25em;
+    border-radius: 0.5em;
     cursor: pointer;
+    margin-top: 10px;
+    margin-left: 30%;
 }
 
-.login-btn:hover { transform: scale(1.15);}
+button:hover { transform: scale(1.05);}
 
 .text{
     position: relative;

@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from "react";
 import "./Login.css";
 
-const Login = () =>{
+export const Login = (props) =>{
+    // const [email, setEmail] = useState('');
+    // const [pass, setPass] = useState('');
+
     return (
-        <div className="logincontainer">
-            <h1>Login</h1>
+        <div className="login">
+             <h1>Login</h1>
+        <form >
             <input type="text" placeholder="Email" />
-            <div className='space'></div>
-            <input type="password" placeholder="Password"/>
+            <div></div>
+            <input type="password" placeholder="Password" />
+            <div className='space2'></div>
 
-            <div className="login-btn">Login</div>
-            <div className='text'>Don't have an account? Signup</div>
 
+            <button>Login</button>
+
+        </form>
+        <div className="link-btn" onClick={() => props.onFormSwitch('Signup')}>Don't have an account? Signup.</div>
         </div>
     )
 }
