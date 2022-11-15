@@ -8,7 +8,7 @@ const Tdata = [
     para: "Desi"
   },
   {
-    cover: "./images/flash/d.png",
+    cover: "./images/flash/c.png",
     para: "Chinese"
   },
   {

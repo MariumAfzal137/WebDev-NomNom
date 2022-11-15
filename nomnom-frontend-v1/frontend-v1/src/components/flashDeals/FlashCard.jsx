@@ -33,7 +33,7 @@ const FlashCard = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -50,9 +50,9 @@ const FlashCard = () => {
                   <span className='tleft'>{value.para}</span>
                   <span className='tright'>{value.desc}</span>
                 </div>
-                <div className='img'>
+                {/* <div className='img'>
                   <img src={value.cover} alt='' />
-                </div>
+                </div> */}
               </div>
             </>
           )
