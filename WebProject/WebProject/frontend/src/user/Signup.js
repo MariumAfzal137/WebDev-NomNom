@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 
-export const Signup = () =>{
+export const Signup = (props) =>{
 
     const [user, setUser] = useState({
         name: "",
@@ -58,7 +58,7 @@ export const Signup = () =>{
                     value={password}
                     onChange={registerDataChange}
                   />
-
+                  
             <button>SIGN UP</button>
             <p>
               Already have an Account?
@@ -72,3 +72,4 @@ export const Signup = () =>{
 }
 
 export default Signup;
+

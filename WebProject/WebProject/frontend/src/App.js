@@ -8,8 +8,11 @@ import Login from './user/Login';
 
 function App() {
 
-  return <Signup/>;
-
+  return( 
+  <main className='App'>
+    <Signup />
+    </main>
+  );
   // return (
   //   // <Router>
   //   //     <Route exact path="/login" component={Login}/>
