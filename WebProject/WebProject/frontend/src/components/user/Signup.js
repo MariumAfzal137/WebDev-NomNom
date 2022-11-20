@@ -15,21 +15,38 @@ export const Signup = (props) =>{
         setUser({ ...user, [e.target.name]: e.target.value });
       };
 
-      const registerSubmit = (e) => {
+      const registerSubmit = async(e) => {
         e.preventDefault();
+       
+        const {name, email, password} = user;
+
+        const res = await fetch("http://localhost:5000/user/signup", {
+          method: "POST",
+          body: JSON.stringify({
+            name, email, password
+          }),
+          headers: {
+            "content-Type" : "application/json"
+          },
+          
+        })
+        const data = await res.json();
+
+        if(res.status=== 400 ||!data ){
+          window.alert("Invalid Registeration");
+          console.log("Invalid Registeration");
+        }else{
+          window.alert("Registeration Successful");
+          console.log("Registeration Successful");
+
     
-        const myForm = new FormData();
-    
-        myForm.set("name", name);
-        myForm.set("email", email);
-        myForm.set("password", password);
-        //dispatch(register(myForm));
-      };
+        }
+      }
 
     return (
         <div className="register">
              
-        <form className="register-form" onSubmit={registerSubmit}>
+        <form method="POST" className="register-form">
         <div className="heading">Signup to post new recipes</div>
 
         <label htmlFor="name">Name</label>
@@ -59,7 +76,7 @@ export const Signup = (props) =>{
                     onChange={registerDataChange}
                   />
                   
-            <button>SIGN UP</button>
+            <button onClick={registerSubmit}>SIGN UP</button>
             <p>
               Already have an Account?
                <span className="line">

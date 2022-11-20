@@ -19,6 +19,10 @@ export const getAllUser = async (req, res, next) => {
 
 export const signup = async (req, res, next) => {
   const { name, email, password } = req.body;
+
+  if (!name || !email || !password){
+    return res.status(400).json({error: "All fields required."})
+  }
   let existingUser;
   try {
     existingUser = await User.findOne({ email });

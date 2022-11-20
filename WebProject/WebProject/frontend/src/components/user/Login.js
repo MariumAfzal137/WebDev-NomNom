@@ -1,7 +1,7 @@
 import React, {  useRef, useState, useEffect, } from "react";
 import "./Login.css";
 
-export const Login = (props) =>{
+export const Login = () =>{
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
