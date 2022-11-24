@@ -24,15 +24,18 @@ export const Login = () =>{
     return (
         <div className="login">
              <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
+        <form className="loginForm" onSubmit={handleSubmit}>
+
+            <div className="login-email">
             <input 
             type="text" 
             placeholder="Email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)} />
+            </div>
 
-            <div></div>
+            <div className="login-password">
             <input 
             type="password" 
             placeholder="Password" 
@@ -40,7 +43,7 @@ export const Login = () =>{
             value={pass}
             onChange={(e) => setPass(e.target.value)}
             />
-            <div className='space2'></div>
+            </div>
 
 
             <button>Login</button>

@@ -6,7 +6,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: large;
+    /* background-image: url("/public/background4.jpg");
+    background-size: cover; */
   }
 .h1{
     color: #FFFF;
@@ -18,13 +19,9 @@
      margin-top: -5px;
     margin-bottom: 12px;
 }
-.loginForm {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-  }
 
-input{
+
+.input{
     font-family: 'Times New Roman', Times, serif;
     background-color: rgb(254, 254, 254);
     height: 3.5em;
@@ -35,7 +32,7 @@ input{
     bottom: 15em;
     margin-bottom: 8px;
 }
-input:focus{
+.input:focus{
     outline-color: rgb(32, 177, 255);
 }
 #inputdefault {
@@ -50,12 +47,12 @@ input:focus{
     align-items: center;
 }*/
 
-body{
+/* .body{
     background-image: url("/public/background4.jpg");
     background-size: cover;
-} 
+}  */
 
-button {
+.button {
     width: 40%;
     height: 3em;
     background-color: rgb(217, 217, 217);
@@ -69,7 +66,7 @@ button {
     margin-left: 30%;
 }
 
-button:hover { transform: scale(1.05);}
+.button:hover { transform: scale(1.05);}
 
 .text{
     position: relative;
@@ -87,3 +84,4 @@ button:hover { transform: scale(1.05);}
     color: #FFFF;
     font-family: 'Cantata One';
 }
+

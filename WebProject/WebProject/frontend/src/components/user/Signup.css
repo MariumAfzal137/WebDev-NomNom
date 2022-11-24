@@ -32,25 +32,6 @@ body{
     font-size: 32px;
 }
 
-input{
-    font-family: 'Times New Roman', Times, serif;
-    background-color: rgb(254, 254, 254);
-    height: 0.5em;
-    width: 20em;
-    border-width: 0.01em;
-    border-radius: 0.3em;
-    margin-bottom: -5px;
-}
-input:focus{
-    outline-color: rgb(32, 177, 255);
-}
-#inputdefault {
-    margin-bottom: 20px; 
-  }
 
-.button{
-    width: 5px;
-    
-  }
-  
+
   

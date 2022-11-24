@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage}).single('Image');
 
 //User Routes
-router.post('/adminpostrecipe', upload,verifyAccessToken, postrecipe);
+router.post('/postrecipe', upload,verifyAccessToken, postrecipe);
 router.get('/allrecipes', allrecipes);
 router.get('/:id',  recipedetails);
 router.patch('/:id',verifyAccessToken, updaterecipe);

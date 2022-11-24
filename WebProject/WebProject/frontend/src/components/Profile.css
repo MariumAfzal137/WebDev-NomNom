@@ -112,15 +112,11 @@ div#recipe {
   }
 
 img#recipe{
-
-
     width:400px;
     height: 400px;
     margin-right: 1cm;
     vertical-align:middle;
     float: left;
-
-   
 }
 .recipe-title{
 
@@ -175,3 +171,89 @@ img#recipe{
 
 }
 
+/* POST RECIPE CSS  */
+
+.postrecipe-box{
+    align-self: center;
+    border: #303030;
+    width: 80%;
+    height: max-content;
+    background-color: #F8F8F8; 
+}
+
+.heading-postrecipe{
+    color: #000;
+    font-family: 'Cantata One';
+    font-size: 32px;
+}
+
+div#postrecipe {
+    width: 80%;
+    padding: 1cm;
+    margin:10%;
+    margin-top: 5cm;
+    height: 90%;
+    display: block;
+    box-shadow: 4px 4px 20px 10px rgba(189, 189, 189, 0.25);
+    background-color: #F8F8F8; 
+}
+
+
+img#postrecipe{
+    width:400px;
+    height: 330px;
+    margin-right: 1cm;
+    vertical-align:middle;
+    float: left;
+}
+
+input:focus{
+    outline-color: rgb(32, 177, 255);
+}
+#inputdefault {
+    margin-bottom: 20px; 
+  }
+
+  label{
+    font-family: 'Cambo';
+    color: #000;
+    margin-bottom: -5px;
+    font-size: 20px;
+
+  }
+  
+.postrecipe-input{
+    font-family:  'Cantata One';
+    background-color: #ECECEC;
+    height: 3em;
+    width: 25em;
+    border-width: 0.01em;
+    border-radius: 0.3em;
+}
+.postrecipe-ing{
+    font-family:  'Cantata One';
+    background-color: #ECECEC;
+    height: 3em;
+    width: 25em;
+    border-width: 0.01em;
+    border-radius: 0.3em;
+    margin-bottom: 3px;
+}
+
+.instruction-input{
+    font-family:  'Cantata One';
+    background-color: #ECECEC;
+    height: 150px;
+    width: 90%;
+    border-width: 0.01em;
+    border-radius: 0.3em;
+    margin-bottom: 3px;
+    text-align: start;
+}
+
+.postrecipe-input:focus{
+    outline-color: rgb(32, 177, 255);
+}
+#postrecipe-inputdefault {
+    margin-bottom: 20px; 
+  }

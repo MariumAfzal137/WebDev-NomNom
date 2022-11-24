@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 
-export const Signup = (props) =>{
+export const Signup = () =>{
 
     const [user, setUser] = useState({
         name: "",

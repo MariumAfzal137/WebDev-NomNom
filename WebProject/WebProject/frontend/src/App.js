@@ -4,13 +4,14 @@ import Profile from './components/Profile';
 import RecipeDetail from './components/RecipeDetail';
 import Signup from './components/user/Signup';
 import Login from './components/user/Login';
+import PostRecipe from './components/userRecipe/PostRecipe'
 //import { BrowserRouter as Router }
 
 function App() {
 
   return( 
   <main className='App'>
-    <Signup />
+    <RecipeDetail />
     </main>
   );
   // return (
