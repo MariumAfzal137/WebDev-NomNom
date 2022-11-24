@@ -11,7 +11,7 @@ function App() {
 
   return( 
   <main className='App'>
-    <RecipeDetail />
+    <PostRecipe />
     </main>
   );
   // return (
