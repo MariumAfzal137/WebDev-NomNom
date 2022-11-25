@@ -1,9 +1,7 @@
-import { Container } from '@mui/system';
-import {Box} from '@mui/material'
+
 import React from 'react'
 import Header from './Header';
 import "./Profile.css";
-import { useSlider } from '@mui/base';
 
 
 const RecipeDetail = () => {

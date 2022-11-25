@@ -3,7 +3,6 @@ import React from 'react'
 import Header from './Header';
 import "./Profile.css";
 
-//import {AppBar, Toolbar, Typography, Box,  InputBase, Button} from '@mui/material'
 
 export default function  Profile() {
   return (
