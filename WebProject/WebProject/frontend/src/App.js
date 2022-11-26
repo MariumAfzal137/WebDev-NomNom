@@ -4,6 +4,7 @@ import './App.css';
 // import RecipeDetail from './components/RecipeDetail';
 // import Signup from './components/user/Signup';
 import Login from './components/user/Login';
+import Signup from './components/user/Signup';
 //import PostRecipe from './components/userRecipe/PostRecipe'
 //import { BrowserRouter as Router }
 
@@ -11,7 +12,7 @@ function App() {
 
   return( 
   <main className='App'>
-   <Login />
+   <Signup />
     </main>
   );
   // return (

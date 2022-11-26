@@ -27,9 +27,8 @@ h1{
     font-family: 'Times New Roman', Times, serif;
     background-color: rgb(254, 254, 254);
     height: 50px;
-    width: 25%;
+    width: 70%;
     border-radius: 0.3em;
-    margin-left: -30px;
     margin-bottom: 5px;
 }
 .login-input:focus{
