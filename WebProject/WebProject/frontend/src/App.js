@@ -1,27 +1,25 @@
 import './App.css';
+import AboutUs from './components/AboutUs';
 // import Header from './components/Header';
-// import Profile from './components/Profile';
-// import RecipeDetail from './components/RecipeDetail';
-// import Signup from './components/user/Signup';
-import Login from './components/user/Login';
-import Signup from './components/user/Signup';
-//import PostRecipe from './components/userRecipe/PostRecipe'
-//import { BrowserRouter as Router }
+//import Profile from './components/Profile';
+//import RecipeDetail from './components/RecipeDetail';
+
+// import Login from './user/Login';
+// import { BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
 
-  return( 
-  <main className='App'>
-   <Signup />
-    </main>
-  );
+  return <AboutUs/>;
+
   // return (
-  //   // <Router>
-  //   //     <Route exact path="/login" component={Login}/>
-  //   // </Router>
+  //   <>
+  //   <Router>
+  //       <Router exact path="/login" component={Login}/>
+  //   </Router>
   //   <div className="page">
-  //       <Login />
+  //      <Login /> 
   //   </div>
+  //   </>
   // );
 }
 

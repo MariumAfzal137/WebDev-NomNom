@@ -5,7 +5,7 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Container } from '@mui/system';
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -53,15 +53,24 @@ const Search = styled('div')(({ theme }) => ({
   
   export default function Header() {
     return (
+      <>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar style = {{backgroundColor: "white"}}>
+        <div style = {{width: 100+'%',height: 1+'cm', backgroundColor: "#303030", textAlign: 'center'}}>
+   
+        <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
+        <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="">Sign Up</a>
+        <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/Users/aiman/Desktop/IBA/Fall 2022/Web/WebDev-NomNom/WebProject/WebProject/frontend/src/user/Login.js">Login</a>
+        </div>
+
           <Toolbar>
+          
           <Box
             component="img"
             sx={{
             height: 100,
             }}
-            alt="Your logo."
+            alt="NomNom."
             src="nomnomwhite.png"
         />
         <ul className="navbar__ul">
@@ -74,7 +83,7 @@ const Search = styled('div')(({ theme }) => ({
             <a href="">About Us</a>
 
         </ul>
-
+        
             <Search >
               <SearchIconWrapper>
                 <SearchIcon style={{ fill: 'black' }}/>
@@ -91,6 +100,7 @@ const Search = styled('div')(({ theme }) => ({
           </Toolbar>
         </AppBar>
       </Box>
+      </>
     );
   }
 
