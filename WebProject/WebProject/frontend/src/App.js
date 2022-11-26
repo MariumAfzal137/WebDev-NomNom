@@ -1,17 +1,17 @@
 import './App.css';
-import Header from './components/Header';
-import Profile from './components/Profile';
-import RecipeDetail from './components/RecipeDetail';
-import Signup from './components/user/Signup';
+// import Header from './components/Header';
+// import Profile from './components/Profile';
+// import RecipeDetail from './components/RecipeDetail';
+// import Signup from './components/user/Signup';
 import Login from './components/user/Login';
-import PostRecipe from './components/userRecipe/PostRecipe'
+//import PostRecipe from './components/userRecipe/PostRecipe'
 //import { BrowserRouter as Router }
 
 function App() {
 
   return( 
   <main className='App'>
-    <PostRecipe />
+   <Login />
     </main>
   );
   // return (

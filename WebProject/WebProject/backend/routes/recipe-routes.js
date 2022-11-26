@@ -12,7 +12,16 @@ const storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
-const upload = multer({storage: storage}).single('Image');
+
+const fileFilter = (req, file, cb) => {
+    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+    if(allowedFileTypes.includes(file.mimetype)){
+        cb(null, true);
+    }else {
+        cb(null, false);
+    }
+}
+const upload = multer({storage: storage, fileFilter}).single('Image');
 
 //User Routes
 router.post('/postrecipe', upload,verifyAccessToken, postrecipe);

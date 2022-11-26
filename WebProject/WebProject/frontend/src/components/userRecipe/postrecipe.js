@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Header from '../Header';
 import "../Profile.css";
+import Dropdown from "./Dropdown";
 
 export const PostRecipe = () =>{
 
@@ -10,6 +11,7 @@ export const PostRecipe = () =>{
         category: "",
         ingredients: "",
         description: "",
+        image: "",
       });
 
       const {title, time, category, ingredients, description} = recipe;
@@ -17,6 +19,11 @@ export const PostRecipe = () =>{
       const recipeDataChange = (e) => {
         setRecipe({ ...recipe, [e.target.name]: e.target.value });
       };
+
+      const handlePhoto = (e) =>{
+        setRecipe({...recipe, image: e.target.files[0]});
+        console.log(recipe.image);
+      }
 
       const recipeSubmit = async(e) => {
         e.preventDefault();
@@ -41,10 +48,15 @@ export const PostRecipe = () =>{
         }else{
           window.alert("Recipe posted successfully");
           console.log("Recipe posted successfully");
-
-    
         }
       }
+
+      const options = [
+        {value: "Pan Asian", label:"Pan Asian"},
+        {value: "Italian", label:"Italian"},
+        {value: "Chinese", label:"Chinese"},
+        {value: "French", label:"French"}
+      ]
 
     return (
     <>
@@ -52,9 +64,16 @@ export const PostRecipe = () =>{
     <div id="recipe" >   
     <div className='heading-postrecipe'>Add Recipe</div>   
     <form method="POST" className="postrecipe-form">
-        <img id="postrecipe" src="recipe.jpeg" alt="Avatar"></img>
+        
+            <input 
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="imagee"
+            onChange={handlePhoto}
+            />
+        
         <ul>
-        <label htmlFor="title">Recipe Title</label>
+        <label className="labelinput" htmlFor="title">Recipe Title</label>
         <br></br>
                   <input className="postrecipe-input"
                     type="text"
@@ -63,16 +82,11 @@ export const PostRecipe = () =>{
                     value={title}
                     onChange={recipeDataChange}
                   /> <br></br>
-         <label htmlFor="category">Category</label>
+         <label className="labelinput" htmlFor="category">Category</label>
         <br></br>
-        <input className="postrecipe-input"
-            type="text"
-            required
-            name="category"
-            value={category}
-            onChange={recipeDataChange}
-              /> <br></br>
-        <label htmlFor="time">Time</label>
+        <Dropdown isMulti options={options}/>
+         
+        <label className="labelinput" htmlFor="time">Time</label>
         <br></br>
         <input className="postrecipe-input"
             type="text"
@@ -80,8 +94,8 @@ export const PostRecipe = () =>{
             name="time"
             value={time}
              onChange={recipeDataChange}
-            /> <br></br>
-        <br></br>
+            /> 
+        
         <br></br>
         <br></br>
         <hr className="divider"></hr>
