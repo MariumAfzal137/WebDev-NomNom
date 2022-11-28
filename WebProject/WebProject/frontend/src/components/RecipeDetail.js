@@ -2,19 +2,37 @@
 import React from 'react'
 import Header from './Header';
 import "./Profile.css";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const RecipeDetail = () => {
+  const [recipe, setRecipe] = useState([]);
+
+  useEffect(() => {
+
+    fetchDetails()
+  },[])
+
+
+  const fetchDetails = async () => {
+  const res = await fetch('http://localhost:5000/recipe/recipedetails/63430bf717388d8f1fbdf0bb')
+    .catch((err) => console.log(err));
+
+
+  setRecipe(await res.json());
+};
+
+
   return (
-    <>
-    <Header/>
+
+  <>
     <div id="recipe" >        
-        <img id="recipe" src="recipe.jpeg" alt="Avatar"></img>
+        <img id="recipe" src={recipe.image} alt="Avatar"></img>
         <ul>
-        <text className="recipe-title">Spicy Smash Burger</text> <br></br>
+        <text className="recipe-title" >{recipe.name}</text> <br></br>
         <text className="recipe-subtitle"><u>safahai</u> <br></br>
         Savoury <br></br>
-        55 mins <br></br>
+        {recipe.cookingtime} <br></br>
         
         </text>
 
