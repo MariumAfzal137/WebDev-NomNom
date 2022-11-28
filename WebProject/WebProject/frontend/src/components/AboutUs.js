@@ -5,11 +5,11 @@ import Header from './Header';
 const AboutUs = () => {
   return (
       <>
-    <Header/>
-    <div style={{width:100+"%", margintop:5+"cm", display: 'block'}}>
+
+    <div style={{width:100+"%", display: 'block'}}>
        <img id="aboutus" src="aboutus2.jpeg" style={{width:100+"%"}}/>
     </div>
-       <text style={{fontSize:90+"px", top: 12.5+"cm",left: 2.5+"cm", position:'absolute',color:'#E4E4E4'}}>About Us  </text>
+       <text style={{fontSize:90+"px", top: 13.5+"cm",left: 2.5+"cm", position:'absolute',color:'#E4E4E4'}}>About Us  </text>
        <text style={{fontType:'Arial',fontSize:23+"px", left: 2.5+"cm", right: 2.5+"cm",position:'absolute',letterSpacing:2,color:'grey', alignContent:'justify'}}>
             <br></br>
             <br></br>

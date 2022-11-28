@@ -8,7 +8,6 @@ export default function  Profile() {
   return (
 
         <>
-        <Header/>
         <img id="profile" src="nomnomgrey.png" alt="Avatar"></img>
 
         <h1 id="profile"> 

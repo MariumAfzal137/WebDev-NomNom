@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 import {AppBar, Toolbar, Typography, Box,  InputBase, Button} from '@mui/material'
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
@@ -55,12 +55,12 @@ const Search = styled('div')(({ theme }) => ({
     return (
       <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar style = {{backgroundColor: "white"}}>
+        <AppBar style = {{backgroundColor: "white", position: "sticky"}}>
         <div style = {{width: 100+'%',height: 1+'cm', backgroundColor: "#303030", textAlign: 'center'}}>
    
         <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
-        <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="">Sign Up</a>
-        <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/Users/aiman/Desktop/IBA/Fall 2022/Web/WebDev-NomNom/WebProject/WebProject/frontend/src/user/Login.js">Login</a>
+        <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a>
+        <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/login">Login</a>
         </div>
 
           <Toolbar>
@@ -76,11 +76,11 @@ const Search = styled('div')(({ theme }) => ({
         <ul className="navbar__ul">
 
 
-            <a href="">Home</a>
+            <a href="" >Home</a>
 
             <a href="">My Recipes</a>
 
-            <a href="">About Us</a>
+            <a href="/aboutUs">About Us</a>
 
         </ul>
         
@@ -94,9 +94,9 @@ const Search = styled('div')(({ theme }) => ({
               />
             </Search>
 
-
+            <Link to="/myProfile">
               <AccountCircleIcon fontSize="large" style={{ fill: 'black', marginLeft: '15rem'}} />  
-
+            </Link>
           </Toolbar>
         </AppBar>
       </Box>
