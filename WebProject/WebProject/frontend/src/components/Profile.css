@@ -221,6 +221,14 @@ input:focus{
     font-size: 20px;
 
   }
+
+.labelinput{
+    font-family: 'Cambo';
+    color: #000;
+    margin-bottom: -5px;
+    font-size: 20px;
+    margin-left: 50%;
+  }
   
 .postrecipe-input{
     font-family:  'Cantata One';
@@ -229,6 +237,8 @@ input:focus{
     width: 25em;
     border-width: 0.01em;
     border-radius: 0.3em;
+    font-size: 16px;
+    margin-left: 50%;
 }
 .postrecipe-ing{
     font-family:  'Cantata One';
@@ -238,6 +248,7 @@ input:focus{
     border-width: 0.01em;
     border-radius: 0.3em;
     margin-bottom: 3px;
+    font-size: 16px;
 }
 
 .instruction-input{
@@ -249,6 +260,7 @@ input:focus{
     border-radius: 0.3em;
     margin-bottom: 3px;
     text-align: start;
+    font-size: 16px;
 }
 
 .postrecipe-input:focus{

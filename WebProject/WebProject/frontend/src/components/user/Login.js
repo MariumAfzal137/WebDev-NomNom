@@ -1,63 +1,76 @@
-import React, {  useRef, useState, useEffect, } from "react";
+import React, {useState, useContext} from "react";
 import "./Login.css";
+import AuthContext from "../../AuthProvider";
+
 
 export const Login = () =>{
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
+    const { setAuth } = useContext(AuthContext)
 
-    useEffect(() => {
-        useRef.current.focus();
-    }, [])
-
-    useEffect(() => {
-        setErrMsg('');
-    }, [email, pass])
-
-    const handleSubmit = async (e) => {
+    const Loginuser = async (e) => {
         e.preventDefault();
+
+        const res = await fetch("http://localhost:5000/user/login", {
+            method: "POST",
+            body: JSON.stringify({
+                 email, pass
+              }),
+              
+            headers:{
+                "content-Type" : "application/json"
+            },
+            
+        });
+        const data = await res.json();
+        const accessToken = res.data.accessToken
+      const role = res.data.role
+      setAuth({ email, pass, role, accessToken })
+      setEmail('')
+      setPass('')
+      
+        if (res.status === 400 || !data){
+            window.alert("Invalid Email or Password")
+        }else{
+            window.alert("Login Successfull");
+            
+        }
     };
 
 
     return (
         <div className="login">
              <h1>Login</h1>
-        <form className="loginForm" onSubmit={handleSubmit}>
-
-            <div className="login-email">
-            <input 
+             <form method="POST" className="Login-form">
+            <input className="login-input"
             type="text" 
             placeholder="Email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)} />
-            </div>
-
-            <div className="login-password">
-            <input 
+            <br></br>
+            <input className="login-input"
             type="password" 
             placeholder="Password" 
             required
             value={pass}
             onChange={(e) => setPass(e.target.value)}
             />
-            </div>
+            
+            <button onClick={Loginuser}>Login</button>
 
-
-            <button>Login</button>
-
-        </form>
+           
         <p className="signup-page">
               Don't have an Account?
               <span className="line">
                 {/*put router link here*/}
                 <a href="./Signup">SignUp</a>
              </span>
-        </p>        
+        </p>     
+        </form>   
                 </div>
     )
 }
 
-export default Login;
+export default Login
