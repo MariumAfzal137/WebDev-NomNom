@@ -14,6 +14,8 @@ export const PostRecipe = () =>{
         image: "",
       });
 
+      
+
       const {title, time, category, ingredients, description} = recipe;
 
       const recipeDataChange = (e) => {
@@ -84,8 +86,9 @@ export const PostRecipe = () =>{
                   /> <br></br>
          <label className="labelinput" htmlFor="category">Category</label>
         <br></br>
+        <select onChange={recipeDataChange}>
         <Dropdown isMulti options={options}/>
-         
+        </select>
         <label className="labelinput" htmlFor="time">Time</label>
         <br></br>
         <input className="postrecipe-input"

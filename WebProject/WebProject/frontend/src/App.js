@@ -3,13 +3,13 @@ import AboutUs from './components/AboutUs';
 // import Header from './components/Header';
 //import Profile from './components/Profile';
 //import RecipeDetail from './components/RecipeDetail';
-
+import PostRecipe from './components/userRecipe/postrecipe';
 // import Login from './user/Login';
 // import { BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
 
-  return <AboutUs/>;
+  return <PostRecipe />;
 
   // return (
   //   <>
