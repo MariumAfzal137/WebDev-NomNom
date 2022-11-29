@@ -3,6 +3,7 @@ import { getAllCategories, addCategory,deleteCategory } from "../controllers/cat
 import {verifyAdminAccessToken} from "../middleware/check-auth";
 const router = express.Router();
 
+router.get("getdropdownvalues", getAllCategories);
 router.get("/getAllCategories",verifyAdminAccessToken, getAllCategories);
 router.post("/addCategory",verifyAdminAccessToken, addCategory);
 router.delete("/:id",verifyAdminAccessToken, deleteCategory);

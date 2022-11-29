@@ -240,6 +240,19 @@ input:focus{
     font-size: 16px;
     margin-left: 50%;
 }
+
+.categoryinput{
+    font-family:  'Cantata One';
+    background-color: #ECECEC;
+    height: 3em;
+    width: 25em;
+    border-width: 0.1em;
+    border-radius: 0.3em;
+    border-color: #000;
+    font-size: 16px;
+    margin-left: 50%;
+    text-align: left;
+}
 .postrecipe-ing{
     font-family:  'Cantata One';
     background-color: #ECECEC;
@@ -288,4 +301,18 @@ img#aboutus{
     display: flex;
     width:100%;
     height:12cm;
+}
+
+.post-button {
+    width: 150px;
+    height: 40px;
+    background-color: rgb(217, 217, 217);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 0.5em;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 40%;
 }

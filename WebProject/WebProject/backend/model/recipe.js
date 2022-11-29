@@ -13,10 +13,12 @@ const recipeSchema = new Schema({
       },
       ingredients:[
         {
-          ingredient: String,
-           qty: String
+          name: String,
+           qty: String,
+           size: String,
         }
       ],
+      
       cookingtime: {
         type: String,
         required: true
@@ -30,7 +32,8 @@ const recipeSchema = new Schema({
         default: ''
       },
       category: {
-        type: mongoose.Schema.Types.ObjectId, ref:"Category",required:true
+        type: String,
+        required: true
       },
      
     });
