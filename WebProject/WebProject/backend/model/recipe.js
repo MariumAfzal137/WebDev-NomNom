@@ -14,7 +14,7 @@ const recipeSchema = new Schema({
       ingredients:[
         {
           ingredient: String,
-           qty: String
+          qty: String
         }
       ],
       cookingtime: {

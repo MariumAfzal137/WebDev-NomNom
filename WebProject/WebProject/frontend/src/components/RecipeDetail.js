@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const RecipeDetail = () => {
+
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
 
     fetchDetails()
+
   },[])
 
 
@@ -18,20 +20,18 @@ const RecipeDetail = () => {
   const res = await fetch('http://localhost:5000/recipe/recipedetails/63430bf717388d8f1fbdf0bb')
     .catch((err) => console.log(err));
 
-
   setRecipe(await res.json());
+
 };
 
 
   return (
-
   <>
     <div id="recipe" >        
-        <img id="recipe" src={recipe.image} alt="Avatar"></img>
+        <img id="recipe" src = {recipe.image} alt={recipe.image}></img>
         <ul>
         <text className="recipe-title" >{recipe.name}</text> <br></br>
-        <text className="recipe-subtitle"><u>safahai</u> <br></br>
-        Savoury <br></br>
+        <text className="recipe-subtitle"><u>{recipe.category}</u> <br></br>
         {recipe.cookingtime} <br></br>
         
         </text>
@@ -51,7 +51,8 @@ const RecipeDetail = () => {
         <text className="recipe-subtitle2">Ingredients</text> <br></br>
         <text className="recipe-subtitle">
             <br></br>
-            <ul>Hot sauce 1 tbs</ul> 
+
+            <ul>{recipe.ingredients[0].qty} {recipe.ingredients[0].unit}  {recipe.ingredients[0].name}</ul> 
             <ul>Mustard paste 1 tbs </ul>
             <ul>Tomato ketchup 3 tbs </ul>
             <ul>Worcestershire sauce 1 tsp </ul>
@@ -67,17 +68,7 @@ const RecipeDetail = () => {
         <text className="recipe-subtitle2">Directions</text> <br></br>
         <text className="recipe-subtitle">
         <br></br>
-        <ul>Prepare Pickled Burger Sauce:</ul>
-        <ul>In a bowl,add mayonnaise,hot sauce,mustard paste,tomato ketchup,Worcestershire sauce,pickled cucumber and onion,mix well & set aside.</ul>
-
-        <ul>Prepare Smash Burger Patties:</ul>
-        <ul>In a bowl,add beef mince,take small quantity (75g) and make a ball.</ul>
-
-        <ul>Place all meat balls on a tray & refrigerate for 15 minutes (makes 8).</ul>
-
-        <ul>Heat cast iron hot plate & grease with butter,toast burger buns & set aside.</ul>
-
-        <ul>Grease cast iron hot plate with cooking oil,place meat balls and butter paper,press with flat weight to flatten the balls (smash it as thin as possible).</ul>
+        {recipe.description}
         </text>
 
     </div>

@@ -9,6 +9,8 @@ import RecipeDetail from './components/RecipeDetail';
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import { useSelector } from 'react-redux';
+import PostRecipe from './components/userRecipe/postrecipe'
+
 
 // import { BrowserRouter as Router } from 'react-router-dom'
 
@@ -28,6 +30,7 @@ function App() {
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/myProfile" element={<Profile />} />
       <Route path="/recipe/:id" element={<RecipeDetail />} />
+      <Route path="/postrecipe" element={<PostRecipe />} />
 
 
         </Routes>

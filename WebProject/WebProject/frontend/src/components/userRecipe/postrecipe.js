@@ -1,9 +1,16 @@
-import React, {useState} from "react";
+import { Card, stepConnectorClasses } from "@mui/material";
+import React, {useState, useEffect} from "react";
 import Header from '../Header';
 import "../Profile.css";
 import Dropdown from "./Dropdown";
 
 export const PostRecipe = () =>{
+
+  useEffect(() => {
+
+  },[])
+
+
 
     const [recipe, setRecipe] = useState({
         title: "",
@@ -51,16 +58,18 @@ export const PostRecipe = () =>{
         }
       }
 
+
       const options = [
         {value: "Pan Asian", label:"Pan Asian"},
         {value: "Italian", label:"Italian"},
-        {value: "Chinese", label:"Chinese"},
-        {value: "French", label:"French"}
+ 
       ]
+
+      
 
     return (
     <>
-    <Header/>
+
     <div id="recipe" >   
     <div className='heading-postrecipe'>Add Recipe</div>   
     <form method="POST" className="postrecipe-form">
@@ -85,6 +94,7 @@ export const PostRecipe = () =>{
          <label className="labelinput" htmlFor="category">Category</label>
         <br></br>
         <Dropdown isMulti options={options}/>
+ 
          
         <label className="labelinput" htmlFor="time">Time</label>
         <br></br>

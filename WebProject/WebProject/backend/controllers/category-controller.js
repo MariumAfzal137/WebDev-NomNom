@@ -56,3 +56,15 @@ export const deleteCategory = async (req, res, next) => {
             res.send(error.message);
         }
 };
+
+
+export async function getCategoryById (req, res, next) {
+  const id = req.params.id;
+  try{
+     const result = await Category.findById({_id : id});
+     
+     res.send(result);
+  }catch(error){
+      console.log(error.message);
+  }
+};

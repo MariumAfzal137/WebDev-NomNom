@@ -54,6 +54,8 @@ export const signup = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
+  console.warn(email);
+  console.warn(password);
   let existingUser;
   try {
     existingUser = await User.findOne({ email });
@@ -61,9 +63,10 @@ export const login = async (req, res, next) => {
     return console.log(err);
   }
   if (!existingUser) {
-    return res.status(404).json({ message: "Couldnt Find User By This Email" });
+    return res.status(400).json({ message: "Couldnt Find User By This Email" });
   }
 
+  console.warn(existingUser.password);
   const isPasswordCorrect = bcrypt.compareSync(password, existingUser.password);
   if (!isPasswordCorrect) {
     return res.status(400).json({ message: "Incorrect Password" });
@@ -79,7 +82,7 @@ export const login = async (req, res, next) => {
 
   return res
     .status(200)
-    .json({ message: "Login Successfull", accessToken: accessToken });
+    .json({ message: "Login Successfull", accessToken: accessToken, role: existingUser.role });
 };
 
 export const getProfile= async (req, res, next) => {
