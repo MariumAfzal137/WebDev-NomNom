@@ -8,10 +8,7 @@ const Card = ({rItems}) => {
       {rItems.map((rItems, index) => {
           
         return (
-          <Link to={{
-            pathname: '/recipedetail',
-            state: [{rItems}]
-        }}>
+          <Link to={'/recipedetail'+rItems}>
           <div className="card">
             <img src={rItems.image} alt="recipe pic" id="cardimage"></img>
             <div style={{marginLeft : 0.5 +'cm', postion:'absolute'}}>
