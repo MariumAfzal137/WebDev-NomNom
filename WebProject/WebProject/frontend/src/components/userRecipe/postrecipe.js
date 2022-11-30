@@ -3,7 +3,6 @@ import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@mate
 
 import Header from '../Header';
 import "../Profile.css";
-import Dropdown from "./Dropdown";
 
 
 export const PostRecipe = () =>{
@@ -22,7 +21,7 @@ export const PostRecipe = () =>{
       const [category, setCategory] = useState('');
       const [data, setData] = useState([
         {
-          type: "",
+          name: "",
           qty: "",
           size: "",
         }
@@ -107,7 +106,7 @@ export const PostRecipe = () =>{
          <label className="labelinput" htmlFor="category">Category</label>
         <br></br>
        
-        <Select className="categoryinput"
+        <Select variant="outlined" className="categoryinput"
         value={category} onChange={selectcategory}>
         <MenuItem value={1}>Desi</MenuItem>
         <MenuItem value={2}>Italian</MenuItem>
@@ -132,6 +131,8 @@ export const PostRecipe = () =>{
         <hr className="divider"></hr>
         <br></br>
         <label htmlFor="ingredients">Ingredients</label>
+        <label className="qty" htmlFor="ingredients">Quantity</label>
+        <label className="size" htmlFor="ingredients">Size</label>
         <br></br>
        
             <input className="postrecipe-ing"
@@ -140,20 +141,22 @@ export const PostRecipe = () =>{
             name="ingredients"
             value={ingredients}
              onChange={recipeDataChange}
-            /> <br></br>
-            <input className="postrecipe-ing"
+            /> 
+            <input className="postrecipe-qty"
+            type="text"
+            required
+            name="ingredients"
+            value={ingredients}
+             onChange={recipeDataChange}
+            /> 
+            <input className="postrecipe-size"
             type="text"
             required
             name="ingredients"
             value={ingredients}
              onChange={recipeDataChange}
             /> <br></br>
-            <input className="postrecipe-ing"
-            type="text"
-            required
-            name="ingredients"
-            value={ingredients}
-             onChange={recipeDataChange}/>
+            
              <br></br>
 
 

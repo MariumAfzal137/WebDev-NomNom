@@ -9,6 +9,7 @@ import RecipeDetail from './components/RecipeDetail';
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import PostRecipe from './components/userRecipe/PostRecipe'
+import MyRecipe from './components/userRecipe/MyRecipes'
 
 import { useSelector } from 'react-redux';
 
@@ -35,6 +36,6 @@ function App() {
 
 
     </React.Fragment> */}
-return <PostRecipe/>;
+return <MyRecipe/>;
 }
 export default App;

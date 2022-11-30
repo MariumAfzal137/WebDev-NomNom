@@ -13,7 +13,7 @@ const recipeSchema = new Schema({
       },
       ingredients:[
         {
-          name: String,
+          ingredientname: String,
            qty: String,
            size: String,
         }
@@ -33,6 +33,7 @@ const recipeSchema = new Schema({
       },
       category: {
         type: String,
+        ref:'category',
         required: true
       },
      
