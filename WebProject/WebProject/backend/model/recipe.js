@@ -13,10 +13,12 @@ const recipeSchema = new Schema({
       },
       ingredients:[
         {
-          ingredient: String,
-           qty: String
+          name: String,
+           qty: String,
+           size: String,
         }
       ],
+      
       cookingtime: {
         type: String,
         required: true

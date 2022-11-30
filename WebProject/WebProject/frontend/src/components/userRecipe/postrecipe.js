@@ -1,23 +1,48 @@
 import React, {useState} from "react";
+import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@material-ui/core';
+
 import Header from '../Header';
 import "../Profile.css";
 import Dropdown from "./Dropdown";
 
+
 export const PostRecipe = () =>{
 
     const [recipe, setRecipe] = useState({
-        title: "",
+        name: "",
         time: "",
-        category: "",
-        ingredients: "",
         description: "",
+        ingredients: "",
+        // qty: "",
+        // size: "",
         image: "",
       });
 
+      const {name, time, ingredients, description} = recipe;
+      const [category, setCategory] = useState('');
+      const [data, setData] = useState([
+        {
+          type: "",
+          qty: "",
+          size: "",
+        }
+      ]);
+
+      const IngredientArray = (index) =>(e) =>{
+        const newArray = data.map((item, i) => {
+          if (index === i) {
+            setData( { ...item, [e.target.name]: e.target.value });
+          } else {
+            return item;
+          }
+        });
+        setData(newArray);
+      };
       
-
-      const {title, time, category, ingredients, description} = recipe;
-
+      const selectcategory = (event) => {
+        setCategory(event.target.value);
+      };
+    
       const recipeDataChange = (e) => {
         setRecipe({ ...recipe, [e.target.name]: e.target.value });
       };
@@ -30,12 +55,12 @@ export const PostRecipe = () =>{
       const recipeSubmit = async(e) => {
         e.preventDefault();
        
-        const {title, time, category, ingredients, description} = recipe;
+        const {name, time, category, ingredients, description, image} = recipe;
 
         const res = await fetch("http://localhost:5000/recipe/postrecipe", {
           method: "POST",
           body: JSON.stringify({
-            title, time, category, ingredients, description
+            name, time, category, description, image
           }),
           headers: {
             "content-Type" : "application/json"
@@ -53,12 +78,6 @@ export const PostRecipe = () =>{
         }
       }
 
-      const options = [
-        {value: "Pan Asian", label:"Pan Asian"},
-        {value: "Italian", label:"Italian"},
-        {value: "Chinese", label:"Chinese"},
-        {value: "French", label:"French"}
-      ]
 
     return (
     <>
@@ -66,7 +85,8 @@ export const PostRecipe = () =>{
     <div id="recipe" >   
     <div className='heading-postrecipe'>Add Recipe</div>   
     <form method="POST" className="postrecipe-form">
-        
+        <label className="image label" htmlFor="image">Choose an image</label>
+        <br></br>
             <input 
             type="file"
             accept=".png, .jpg, .jpeg"
@@ -75,20 +95,28 @@ export const PostRecipe = () =>{
             />
         
         <ul>
-        <label className="labelinput" htmlFor="title">Recipe Title</label>
+        <label className="labelinput" htmlFor="name">Recipe Title</label>
         <br></br>
                   <input className="postrecipe-input"
                     type="text"
                     required
-                    name="title"
-                    value={title}
+                    name="name"
+                    value={name}
                     onChange={recipeDataChange}
                   /> <br></br>
          <label className="labelinput" htmlFor="category">Category</label>
         <br></br>
-        <select onChange={recipeDataChange}>
-        <Dropdown isMulti options={options}/>
-        </select>
+       
+        <Select className="categoryinput"
+        value={category} onChange={selectcategory}>
+        <MenuItem value={1}>Desi</MenuItem>
+        <MenuItem value={2}>Italian</MenuItem>
+        <MenuItem value={3}>Chinese</MenuItem>
+        <MenuItem value={4}>American</MenuItem>
+        <MenuItem value={5}>Savoury</MenuItem>
+      </Select>
+        
+        
         <label className="labelinput" htmlFor="time">Time</label>
         <br></br>
         <input className="postrecipe-input"
@@ -105,13 +133,7 @@ export const PostRecipe = () =>{
         <br></br>
         <label htmlFor="ingredients">Ingredients</label>
         <br></br>
-        <input className="postrecipe-ing"
-            type="text"
-            required
-            name="ingredients"
-            value={ingredients}
-             onChange={recipeDataChange}
-            /> <br></br>
+       
             <input className="postrecipe-ing"
             type="text"
             required
@@ -126,6 +148,15 @@ export const PostRecipe = () =>{
             value={ingredients}
              onChange={recipeDataChange}
             /> <br></br>
+            <input className="postrecipe-ing"
+            type="text"
+            required
+            name="ingredients"
+            value={ingredients}
+             onChange={recipeDataChange}/>
+             <br></br>
+
+
         <br></br>
         <br></br>
         <hr className="divider"></hr>
@@ -140,6 +171,7 @@ export const PostRecipe = () =>{
              onChange={recipeDataChange}
             /> <br></br>
         </ul>
+        <button className="post-button" onClick={recipeSubmit}>POST</button>
         </form>
         </div>
         </> 

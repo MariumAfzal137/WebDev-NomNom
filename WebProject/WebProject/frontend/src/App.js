@@ -22,7 +22,7 @@ function App() {
     </header>
 
     <main>
-      <Routes>
+      { <Routes>
 
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
@@ -33,7 +33,7 @@ function App() {
       <Route path="/home" element={<Homepage />} />
  
 
-        </Routes>
+        </Routes>}
     </main>
 
 

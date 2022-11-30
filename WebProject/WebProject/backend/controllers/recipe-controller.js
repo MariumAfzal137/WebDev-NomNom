@@ -2,7 +2,7 @@
 import Recipe from '../model/recipe.js';
 
 export async function postrecipe(req, res, next) {
-    const { name,cookingtime,description,category } = req.body;
+    console.log(req.body.category)
     try {
         const result = new Recipe({
             name: req.body.name,
@@ -14,9 +14,9 @@ export async function postrecipe(req, res, next) {
             approved: "false"
         })
         console.log(result)
-
-        const recipe = new Recipe(result)
-        const savedRecipe = await recipe.save()
+    
+        // const recipe = new Recipe(result)
+        const savedRecipe = await result.save()
         res.send(savedRecipe)
         //    res.send({accessToken, refreshToken})
     }
