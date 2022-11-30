@@ -3,9 +3,11 @@ import React from 'react'
 import Header from './Header';
 import "./Profile.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
-const RecipeDetail = () => {
+
+const RecipeDetail = (props) => {
+
+  
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
@@ -31,8 +33,8 @@ const RecipeDetail = () => {
         <ul>
         <text className="recipe-title" >{recipe.name}</text> <br></br>
         <text className="recipe-subtitle"><u>safahai</u> <br></br>
-        Savoury <br></br>
-        {recipe.cookingtime} <br></br>
+        {recipe.category} <br></br>
+        {recipe.cookingtime}<br></br>
         
         </text>
 
@@ -50,7 +52,7 @@ const RecipeDetail = () => {
         <br></br>
         <text className="recipe-subtitle2">Ingredients</text> <br></br>
         <text className="recipe-subtitle">
-            <br></br>
+            {/* <br></br>
             <ul>Hot sauce 1 tbs</ul> 
             <ul>Mustard paste 1 tbs </ul>
             <ul>Tomato ketchup 3 tbs </ul>
@@ -59,7 +61,10 @@ const RecipeDetail = () => {
             <ul>Pyaz (Onion) finely chopped 2-3 tbs </ul>
             <ul>Beef qeema (Mince) 650g (with 20% fat) </ul>
             <ul>Makhan (Butter) </ul>
-            <ul>Burger buns </ul><br></br>
+            <ul>Burger buns </ul><br></br> */}
+            {recipe.ingredients[0].name} 
+            {recipe.ingredients[0].qty}
+            {recipe.ingredients[0].unit}
         </text>
 
         <hr></hr>

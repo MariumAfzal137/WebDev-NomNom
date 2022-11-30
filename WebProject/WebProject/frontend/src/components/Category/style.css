@@ -1,0 +1,102 @@
+.flash {
+  padding-top: 20px 0;
+}
+.control-btn .prev i,
+.control-btn .next i {
+  font-size: 20px;
+  transition: 0.5s;
+  color: #fff;
+}
+
+
+.container-cat {
+  max-width: 90%;
+  margin: auto;
+}
+.d_flex {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+.f_flex {
+  padding-top: 30px;
+  display: flex;
+}
+
+/*---------product-----------*/
+.product {
+  background-color:#EFEFEF;
+  padding-left: 2px;
+  padding-top: 2px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: rgba(194, 194, 202, 0.09) 0px 1px 3px;
+  margin: 10px;
+  color: #57595e;
+}
+.product:hover {
+  background:#e0e0e0;
+  color: #57595e;
+  cursor: pointer;
+}
+
+
+
+/*---------product-----------*/
+/*----- control btn -------*/
+.control-btn .next,
+.control-btn .prev {
+  position: absolute;
+  top: 25%;
+  width: 20px;
+  height: 20px;
+  line-height: 60px;
+  background: #f0f2f5;
+  border-radius: 50%;
+  transform: 0.5s;
+  z-index: 5;
+  
+}
+.control-btn .prev {
+  left: 10px;
+}
+.control-btn .next {
+  right: -20px;
+}
+.control-btn .prev i,
+.control-btn .next i {
+  font-size: 20px;
+  transition: 0.5s;
+  color: #fff;
+}
+.control-btn .prev:hover,
+.control-btn .next:hover {
+  background:#f3f5f9;
+  color: white;
+  cursor: pointer;
+}
+/*----- control btn -------*/
+/*----- heading -------*/
+.heading .heading-left i {
+  font-size: 30px;
+}
+.heading .heading-left h2 {
+  font-size: 25px;
+  margin: 5px;
+}
+.heading .heading-right i,
+.heading .heading-right {
+  text-align: right;
+  color: grey;
+}
+/*----- heading -------*/
+
+
+
+/* .c_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */

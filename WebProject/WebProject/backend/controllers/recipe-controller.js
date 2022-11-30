@@ -1,5 +1,5 @@
 //const createError=require('http-errors')
-import Recipe from '../model/recipe.js'
+import Recipe from '../model/recipe.js';
 
 export async function postrecipe(req, res, next) {
     console.log(req.body.category)
