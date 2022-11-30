@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './Header';
 import "./Profile.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 
 const RecipeDetail = (props) => {
 

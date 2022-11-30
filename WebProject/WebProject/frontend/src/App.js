@@ -12,6 +12,8 @@ import Homepage from './components/Homepage/recipe';
 import PostRecipe from './components/userRecipe/postrecipe'
 
 import { useSelector } from 'react-redux';
+import PostRecipe from './components/userRecipe/postrecipe'
+
 
 function App() {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
