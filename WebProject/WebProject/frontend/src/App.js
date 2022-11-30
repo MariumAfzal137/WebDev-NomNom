@@ -3,12 +3,15 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom";
 
 import AboutUs from './components/AboutUs';
-// import Header from './components/Header';
-//import Profile from './components/Profile';
-//import RecipeDetail from './components/RecipeDetail';
+import Header from './components/Header';
+import Profile from './components/Profile';
+import RecipeDetail from './components/RecipeDetail';
+import Login from './components/user/Login'
+import Signup from './components/user/Signup'
+import Homepage from './components/Homepage/recipe';
+import PostRecipe from './components/userRecipe/postrecipe'
 
-// import Login from './user/Login';
-// import { BrowserRouter as Router } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 function App() {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
@@ -25,29 +28,15 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/myProfile" element={<Profile />} />
-      <Route path="/recipe/:id" element={<RecipeDetail />} />
-
+      <Route path="/recipedetail" element={<RecipeDetail />} />
+      <Route path="/postrecipe" element={<PostRecipe />} />
+      <Route path="/home" element={<Homepage />} />
+ 
 
         </Routes>
     </main>
 
 
-
-
-
-
-  return <AboutUs/>;
-
-  // return (
-  //   <>
-  //   <Router>
-  //       <Router exact path="/login" component={Login}/>
-  //   </Router>
-  //   <div className="page">
-  //      <Login /> 
-  //   </div>
-  //   </>
-  // );
+    </React.Fragment>
 }
-
 export default App;

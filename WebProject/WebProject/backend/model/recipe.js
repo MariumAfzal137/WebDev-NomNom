@@ -30,7 +30,8 @@ const recipeSchema = new Schema({
         default: ''
       },
       category: {
-        type: mongoose.Schema.Types.ObjectId, ref:"Category",required:true
+        type: String,
+        default: ''
       },
      
     });

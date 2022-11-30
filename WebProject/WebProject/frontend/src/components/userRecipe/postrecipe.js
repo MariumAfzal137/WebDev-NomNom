@@ -62,7 +62,7 @@ export const PostRecipe = () =>{
 
     return (
     <>
-    <Header/>
+    {/* <Header/> */}
     <div id="recipe" >   
     <div className='heading-postrecipe'>Add Recipe</div>   
     <form method="POST" className="postrecipe-form">

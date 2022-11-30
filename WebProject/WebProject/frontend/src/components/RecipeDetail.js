@@ -5,34 +5,36 @@ import "./Profile.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const RecipeDetail = () => {
-  const [recipe, setRecipe] = useState([]);
+const RecipeDetail = (props) => {
 
-  useEffect(() => {
+  
+//   const [recipe, setRecipe] = useState([]);
 
-    fetchDetails()
-  },[])
+//   useEffect(() => {
 
-
-  const fetchDetails = async () => {
-  const res = await fetch('http://localhost:5000/recipe/recipedetails/63430bf717388d8f1fbdf0bb')
-    .catch((err) => console.log(err));
+//     fetchDetails()
+//   },[])
 
 
-  setRecipe(await res.json());
-};
+//   const fetchDetails = async () => {
+//   const res = await fetch('http://localhost:5000/recipe/recipedetails/63430bf717388d8f1fbdf0bb')
+//     .catch((err) => console.log(err));
+
+
+//   setRecipe(await res.json());
+// };
 
 
   return (
 
   <>
     <div id="recipe" >        
-        <img id="recipe" src={recipe.image} alt="Avatar"></img>
+        <img id="recipe" src={props.image} alt="Avatar"></img>
         <ul>
-        <text className="recipe-title" >{recipe.name}</text> <br></br>
+        <text className="recipe-title" >{props.rItems.name}</text> <br></br>
         <text className="recipe-subtitle"><u>safahai</u> <br></br>
         Savoury <br></br>
-        {recipe.cookingtime} <br></br>
+        {props.rItems.cookingtime}<br></br>
         
         </text>
 

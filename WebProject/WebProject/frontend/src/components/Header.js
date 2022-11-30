@@ -4,6 +4,7 @@ import {AppBar, Toolbar, Typography, Box,  InputBase, Button} from '@mui/materia
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
+
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
@@ -76,7 +77,7 @@ const Search = styled('div')(({ theme }) => ({
         <ul className="navbar__ul">
 
 
-            <a href="" >Home</a>
+            <a href="/home" >Home</a>
 
             <a href="">My Recipes</a>
 
