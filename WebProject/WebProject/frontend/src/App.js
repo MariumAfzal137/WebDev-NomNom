@@ -8,22 +8,22 @@ import Profile from './components/Profile';
 import RecipeDetail from './components/RecipeDetail';
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
+import PostRecipe from './components/userRecipe/PostRecipe'
+
 import { useSelector } from 'react-redux';
 import PostRecipe from './components/userRecipe/postrecipe'
 
 
-// import { BrowserRouter as Router } from 'react-router-dom'
-
 function App() {
-  const isLoggedIn = useSelector((state) => state.isLoggedIn);
-  console.log(isLoggedIn);
-  return <React.Fragment>
-    <header>
-      <Header/>
-    </header>
+  // const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  // console.log(isLoggedIn);
+  // return <React.Fragment>
+  //   <header>
+  //     <Header/>
+  //   </header>
 
-    <main>
-      <Routes>
+  //   <main>
+      {/* <Routes>
 
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
@@ -32,27 +32,13 @@ function App() {
       <Route path="/recipe/:id" element={<RecipeDetail />} />
       <Route path="/postrecipe" element={<PostRecipe />} />
 
+ 
 
         </Routes>
     </main>
 
 
-
-
-
-
-    </React.Fragment>
-
-  // return (
-  //   <>
-  //   <Router>
-  //       <Router exact path="/login" component={Login}/>
-  //   </Router>
-  //   <div className="page">
-  //      <Login /> 
-  //   </div>
-  //   </>
-  // );
+    </React.Fragment> */}
+return <PostRecipe/>;
 }
-
 export default App;
