@@ -36,6 +36,7 @@ const recipeSchema = new Schema({
         ref:'category',
         required: true
       },
+      author: {type: Schema.Types.ObjectId, ref:'User'}
      
     });
 

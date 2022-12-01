@@ -9,11 +9,10 @@ import RecipeDetail from './components/RecipeDetail';
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import Homepage from './components/Homepage/recipe';
-import PostRecipe from './components/userRecipe/postrecipe'
+import PostRecipe from './components/userRecipe/PostRecipe'
 import MyRecipe from './components/userRecipe/MyRecipes'
 
 import { useSelector } from 'react-redux';
-import PostRecipe from './components/userRecipe/postrecipe'
 
 
 function App() {
@@ -34,13 +33,14 @@ function App() {
       <Route path="/recipedetail" element={<RecipeDetail />} />
       <Route path="/postrecipe" element={<PostRecipe />} />
       <Route path="/home" element={<Homepage />} />
+      <Route path="/myrecipes" element={<MyRecipe />} />
  
 
         </Routes>}
     </main>
 
 
-    </React.Fragment> */}
-return <PostRecipe/>;
+    </React.Fragment> 
+  // return <MyRecipe/>
 }
 export default App;

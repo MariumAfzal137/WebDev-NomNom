@@ -22,6 +22,10 @@ const userSchema = new Schema({
     type:String,
     enum:["user","admin"],
     default:"user"
-  }
+  },
+  myrecipes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Recipe'
+  }]
 });
 export default mongoose.model("User", userSchema);
