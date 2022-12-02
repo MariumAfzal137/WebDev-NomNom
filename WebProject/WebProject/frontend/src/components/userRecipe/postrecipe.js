@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@material-ui/core';
-
-import Header from '../Header';
+import React, {useEffect, useState} from "react";
+import { Select, MenuItem,  } from '@material-ui/core';
+import axios from 'axios';
 import "../Profile.css";
+import Categories from "../Category/Categories";
 
 
 export const PostRecipe = () =>{
@@ -38,13 +38,28 @@ export const PostRecipe = () =>{
         setData(newArray);
       };
       
-      const selectcategory = (event) => {
-        setCategory(event.target.value);
+      const selectcategory = (e) => {
+        setCategory({...category, [e.target.category]: e.target.value });
+        
       };
+      //storing list of categories in an array
+      const [categories, setCategories] = useState([]);
     
       const recipeDataChange = (e) => {
         setRecipe({ ...recipe, [e.target.name]: e.target.value });
       };
+
+      useEffect(() => {
+        const arr=[]
+        axios.get("http://localhost:5000/category/getAllCategories").then(
+          res => {
+            res.data.forEach(element => {
+               arr.push(element.name)
+            });
+            setCategories(arr);
+          }
+        )
+      })
 
       const handlePhoto = (e) =>{
         setRecipe({...recipe, image: e.target.files[0]});
@@ -106,12 +121,20 @@ export const PostRecipe = () =>{
         <br></br>
        
         <Select variant="outlined" className="categoryinput"
-        value={category} onChange={selectcategory}>
-        <MenuItem value={1}>Desi</MenuItem>
-        <MenuItem value={2}>Italian</MenuItem>
+         onChange={selectcategory}>
+          {/* <option value="">Select Category</option>
+          {
+            Categories.map((cate) => (
+              <option key={cate} value={cate}>
+                {cate}
+              </option>
+            ))
+          } */}
+        <MenuItem value={setCategories[index]}></MenuItem>
+        {/* <MenuItem value={2}>Italian</MenuItem>
         <MenuItem value={3}>Chinese</MenuItem>
         <MenuItem value={4}>American</MenuItem>
-        <MenuItem value={5}>Savoury</MenuItem>
+        <MenuItem value={5}>Savoury</MenuItem> */}
       </Select>
         
         

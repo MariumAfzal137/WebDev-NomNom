@@ -20,7 +20,7 @@ export async function postrecipe(req, res, next) {
         console.log(result)
         const user = await User.findById(author);
         const savedRecipe = await result.save()
-        user.myrecipes = user.myrecipes.concat(savedRecipe._id)
+        user.myrecipes = user.myrecipes.concat(savedRecipe)
         await user.save()
         res.send(savedRecipe)
     }

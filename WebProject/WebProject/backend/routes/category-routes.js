@@ -4,7 +4,6 @@ import {verifyAdminAccessToken} from "../middleware/check-auth";
 const router = express.Router();
 
 router.get("/getAllCategories", getAllCategories);
-router.get("getdropdownvalues", getAllCategories);
 
 router.post("/addCategory",verifyAdminAccessToken, addCategory);
 router.delete("/delete/:id",verifyAdminAccessToken, deleteCategory);
