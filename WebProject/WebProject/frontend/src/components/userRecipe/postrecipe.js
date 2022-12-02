@@ -1,8 +1,8 @@
-    import React, {useState} from "react";
-    import { Select, MenuItem, FormHelperText, FormControl, InputLabel } from '@material-ui/core';
-
-    import Header from '../Header';
-    import "../Profile.css";
+import React, {useEffect, useState} from "react";
+import { Select, MenuItem,  } from '@material-ui/core';
+import axios from 'axios';
+import "../Profile.css";
+import Categories from "../Category/Categories";
 
 
     export const PostRecipe = () =>{ 
@@ -16,84 +16,98 @@
             image: "",
           });
 
-          const {name, time, ingredients, description} = recipe;
-          const [category, setCategory] = useState('');
-          const [data, setData] = useState([
-            {
-              name: "",
-              qty: "",
-              size: "",
-            }
-          ]);
 
-          const IngredientArray = (index) =>(e) =>{
-            const newArray = data.map((item, i) => {
-              if (index === i) {
-                setData( { ...item, [e.target.name]: e.target.value });
-              } else {
-                return item;
-              }
+      const {name, time, ingredients, description} = recipe;
+      const [category, setCategory] = useState('');
+      const [data, setData] = useState([
+        {
+          name: "",
+          qty: "",
+          size: "",
+        }
+      ]);
+
+      const IngredientArray = (index) =>(e) =>{
+        const newArray = data.map((item, i) => {
+          if (index === i) {
+            setData( { ...item, [e.target.name]: e.target.value });
+          } else {
+            return item;
+          }
+        });
+        setData(newArray);
+      };
+      
+      const selectcategory = (e) => {
+        setCategory({...category, [e.target.category]: e.target.value });
+        
+      };
+      //storing list of categories in an array
+      const [categories, setCategories] = useState([]);
+    
+      const recipeDataChange = (e) => {
+        setRecipe({ ...recipe, [e.target.name]: e.target.value });
+      };
+
+      useEffect(() => {
+        const arr=[]
+        axios.get("http://localhost:5000/category/getAllCategories").then(
+          res => {
+            res.data.forEach(element => {
+               arr.push(element.name)
             });
-            setData(newArray);
-          };
-          
-          const selectcategory = (event) => {
-            setCategory(event.target.value);
-          };
-          
-          const recipeDataChange = (e) => {
-            setRecipe({ ...recipe, [e.target.name]: e.target.value });
-          };
-
-          const handlePhoto = (e) =>{
-            setRecipe({...recipe, image: e.target.files[0]});
-            console.log(recipe.image);
+            setCategories(arr);
           }
+        )
+      })
 
-          const recipeSubmit = async(e) => {
-            e.preventDefault();
+      const handlePhoto = (e) =>{
+        setRecipe({...recipe, image: e.target.files[0]});
+        console.log(recipe.image);
+      }
+
+      const recipeSubmit = async(e) => {
+        e.preventDefault();
+       
+        const {name, time, category, ingredients, description, image} = recipe;
+
+        const res = await fetch("http://localhost:5000/recipe/postrecipe", {
+          method: "POST",
+          body: JSON.stringify({
+            name, time, category, description, image
+          }),
+          headers: {
+            "content-Type" : "application/json"
+          },
           
-            const {name, time, category, ingredients, description, image} = recipe;
+        })
+        const data = await res.json();
 
-            const res = await fetch("http://localhost:5000/recipe/postrecipe", {
-              method: "POST",
-              body: JSON.stringify({
-                name, time, category, description, image
-              }),
-              headers: {
-                "content-Type" : "application/json"
-              },
-              
-            })
-            const data = await res.json();
+        if(res.status=== 400 ||!data ){
+          window.alert("Failed to post recipe.");
+          console.log("Failed to post recipe");
+        }else{
+          window.alert("Recipe posted successfully");
+          console.log("Recipe posted successfully");
+        }
+      }
 
-            if(res.status=== 400 ||!data ){
-              window.alert("Failed to post recipe.");
-              console.log("Failed to post recipe");
-            }else{
-              window.alert("Recipe posted successfully");
-              console.log("Recipe posted successfully");
-            }
-          }
 
-          
-         
-
-        return (
-        <>
-
-        <div id="postrecipe" >   
-        <div className='heading-postrecipe'>Add Recipe</div>   
-        <form method="POST" className="postrecipe-form">
-            <label className="image label" htmlFor="image">Choose an image</label>
-            <br></br>
-                <input 
-                type="file"
-                accept=".png, .jpg, .jpeg"
-                name="imagee"
-                onChange={handlePhoto}
-                />
-            
+    return (
+    <>
+    <div id="postrecipe" >   
+    <div className='heading-postrecipe'>Add Recipe</div>   
+    <form method="POST" className="postrecipe-form">
+        <label className="image label" htmlFor="image">Choose an image</label>
+        <br></br>
+            <input 
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="imagee"
+            onChange={handlePhoto}
+            />
+        
+       
             <ul>
             <label className="labelinput" htmlFor="name">Recipe Title</label>
             <br></br>
