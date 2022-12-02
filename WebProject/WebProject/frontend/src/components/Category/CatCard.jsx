@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect,useState } from "react"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -42,14 +42,37 @@ const CatCard = () => {
     prevArrow: <SamplePrevArrow />,
   }
 
+  let[category,setCategory]=useState([])
+
+
+  async function getAllCategory() {
+    try {
+      const response = await fetch('http://localhost:5000/category/getAllCategories');
+  
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+  
+      const result = await response.json();
+      setCategory(result.categories)
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  console.log(category)
+  useEffect(()=>{
+    getAllCategory()
+  },[])
+
   return (
     <>
       <Slider {...settings}>
-        {Tdata.map((value, index) => {
+        {category.map((value, index) => {
           return (
             <>
             <div className='product' key={index}>
-                <div className='d_flex'>{value.para}
+                <div className='d_flex'>{value.name}
                 </div>
             </div>
             </>

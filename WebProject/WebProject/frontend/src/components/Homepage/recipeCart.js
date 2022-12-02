@@ -6,7 +6,7 @@ const Card = ({rItems}) => {
     return (
     <>
       {rItems.map((rItems, index) => {
-          let id=rItems._id
+          if(rItems.approved==true)
         return (
           <Link to={'/recipedetail'} state={{rItems}}> 
           <div className="card">
