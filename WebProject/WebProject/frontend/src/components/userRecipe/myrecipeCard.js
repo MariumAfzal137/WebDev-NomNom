@@ -1,12 +1,13 @@
 import React from "react"
 import {Link} from 'react-router-dom';
 import RecipeDetail from "../RecipeDetail";
+
 const Card = ({rItems}) => { 
 
     return (
     <>
       {rItems.map((rItems, index) => {
-          if(rItems.approved==true)
+          let id=rItems._id
         return (
           <Link to={'/recipedetail'} state={{rItems}}> 
           <div className="card">
