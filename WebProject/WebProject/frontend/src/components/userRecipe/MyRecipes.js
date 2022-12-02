@@ -13,7 +13,7 @@ export const MyRecipes = () =>{
 
     async function getAllRecipes() {
         try {
-          const response = await fetch('http://localhost:5000/recipe/allrecipes');
+          const response = await fetch('http://localhost:5000/user/allrecipes');
       
           if (!response.ok) {
             throw new Error(`Error! status: ${response.status}`);
