@@ -24,7 +24,7 @@ import { verifyAccessToken, verifyAdminAccessToken} from '../middleware/check-au
 // const upload = multer({storage: storage, fileFilter}).single('Image');
 
 //User Routes
-router.post('/postrecipe', verifyAccessToken, postrecipe);
+router.post('/postrecipe', postrecipe);
 router.get('/allrecipes', allrecipes);
 router.get('/searchrecipes', searchrecipes);
 router.get('/recipedetails/:id',  recipedetails);
