@@ -77,7 +77,7 @@ const Search = styled('div')(({ theme }) => ({
         <ul className="navbar__ul">
 
 
-            <a href="/home" >Home</a>
+            <a href="/" >Home</a>
 
             <a href="/MyRecipes">My Recipes</a>
 
