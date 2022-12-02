@@ -104,7 +104,8 @@ div#recipe {
     width: 80%;
     padding: 1cm;
     margin:10%;
-    margin-top: 5cm;
+    margin-bottom: 1cm;
+    margin-top: 1cm;
     height: 90%;
     display: block;
     box-shadow: 4px 4px 20px 10px rgba(189, 189, 189, 0.25);
@@ -114,7 +115,7 @@ div#recipe {
 
 img#recipe{
     width:400px;
-    height: 400px;
+    height: 320px;
     margin-right: 1cm;
     vertical-align:middle;
     float: left;
@@ -179,8 +180,7 @@ img#recipe{
     border: #303030;
     width: 80%;
     height: max-content;
-    background-image: url("/public/background4.jpg");
-    background-size: cover;
+   background-color: #000;
 
 }
 
@@ -194,13 +194,11 @@ div#postrecipe {
     width: 80%;
     padding: 1cm;
     margin:10%;
-    margin-top: 5cm;
-    height: 90%;
+    height: 80%;
     display: block;
     box-shadow: 4px 4px 20px 10px rgba(189, 189, 189, 0.25);
     background-color: #F8F8F8; 
 }
-
 
 img#postrecipe{
     width:400px;
@@ -388,3 +386,65 @@ img#aboutus{
     margin-top: 10px;
     margin-left: 40%;
 }
+
+/* MY RECIPES CSS */
+
+.myrecipe {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    padding-left: 0.5cm;
+    padding-top: 1cm;
+    margin-top:1cm;
+    margin-bottom: 1cm;
+    background-color:#EFEFEF;
+}
+
+.myrecipe-heading{
+    color: #000;
+    font-family: 'Cantata One';
+    font-size: 32px;
+    margin-top: 10px;
+    margin-left: 40%;
+}
+
+.post-btn{
+    margin-left: 80%;
+    font-weight: bold;
+    border-radius: 12px;
+    border-color: #303030;
+    background-color: #303030;
+    padding-top: 5px;
+    color: #EFEFEF;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.myrecipe-box{
+    background-color: #6D6A6A;
+   
+    height: 83%;
+    position: absolute;
+    margin-top: 35px;
+    align-self: center;
+}
+
+.formheading{
+    color: #000;
+    font-family: 'Cantata One';
+    font-size: 32px;
+    margin-top: 10px;
+    display: block;
+}
+
+
+
+  .myrecipe-cards{
+     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    padding-left: 0.5cm;
+    padding-top: 1cm;
+    margin-bottom: 1cm;
+    background-color:#EFEFEF;
+  }

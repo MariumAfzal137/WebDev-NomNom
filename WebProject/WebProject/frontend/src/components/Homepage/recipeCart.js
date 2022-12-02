@@ -6,9 +6,9 @@ const Card = ({rItems}) => {
     return (
     <>
       {rItems.map((rItems, index) => {
-          
+          let id=rItems._id
         return (
-          <Link to={'/recipedetail'+rItems}>
+          <Link to={'/recipedetail'} state={{rItems}}> 
           <div className="card">
             <img src={rItems.image} alt="recipe pic" id="cardimage"></img>
             <div style={{marginLeft : 0.5 +'cm', postion:'absolute'}}>

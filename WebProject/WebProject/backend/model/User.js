@@ -4,24 +4,36 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 6,
-  },
-  role: {
-    type:String,
-    enum:["user","admin"],
-    default:"user"
-  }
+      name: {
+        type: String,
+        required: true,
+      },
+      email: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      password: {
+        type: String,
+        required: true,
+        minlength: 6,
+      },
+      role: {
+        type:String,
+        enum:["user","admin"],
+        default:"user"
+      },
+
+      myrecipes: [
+        {
+        name:  String,
+        approved:  Boolean,
+        ingredients: Array,
+        cookingtime: String,
+        description: String,
+        image: String,
+        category: String,
+       }
+     ]
 });
 export default mongoose.model("User", userSchema);

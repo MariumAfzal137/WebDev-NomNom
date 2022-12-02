@@ -3,26 +3,13 @@ import React from 'react'
 import Header from './Header';
 import "./Profile.css";
 import { useEffect, useState } from "react";
+import { useLocation } from 'react-router-dom';
 
 
 const RecipeDetail = (props) => {
-
-  
-  const [recipe, setRecipe] = useState([]);
-
-  useEffect(() => {
-
-    fetchDetails()
-  },[])
-
-
-  const fetchDetails = async () => {
-  const res = await fetch('http://localhost:5000/recipe/recipedetails/63430bf717388d8f1fbdf0bb')
-    .catch((err) => console.log(err));
-
-
-  setRecipe(await res.json());
-};
+  const location = useLocation()
+  const recipe=location.state.rItems
+  const ing=recipe.ingredients
 
 
   return (
@@ -45,15 +32,15 @@ const RecipeDetail = (props) => {
         <br></br>
         <br></br>
         <br></br>
-        <br></br>
-        <br></br>
+        
+        
 
         <hr></hr>
-        <br></br>
+        
         <text className="recipe-subtitle2">Ingredients</text> <br></br>
-        <text className="recipe-subtitle">
-            {/* <br></br>
-            <ul>Hot sauce 1 tbs</ul> 
+        <br></br>
+           
+            {/* <ul>Hot sauce 1 tbs</ul> 
             <ul>Mustard paste 1 tbs </ul>
             <ul>Tomato ketchup 3 tbs </ul>
             <ul>Worcestershire sauce 1 tsp </ul>
@@ -62,17 +49,26 @@ const RecipeDetail = (props) => {
             <ul>Beef qeema (Mince) 650g (with 20% fat) </ul>
             <ul>Makhan (Butter) </ul>
             <ul>Burger buns </ul><br></br> */}
-            {recipe.ingredients[0].name} 
-            {recipe.ingredients[0].qty}
-            {recipe.ingredients[0].unit}
-        </text>
-
+            {ing.map((ing, index) => {
+          
+        return (
+          <text className="recipe-subtitle">
+              {ing.name+" "}{ing.qty+" "}{ing.unit} <br></br>
+          </text>
+          
+        )
+      })}
+          
+            
+            
+        
+          <br></br>
         <hr></hr>
         <br></br>
         <text className="recipe-subtitle2">Directions</text> <br></br>
         <text className="recipe-subtitle">
         <br></br>
-        <ul>Prepare Pickled Burger Sauce:</ul>
+        {/* <ul>Prepare Pickled Burger Sauce:</ul>
         <ul>In a bowl,add mayonnaise,hot sauce,mustard paste,tomato ketchup,Worcestershire sauce,pickled cucumber and onion,mix well & set aside.</ul>
 
         <ul>Prepare Smash Burger Patties:</ul>
@@ -82,7 +78,8 @@ const RecipeDetail = (props) => {
 
         <ul>Heat cast iron hot plate & grease with butter,toast burger buns & set aside.</ul>
 
-        <ul>Grease cast iron hot plate with cooking oil,place meat balls and butter paper,press with flat weight to flatten the balls (smash it as thin as possible).</ul>
+        <ul>Grease cast iron hot plate with cooking oil,place meat balls and butter paper,press with flat weight to flatten the balls (smash it as thin as possible).</ul> */}
+        {recipe.description}
         </text>
 
     </div>

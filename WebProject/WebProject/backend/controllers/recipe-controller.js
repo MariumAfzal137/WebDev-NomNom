@@ -1,24 +1,28 @@
 //const createError=require('http-errors')
 import Recipe from '../model/recipe.js';
+import User from '../model/User'
 
 export async function postrecipe(req, res, next) {
-    console.log(req.body.category)
+            const name = req.body.name;
+            const cookingtime = req.body.cookingtime;
+            const ingredients = req.body.ingredients;
+            const description = req.body.description;
+            const category = req.body.category;
+            const image = req.body.image;
+            const author = req.body.author;
+            const approved = "false";
+            const result = new Recipe({
+              name, cookingtime, ingredients, description, category,
+              image, approved, author
+            })
     try {
-        const result = new Recipe({
-            name: req.body.name,
-            cookingtime: req.body.cookingtime,
-            ingredients: req.body.ingredients,
-            description: req.body.description,
-            category: req.body.category,
-            image: req.file.path,
-            approved: "false"
-        })
+        
         console.log(result)
-    
-        // const recipe = new Recipe(result)
+        const user = await User.findById(author);
         const savedRecipe = await result.save()
+        user.myrecipes = user.myrecipes.concat(savedRecipe)
+        await user.save()
         res.send(savedRecipe)
-        //    res.send({accessToken, refreshToken})
     }
     catch (error) {
         console.log(error.message)
