@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import {signAccessToken,signAdminAccessToken} from "../middleware/check-auth";
 
 
+
 export const getAllUser = async (req, res, next) => {
   let users;
   try {
@@ -106,6 +107,18 @@ export const getUserById= async (req, res, next) => {
     User.findById(id, function(err, user) {
         res.json({user});
     });
+
+};
+
+export const getUserRecipes= async (req, res, next) => {
+  
+  let id = req.params.id;
+  const projection = {myrecipes: 1};
+  const cursor = Collection.findById(id).project(projection)
+  await cursor.forEach(console.dir);
+    // User.findById(id, function(err, user) {
+    //     res.json({user.myrecipe});
+    // });
 
 };
 
