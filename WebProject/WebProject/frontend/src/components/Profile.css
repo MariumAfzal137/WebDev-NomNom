@@ -104,7 +104,8 @@ div#recipe {
     width: 80%;
     padding: 1cm;
     margin:10%;
-    margin-top: 5cm;
+    margin-bottom: 1cm;
+    margin-top: 1cm;
     height: 90%;
     display: block;
     box-shadow: 4px 4px 20px 10px rgba(189, 189, 189, 0.25);
@@ -114,7 +115,7 @@ div#recipe {
 
 img#recipe{
     width:400px;
-    height: 400px;
+    height: 320px;
     margin-right: 1cm;
     vertical-align:middle;
     float: left;

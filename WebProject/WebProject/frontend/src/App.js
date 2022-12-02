@@ -9,7 +9,7 @@ import RecipeDetail from './components/RecipeDetail';
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import Homepage from './components/Homepage/recipe';
-import PostRecipe from './components/userRecipe/PostRecipe'
+import PostRecipe from './components/userRecipe/postrecipe'
 import MyRecipe from './components/userRecipe/MyRecipes'
 
 import { useSelector } from 'react-redux';

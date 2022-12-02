@@ -5,17 +5,17 @@ import "../Profile.css";
 import Categories from "../Category/Categories";
 
 
-export const PostRecipe = () =>{
+    export const PostRecipe = () =>{ 
+        const [recipe, setRecipe] = useState({
+            name: "",
+            time: "",
+            description: "",
+            ingredients: "",
+            // qty: "",
+            // size: "",
+            image: "",
+          });
 
-    const [recipe, setRecipe] = useState({
-        name: "",
-        time: "",
-        description: "",
-        ingredients: "",
-        // qty: "",
-        // size: "",
-        image: "",
-      });
 
       const {name, time, ingredients, description} = recipe;
       const [category, setCategory] = useState('');
@@ -107,100 +107,93 @@ export const PostRecipe = () =>{
             onChange={handlePhoto}
             />
         
-        <ul>
-        <label className="labelinput" htmlFor="name">Recipe Title</label>
-        <br></br>
-                  <input className="postrecipe-input"
-                    type="text"
-                    required
-                    name="name"
-                    value={name}
-                    onChange={recipeDataChange}
-                  /> <br></br>
-         <label className="labelinput" htmlFor="category">Category</label>
-        <br></br>
        
-        <Select variant="outlined" className="categoryinput"
-         onChange={selectcategory}>
-          {/* <option value="">Select Category</option>
-          {
-            Categories.map((cate) => (
-              <option key={cate} value={cate}>
-                {cate}
-              </option>
-            ))
-          } */}
-        <MenuItem value={setCategories[index]}></MenuItem>
-        {/* <MenuItem value={2}>Italian</MenuItem>
-        <MenuItem value={3}>Chinese</MenuItem>
-        <MenuItem value={4}>American</MenuItem>
-        <MenuItem value={5}>Savoury</MenuItem> */}
-      </Select>
-        
-        
-        <label className="labelinput" htmlFor="time">Time</label>
-        <br></br>
-        <input className="postrecipe-input"
-            type="text"
-            required
-            name="time"
-            value={time}
-             onChange={recipeDataChange}
-            /> 
-        
-        <br></br>
-        <br></br>
-        <hr className="divider"></hr>
-        <br></br>
-        <label htmlFor="ingredients">Ingredients</label>
-        <label className="qty" htmlFor="ingredients">Quantity</label>
-        <label className="size" htmlFor="ingredients">Size</label>
-        <br></br>
-       
-            <input className="postrecipe-ing"
-            type="text"
-            required
-            name="ingredients"
-            value={ingredients}
-             onChange={recipeDataChange}
-            /> 
-            <input className="postrecipe-qty"
-            type="text"
-            required
-            name="ingredients"
-            value={ingredients}
-             onChange={recipeDataChange}
-            /> 
-            <input className="postrecipe-size"
-            type="text"
-            required
-            name="ingredients"
-            value={ingredients}
-             onChange={recipeDataChange}
-            /> <br></br>
+            <ul>
+            <label className="labelinput" htmlFor="name">Recipe Title</label>
+            <br></br>
+                      <input className="postrecipe-input"
+                        type="text"
+                        required
+                        name="name"
+                        value={name}
+                        onChange={recipeDataChange}
+                      /> <br></br>
+            <label className="labelinput" htmlFor="category">Category</label>
+            <br></br>
             
-             <br></br>
+            <Select variant="outlined" className="categoryinput"
+              value={category} onChange={selectcategory}>
+              <MenuItem value={1}>Desi</MenuItem>
+              <MenuItem value={2}>Italian</MenuItem>
+              <MenuItem value={3}>Chinese</MenuItem>
+              <MenuItem value={4}>American</MenuItem>
+              <MenuItem value={5}>Savoury</MenuItem>
+            </Select>
+            
+            
+            <label className="labelinput" htmlFor="time">Time</label>
+            <br></br>
+            <input className="postrecipe-input"
+                type="text"
+                required
+                name="time"
+                value={time}
+                onChange={recipeDataChange}
+                /> 
+            
+            <br></br>
+            <br></br>
+            <hr className="divider"></hr>
+            <br></br>
+            <label htmlFor="ingredients">Ingredients</label>
+            <label className="qty" htmlFor="ingredients">Quantity</label>
+            <label className="size" htmlFor="ingredients">Size</label>
+            <br></br>
+          
+                <input className="postrecipe-ing"
+                type="text"
+                required
+                name="ingredients"
+                value={ingredients}
+                onChange={recipeDataChange}
+                /> 
+                <input className="postrecipe-qty"
+                type="text"
+                required
+                name="ingredients"
+                value={ingredients}
+                onChange={recipeDataChange}
+                /> 
+                <input className="postrecipe-size"
+                type="text"
+                required
+                name="ingredients"
+                value={ingredients}
+                onChange={recipeDataChange}
+                /> <br></br>
+                
+                <br></br>
 
 
-        <br></br>
-        <br></br>
-        <hr className="divider"></hr>
-        <br></br>
-        <label htmlFor="description">Instructions</label>
-        <br></br>
-        <input className="instruction-input"
-            type="text"
-            required
-            name="description"
-            value={description}
-             onChange={recipeDataChange}
-            /> <br></br>
-        </ul>
-        <button className="post-button" onClick={recipeSubmit}>POST</button>
-        </form>
-        </div>
-        </> 
-        )
-}
+            <br></br>
+            <br></br>
+            <hr className="divider"></hr>
+            <br></br>
+            <label htmlFor="description">Instructions</label>
+            <br></br>
+            <input className="instruction-input"
+                type="text"
+                required
+                name="description"
+                value={description}
+                onChange={recipeDataChange}
+                /> <br></br>
+            </ul>
+            <button className="post-button" onClick={recipeSubmit}>POST</button>
+            </form>
+            </div>
+            </> 
+            )
+    }
 
-export default PostRecipe
+    export default PostRecipe
