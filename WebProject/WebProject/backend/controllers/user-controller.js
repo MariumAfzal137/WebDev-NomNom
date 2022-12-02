@@ -114,11 +114,9 @@ export const getUserRecipes= async (req, res, next) => {
   
   let id = req.params.id;
   const projection = {myrecipes: 1};
-  const cursor = Collection.findById(id).project(projection)
-  await cursor.forEach(console.dir);
-    // User.findById(id, function(err, user) {
-    //     res.json({user.myrecipe});
-    // });
+  User.findById(id, projection, function(err, user) {
+    res.json({user});
+});
 
 };
 
