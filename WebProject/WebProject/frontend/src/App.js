@@ -32,7 +32,9 @@ function App() {
       <Route path="/myProfile" element={<Profile />} />
       <Route path="/recipedetail" element={<RecipeDetail />} />
       <Route path="/postrecipe" element={<PostRecipe />} />
-      <Route path="/home" element={<Homepage />} />
+      <Route path="/home" element={<Homepage url=""/>} />
+      <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
+      {/* <Route path="/homesearch" element={<Homepage url={Header.url}/>} /> */}
       <Route path="/myrecipes" element={<MyRecipe />} />
  
 
