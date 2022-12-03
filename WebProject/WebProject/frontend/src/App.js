@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect }  from 'react';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import AboutUs from './components/AboutUs';
 import Header from './components/Header';
@@ -13,6 +13,7 @@ import PostRecipe from './components/userRecipe/postrecipe'
 import MyRecipe from './components/userRecipe/MyRecipes'
 import RequireAuth from './components/RequireAuth';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store";
@@ -25,9 +26,10 @@ function App() {
   console.log(isLoggedIn);
 
 useEffect(() => {
-    if (localStorage.getItem("email")) {
-      dispath(authActions.login());
+    if (localStorage.getItem("email")); {
+        dispath(authActions.login());
     }
+
   }, [dispath]);
   return <React.Fragment>
     <header>
@@ -37,6 +39,8 @@ useEffect(() => {
     <main>
 
     <Routes>
+          
+    
           {!isLoggedIn ? (
               <>
             <Route path="/login" element={<Login />} />
@@ -51,11 +55,7 @@ useEffect(() => {
             <Route path="/recipedetail" element={<RecipeDetail />} />
             <Route path="/" element={<Homepage />} />
             </>
-          )
-          
-        
-          
-          }
+          ) }
         </Routes>
 
 
