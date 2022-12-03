@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect }  from 'react';
+import React, { useState,useEffect }  from 'react';
 import { Route, Routes } from "react-router-dom";
 
 import AboutUs from './components/AboutUs';
@@ -19,15 +19,19 @@ import { authActions } from "./store";
 
 
 function App() {
-
+  
+  const [url, setUrl] = useState("");
     const dispath = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   console.log(isLoggedIn);
 
 useEffect(() => {
     if (localStorage.getItem("email")) {
+      
       dispath(authActions.login());
     }
+    // setUrl(localStorage.getItem(url))
+    // console.log("this is url"+url)
   }, [dispath]);
   return <React.Fragment>
     <header>
@@ -35,7 +39,7 @@ useEffect(() => {
     </header>
 
     <main>
-
+<Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/aboutUs" element={<AboutUs />} />
@@ -43,11 +47,11 @@ useEffect(() => {
       <Route path="/recipedetail" element={<RecipeDetail />} />
       <Route path="/postrecipe" element={<PostRecipe />} />
       <Route path="/home" element={<Homepage url=""/>} />
-      <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
-      {/* <Route path="/homesearch" element={<Homepage url={Header.url}/>} /> */}
+      <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=fried"/>} />
+      {/* <Route path="/homesearch" element={<Homepage url={localStorage.getItem(url)}/>} /> */}
       <Route path="/myrecipes" element={<MyRecipe />} />
  
-
+      </Routes>
 
        {/* { <Routes>
 
