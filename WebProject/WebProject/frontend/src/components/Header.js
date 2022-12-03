@@ -79,7 +79,7 @@ const Search = styled('div')(({ theme }) => ({
 
             <a href="/" >Home</a>
 
-            <a href="/MyRecipes">My Recipes</a>
+            <a href="/myRecipes">My Recipes</a>
 
             <a href="/aboutUs">About Us</a>
 
