@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from './Header';
 import "./Profile.css";
-import { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
 
 

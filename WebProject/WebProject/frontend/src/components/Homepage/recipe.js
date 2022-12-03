@@ -1,10 +1,11 @@
 import React from "react"
 import { useEffect,useState } from "react";
-import { useParams } from "react-router-dom";
-import Sdata from "./Sdata"
+import { useLocation } from 'react-router-dom';
 import Category from "../Category/Categories";
 import Card from "./recipeCart";
-const Recipe = () => {
+const Recipe = (url) => {
+
+
   
   let[recipes,setRecipes]=useState([])
 
@@ -22,11 +23,32 @@ const Recipe = () => {
     } catch (err) {
       console.log(err);
     }
+    console.log(recipes)
   }
+  async function searchRecipe(url)  {
+    try{
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+    const result = await response.json();
+      setRecipes(result)
+    } catch (err) {
+      console.log(err);
+    }
+    console.log(recipes)
+  };
 
-  console.log(recipes)
+  
   useEffect(()=>{
-    getAllRecipes()
+    if(url.url==""){
+      getAllRecipes()
+    }
+    else if(url!=""){
+      console.log(url.url)
+      searchRecipe(url.url)
+    }
+    
   },[])
 
     

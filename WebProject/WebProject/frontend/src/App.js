@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect }  from 'react';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import AboutUs from './components/AboutUs';
 import Header from './components/Header';
@@ -13,6 +13,7 @@ import PostRecipe from './components/userRecipe/postrecipe'
 import MyRecipe from './components/userRecipe/MyRecipes'
 import RequireAuth from './components/RequireAuth';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store";
@@ -25,9 +26,10 @@ function App() {
   console.log(isLoggedIn);
 
 useEffect(() => {
-    if (localStorage.getItem("email")) {
-      dispath(authActions.login());
+    if (localStorage.getItem("email")); {
+        dispath(authActions.login());
     }
+
   }, [dispath]);
   return <React.Fragment>
     <header>
@@ -37,10 +39,12 @@ useEffect(() => {
     <main>
 
     <Routes>
+
+
           {!isLoggedIn ? (
               <>
             <Route path="/login" element={<Login />} />
-            
+
             </>
           ) : (
             <>
@@ -50,18 +54,16 @@ useEffect(() => {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/recipedetail" element={<RecipeDetail />} />
             <Route path="/" element={<Homepage />} />
+            <Route path="/home" element={<Homepage url=""/>} />
+            <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
             </>
-          )
-          
-        
-          
-          }
+          ) }
         </Routes>
 
 
   {/* { <Routes>
 
-    <Route path="/" element={<Layout />}> 
+    <Route path="/" element={<Layout />}>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="aboutUs" element={<AboutUs />} />
@@ -75,13 +77,12 @@ useEffect(() => {
             <Route path="postrecipe" element={<PostRecipe />} />
             <Route path="myRecipes" element={<MyRecipe />} />
     </Route>
-    </Route>     
+    </Route>
     </Routes>} */}
     </main>
 
 
-     </React.Fragment> 
-    //return <PostRecipe/>
+    </React.Fragment>
     }
 
 export default App;
