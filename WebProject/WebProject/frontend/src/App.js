@@ -20,7 +20,8 @@ import { authActions } from "./store";
 
 
 function App() {
-
+  
+  const [url, setUrl] = useState("");
     const dispath = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   console.log(isLoggedIn);

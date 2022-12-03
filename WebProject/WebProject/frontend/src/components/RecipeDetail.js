@@ -51,7 +51,7 @@ const RecipeDetail = (props) => {
           
         return (
           <text className="recipe-subtitle">
-              {ing.name+" "}{ing.qty+" "}{ing.unit} <br></br>
+              {ing.item+" "}{ing.qty+" "}{ing.unit} <br></br>
           </text>
           
         )

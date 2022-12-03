@@ -67,6 +67,7 @@ const Search = styled('div')(({ theme }) => ({
       if (searchInput.length > 0) {
        const url="http://localhost:5000/recipe/searchrecipes?keyword="+searchInput;
         console.log(url);
+        localStorage.setItem('url',url)
         
 
       }
