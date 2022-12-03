@@ -9,72 +9,57 @@ import Categories from "../Category/Categories";
         const [recipe, setRecipe] = useState({
             name: "",
             time: "",
+            image:"",
             description: "",
-            ingredients: "",
-            // qty: "",
-            // size: "",
             image: "",
           });
-
-
-      const {name, time, ingredients, description} = recipe;
-      const [category, setCategory] = useState('');
-      const [data, setData] = useState([
-        {
-          name: "",
-          qty: "",
-          size: "",
-        }
-      ]);
-
-      const IngredientArray = (index) =>(e) =>{
-        const newArray = data.map((item, i) => {
-          if (index === i) {
-            setData( { ...item, [e.target.name]: e.target.value });
-          } else {
-            return item;
-          }
-        });
-        setData(newArray);
-      };
-      
-      const selectcategory = (e) => {
-        setCategory({...category, [e.target.category]: e.target.value });
-        
-      };
-      //storing list of categories in an array
-      const [categories, setCategories] = useState([]);
-    
+      const {name, time, image, description} = recipe;   
       const recipeDataChange = (e) => {
         setRecipe({ ...recipe, [e.target.name]: e.target.value });
       };
 
-      useEffect(() => {
-        const arr=[]
-        axios.get("http://localhost:5000/category/getAllCategories").then(
-          res => {
-            res.data.forEach(element => {
-               arr.push(element.name)
-            });
-            setCategories(arr);
-          }
-        )
-      })
-
-      const handlePhoto = (e) =>{
-        setRecipe({...recipe, image: e.target.files[0]});
-        console.log(recipe.image);
+      const [ingredients, setIngredient] = useState([
+        {
+          name: "",
+          qty: "",
+          unit: "",
+        }
+      ]);
+      const selectIngredient = (e) => {
+         setIngredient({...ingredients, [e.target.name]: (e.target.value) })
       }
+      
+      const [category, setCategory] = useState('');
+      const selectcategory = (e) => {
+        setCategory( e.target.value );
+        
+      };
+
+      //storing list of categories in an array
+      // const [categories, setCategories] = useState([]);
+      // useEffect(() => {
+      //   const arr=[]
+      //   axios.get("http://localhost:5000/category/getAllCategories").then(
+      //     res => {
+      //       res.data.forEach(element => {
+      //          arr.push(element.name)
+      //       });
+      //       setCategories(arr);
+      //     }
+      //   )
+      // })
+
+     
 
       const recipeSubmit = async(e) => {
         e.preventDefault();
        
-        const {name, time, category, ingredients, description, image} = recipe;
+        const {name, time, category,  description, image, ingredients} = recipe;
 
         const res = await fetch("http://localhost:5000/recipe/postrecipe", {
           method: "POST",
           body: JSON.stringify({
-            name, time, category, description, image
+            name, time, category, description, image, ingredients
           }),
           headers: {
             "content-Type" : "application/json"
@@ -96,19 +81,22 @@ import Categories from "../Category/Categories";
     return (
     <>
     <div id="postrecipe" >   
-    <div className='heading-postrecipe'>Add Recipe</div>   
+    <div className='heading-postrecipe'>Add Recipe</div>
+      
     <form method="POST" className="postrecipe-form">
-        <label className="image label" htmlFor="image">Choose an image</label>
+   
+      <ul>
+      <label className="labelinput" htmlFor="image">Add your image url</label>
         <br></br>
-            <input 
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            name="imagee"
-            onChange={handlePhoto}
+            <input className="postrecipe-input"
+           type="text"
+           required
+           placeholder="eg: https://static3.bigstockphoto.com/.jpg"
+           name="image"
+           value={image}
+           onChange={recipeDataChange}
             />
-        
-       
-            <ul>
+            <br></br>
             <label className="labelinput" htmlFor="name">Recipe Title</label>
             <br></br>
                       <input className="postrecipe-input"
@@ -145,31 +133,31 @@ import Categories from "../Category/Categories";
             <br></br>
             <hr className="divider"></hr>
             <br></br>
-            <label htmlFor="ingredients">Ingredients</label>
-            <label className="qty" htmlFor="ingredients">Quantity</label>
-            <label className="size" htmlFor="ingredients">Size</label>
+            <label htmlFor="name">Ingredient Name</label>
+            <label className="qty" htmlFor="qty">Quantity</label>
+            <label className="size" htmlFor="unit">Unit</label>
             <br></br>
           
                 <input className="postrecipe-ing"
                 type="text"
                 required
-                name="ingredients"
-                value={ingredients}
-                onChange={recipeDataChange}
+                name="name"
+                value={ingredients.name}
+                onChange={selectIngredient}
                 /> 
                 <input className="postrecipe-qty"
                 type="text"
                 required
-                name="ingredients"
-                value={ingredients}
-                onChange={recipeDataChange}
+                name="qty"
+                value={ingredients.qty}
+                onChange={selectIngredient}
                 /> 
                 <input className="postrecipe-size"
                 type="text"
                 required
-                name="ingredients"
-                value={ingredients}
-                onChange={recipeDataChange}
+                name="unit"
+                value={ingredients.unit}
+                onChange={selectIngredient}
                 /> <br></br>
                 
                 <br></br>

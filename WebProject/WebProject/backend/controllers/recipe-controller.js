@@ -41,7 +41,7 @@ export async function allrecipes(req, res, next) {
 
 export async function searchrecipes(req, res, next) {
     try {
-        const resultperpage=5;
+        const resultperpage=6;
         const apiFeature=new ApiFeatures(Recipe.find(),req.query)
         .search()
         .filter()
