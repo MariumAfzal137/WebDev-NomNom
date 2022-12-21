@@ -103,7 +103,7 @@ export const getProfile= async (req, res, next) => {
 
 export const getUserById= async (req, res, next) => {
 
-  let id = req.params.id;
+  
     User.findById(id, function(err, user) {
         res.json({user});
     });
@@ -112,12 +112,17 @@ export const getUserById= async (req, res, next) => {
 
 export const getUserRecipes= async (req, res, next) => {
   
-  let id = req.params.id;
-  const projection = {myrecipes: 1};
-  User.findById(id, projection, function(err, user) {
-    res.json({user});
-});
+//   let id = req.params.id;
+//   const projection = {myrecipes: 1};
+//   User.findById(id, projection, function(err, user) {
+//     res.json({user});
+// });
 
+const projection = {myrecipes: 1};
+let email = req.body.email;
+    User.findOne({ email },projection, function(err, user) {
+          res.json({user});
+      });
 };
 
 

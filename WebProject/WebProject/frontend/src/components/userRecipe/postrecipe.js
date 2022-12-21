@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Select, MenuItem,  } from '@material-ui/core';
+import { Select, MenuItem, ListItemSecondaryAction,  } from '@material-ui/core';
 import axios from 'axios';
 import "../Profile.css";
 import Categories from "../Category/Categories";
@@ -8,26 +8,38 @@ import Categories from "../Category/Categories";
     export const PostRecipe = () =>{ 
         const [recipe, setRecipe] = useState({
             name: "",
-            time: "",
+            cookingtime: "",
             image:"",
             description: "",
+            image: "",
             category: "",
-            
           });
-      const {name, time, category, description} = recipe;   
+      const {name, time, image, cookingtime, description, category} = recipe;   
       const recipeDataChange = (e) => {
         setRecipe({ ...recipe, [e.target.name]: e.target.value });
       };
 
-      // const [ingredients, setIngredient] = useState([
-      //   {
-      //     name: "",
-      //     qty: "",
-      //     unit: "",
-      //   }
-      // ]);
+      const [ingredient, setIngredient] = useState([]);
+      const [item, setitem] = useState('');
+      const [qty, setqty] = useState('');
+      const [unit, setunit] = useState('');
+
+      const addIngredients =() =>{
+        setIngredient([
+          ...ingredient, {
+            id: ingredient.length,
+          item: item,
+          qty: qty,
+          unit: unit,
+        }
+        ])
+        setitem('')
+        setqty('')
+        setunit('')
+      }
+      console.log(typeof ingredient)
       // const selectIngredient = (e) => {
-      //    setIngredient({...ingredients, [e.target.name]: (e.target.value) })
+      //    setIngredient( JSON.parse(e.target.value) )
       // }
       
       // const [category, setCategory] = useState('');
@@ -60,12 +72,12 @@ import Categories from "../Category/Categories";
       const recipeSubmit = async(e) => {
         e.preventDefault();
        
-        const {name, time, category,  description, image, } = recipe;
+        const {name, cookingtime, category,  description, image, ingredient} = recipe;
 
         const res = await fetch("http://localhost:5000/recipe/postrecipe", {
           method: "POST",
           body: JSON.stringify({
-            name, time, category, description, image, 
+            name, cookingtime, category, description, image, ingredient
           }),
           headers: {
             "content-Type" : "application/json"
@@ -123,7 +135,7 @@ import Categories from "../Category/Categories";
 
             <label className="labelinput" htmlFor="category">Category</label>
             <br></br>
-                      <input className="postrecipe-input"
+            <input className="postrecipe-input"
                         type="text"
                         required
                         name="category"
@@ -143,13 +155,13 @@ import Categories from "../Category/Categories";
             </Select>
              */}
             
-            <label className="labelinput" htmlFor="time">Time</label>
+            <label className="labelinput" htmlFor="cookingtime">Cooking Time</label>
             <br></br>
             <input className="postrecipe-input"
                 type="text"
                 required
-                name="time"
-                value={time}
+                name="cookingtime"
+                value={cookingtime}
                 onChange={recipeDataChange}
                 /> 
             
@@ -161,29 +173,30 @@ import Categories from "../Category/Categories";
             <label className="qty" htmlFor="qty">Quantity</label>
             <label className="size" htmlFor="unit">Unit</label>
             <br></br>
-          
+             <div className="addingredients">
                 <input className="postrecipe-ing"
                 type="text"
-                required
-                name="name"
-                value={ingredients.name}
-                onChange={selectIngredient}
+                value={item}
+                onChange={e => setitem(e.target.value)}
                 /> 
                 <input className="postrecipe-qty"
                 type="text"
-                required
-                name="qty"
-                value={ingredients.qty}
-                onChange={selectIngredient}
+                value={qty}
+                onChange={e => setqty(e.target.value)}
                 /> 
                 <input className="postrecipe-size"
                 type="text"
                 required
-                name="unit"
-                value={ingredients.unit}
-                onChange={selectIngredient}
-                /> <br></br>
-                
+                value={unit}
+                onChange={e => setunit(e.target.value)}
+                /> 
+                <button onClick={addIngredients}>ADD</button>
+                <ul>
+                  {ingredient.map(ingredient =>(
+                    <li key={ingredient.id}>{ingredient.item},{ingredient.qty},{ingredient.unit}</li>
+                  ))}
+                </ul>
+                </div>
                 <br></br>
  */}
 

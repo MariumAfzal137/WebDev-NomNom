@@ -5,7 +5,7 @@ import Category from "../Category/Categories";
 import Card from "./myrecipeCard";
 
 import "../Profile.css";
-
+  
 
 
 export const MyRecipes = () =>{
@@ -26,6 +26,45 @@ export const MyRecipes = () =>{
         }
       }
     
+    useEffect(() => {
+      setmyemail(localStorage.getItems("email"))
+    }, [myemail])
+
+    // async function getAllRecipes() {
+    //       const response = await fetch("http://localhost:5000/user/getUserRecipes",{
+            
+            
+    //                       method: "GET",
+    //                       headers:{
+    //                           "Content-Type" : "application/json"
+    //                       },
+    //                       body: JSON.stringify({
+    //                         myemail
+
+    //                       }),
+                      
+    //               });
+    //       if (!response.ok) {
+    //         throw new Error(`Error! status: ${response.status}`);
+    //       }
+      
+    //       const result = await response.json();
+    //       setRecipes(result)
+    //     } 
+        async function getAllRecipes() {
+          try {
+            const response = await fetch('http://localhost:5000/recipe/allrecipes');
+        
+            if (!response.ok) {
+              throw new Error(`Error! status: ${response.status}`);
+            }
+        
+            const result = await response.json();
+            setRecipes(result)
+          } catch (err) {
+            console.log(err);
+          }
+        }
       console.log(recipes)
       useEffect(()=>{
         getAllRecipes()
