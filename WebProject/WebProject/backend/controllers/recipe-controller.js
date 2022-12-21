@@ -9,7 +9,7 @@ export async function postrecipe(req, res, next) {
             const ingredients = req.body.ingredients;
             const description = req.body.description;
             const category = req.body.category;
-            const image = req.body.image;
+            const image = req.path.file;
             const author = req.body.author;
             const approved = "false";
             const result = new Recipe({

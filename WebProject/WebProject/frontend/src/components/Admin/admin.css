@@ -1,0 +1,20 @@
+
+.main-container{
+    height: 78vh;
+    width: 100%;
+    display: flex;
+    background-image: url("/public/backgroundplain.jpg");
+    background-size: cover;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.main-container > h6{
+    font-size: 80px;
+    font-weight: 50;
+    text-align:center;
+    color: #fff;
+    margin-left: 20%;
+}
+

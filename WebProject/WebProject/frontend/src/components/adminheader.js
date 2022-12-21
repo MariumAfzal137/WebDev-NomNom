@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 import {AppBar, Toolbar, Typography, Box,  InputBase, Button} from '@mui/material'
 import { styled, alpha } from '@mui/material/styles';
@@ -55,24 +55,9 @@ const Search = styled('div')(({ theme }) => ({
   }));
   
  
-  export default function Header() {
 
-    
-    
-    const [searchInput, setSearchInput] = useState("");
-    const handleChange = (e) => {
-      e.preventDefault();
-      setSearchInput(e.target.value);
-      if (searchInput.length > 0) {
-       const url="http://localhost:5000/recipe/searchrecipes?keyword="+searchInput;
-        console.log(url);
-        localStorage.setItem('url',url)
-        
+  export default function adminheader() {
 
-      }
-    
-    
-    };
     
       return (
         <>
@@ -80,9 +65,7 @@ const Search = styled('div')(({ theme }) => ({
           <AppBar style = {{backgroundColor: "white", position: "sticky"}}>
           <div style = {{width: 100+'%',height: 1+'cm', backgroundColor: "#303030", textAlign: 'center'}}>
      
-          <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
-          <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a>
-          <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/login">Login</a>
+          <a style={{ color: 'white', fontSize:20, marginTop:8, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 5}}>Admin Panel</a>
           </div>
   
             <Toolbar>
@@ -98,25 +81,15 @@ const Search = styled('div')(({ theme }) => ({
           <ul className="navbar__ul">
   
   
-              <a href="/home" >Home</a>
+              <a style={{ fontWeight:'bold',marginLeft:300, fontSize:20}}>Users</a>
   
-              <a href="/myrecipes">My Recipes</a>
+              <a style={{ fontWeight:'bold',  fontSize:20}} >Recipes</a>
   
-              <a href="/aboutUs">About Us</a>
+              <a style={{ fontWeight:'bold', fontSize:20}} >Ingredients</a>
   
           </ul>
           
-              <Search >
-                <SearchIconWrapper>
-                  <SearchIcon style={{ fill: 'black' }}/>
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ 'aria-label': 'search' }}
-                  onChange={handleChange}
-                  value={searchInput}
-                />
-                </Search><a href="/homesearch">Search</a>
+             
   
               <Link to="/myProfile">
                 <AccountCircleIcon fontSize="large" style={{ fill: 'black', marginLeft: '15rem'}} />  
@@ -129,10 +102,3 @@ const Search = styled('div')(({ theme }) => ({
     
     
   }
-
-
-
-
-
-
-
