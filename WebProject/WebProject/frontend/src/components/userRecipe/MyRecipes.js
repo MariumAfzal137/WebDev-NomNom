@@ -10,7 +10,21 @@ import "../Profile.css";
 
 export const MyRecipes = () =>{
     let[recipes,setRecipes]=useState([])
-    let[myemail, setmyemail] = useState('')
+
+    async function getAllRecipes() {
+        try {
+          const response = await fetch('http://localhost:5000/recipe/allrecipes');
+      
+          if (!response.ok) {
+            throw new Error(`Error! status: ${response.status}`);
+          }
+      
+          const result = await response.json();
+          setRecipes(result)
+        } catch (err) {
+          console.log(err);
+        }
+      }
     
     useEffect(() => {
       setmyemail(localStorage.getItems("email"))

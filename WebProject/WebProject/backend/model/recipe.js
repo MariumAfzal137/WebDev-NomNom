@@ -11,13 +11,13 @@ const recipeSchema = new Schema({
         type: Boolean,
         required: true
       },
-      ingredients:[
-        {
-          item: String,
-           qty: String,
-           unit: String,
-        }
-      ],
+      // ingredients:[
+      //   {
+      //     item: String,
+      //      qty: String,
+      //      unit: String,
+      //   }
+      // ],
       
       cookingtime: {
         type: String,
@@ -36,7 +36,7 @@ const recipeSchema = new Schema({
         ref:'category',
         required: true
       },
-      author: {type: Schema.Types.ObjectId, ref:'User'}
+      // author: {type: Schema.Types.ObjectId, ref:'User'}
      
     });
 

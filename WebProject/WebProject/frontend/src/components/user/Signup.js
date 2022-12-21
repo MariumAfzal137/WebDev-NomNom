@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Signup.css";
 
+
+
 export const Signup = () =>{
 
     const [user, setUser] = useState({
@@ -36,8 +38,10 @@ export const Signup = () =>{
           window.alert("Invalid Registeration");
           console.log("Invalid Registeration");
         }else{
+          <Link to='./login'></Link>
           window.alert("Registeration Successful");
           console.log("Registeration Successful");
+          
 
     
         }

@@ -62,6 +62,11 @@ import Categories from "../Category/Categories";
       //   )
       // })
 
+      const handlePhoto = (e) =>{
+        setRecipe({...recipe, image: e.target.files[0]});
+        console.log(recipe.image);
+      }
+
      
 
       const recipeSubmit = async(e) => {
@@ -97,10 +102,17 @@ import Categories from "../Category/Categories";
     <div className='heading-postrecipe'>Add Recipe</div>
       
     <form method="POST" className="postrecipe-form">
-   
+  <label  htmlFor="image">Choose your image.</label> 
+  <br></br>
+    <input 
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="imagee"
+            onChange={handlePhoto}
+            />
       <ul>
-      <label className="labelinput" htmlFor="image">Add your image url</label>
-        <br></br>
+      {/* <label className="labelinput" htmlFor="image">Add your image url</label> */}
+        {/* <br></br>
             <input className="postrecipe-input"
            type="text"
            required
@@ -108,7 +120,7 @@ import Categories from "../Category/Categories";
            name="image"
            value={image}
            onChange={recipeDataChange}
-            />
+            /> */}
             <br></br>
             <label className="labelinput" htmlFor="name">Recipe Title</label>
             <br></br>
@@ -119,6 +131,8 @@ import Categories from "../Category/Categories";
                         value={name}
                         onChange={recipeDataChange}
                       /> <br></br>
+           
+
             <label className="labelinput" htmlFor="category">Category</label>
             <br></br>
             <input className="postrecipe-input"
@@ -128,15 +142,18 @@ import Categories from "../Category/Categories";
                         value={category}
                         onChange={recipeDataChange}
                       /> <br></br>
-            {/* <Select variant="outlined" className="categoryinput"
+            {/* <label className="labelinput" htmlFor="category">Category</label>
+            <br></br>
+            
+            <Select variant="outlined" className="categoryinput"
               value={category} onChange={selectcategory}>
               <MenuItem value={1}>Desi</MenuItem>
               <MenuItem value={2}>Italian</MenuItem>
               <MenuItem value={3}>Chinese</MenuItem>
               <MenuItem value={4}>American</MenuItem>
               <MenuItem value={5}>Savoury</MenuItem>
-            </Select> */}
-            
+            </Select>
+             */}
             
             <label className="labelinput" htmlFor="cookingtime">Cooking Time</label>
             <br></br>
@@ -151,7 +168,7 @@ import Categories from "../Category/Categories";
             <br></br>
             <br></br>
             <hr className="divider"></hr>
-            <br></br>
+            {/* <br></br>
             <label htmlFor="name">Ingredient Name</label>
             <label className="qty" htmlFor="qty">Quantity</label>
             <label className="size" htmlFor="unit">Unit</label>
@@ -181,7 +198,7 @@ import Categories from "../Category/Categories";
                 </ul>
                 </div>
                 <br></br>
-
+ */}
 
             <br></br>
             <br></br>

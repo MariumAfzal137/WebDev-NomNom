@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect }  from 'react';
+import React, { useState,useEffect }  from 'react';
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import AboutUs from './components/AboutUs';
@@ -44,24 +44,24 @@ import { authActions } from "./store";
 //     <Routes>
 
 
-//           {!isLoggedIn ? (
-//               <>
-//             <Route path="/login" element={<Login />} />
+          {!isLoggedIn ? (
+              <>
+            <Route path="/login" element={<Login />} />
 
-//             </>
-//           ) : (
-//             <>
-//             <Route path="/myProfile" element={<Profile />} />
-//             <Route path="/postrecipe" element={<PostRecipe />} />
-//             <Route path="/myRecipes" element={<MyRecipe />} />
-//             <Route path="/aboutUs" element={<AboutUs />} />
-//             <Route path="/recipedetail" element={<RecipeDetail />} />
-//             <Route path="/" element={<Homepage />} />
-//             <Route path="/home" element={<Homepage url=""/>} />
-//             <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
-//             </>
-//           ) }
-//         </Routes>
+            </>
+          ) : (
+            <>
+            <Route path="/myProfile" element={<Profile />} />
+            <Route path="/postrecipe" element={<PostRecipe />} />
+            <Route path="/myRecipes" element={<MyRecipe />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/recipedetail" element={<RecipeDetail />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/home" element={<Homepage url=""/>} />
+            <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
+            </>
+          ) }
+        <Route/>
 
 
 //   {/* { <Routes>
