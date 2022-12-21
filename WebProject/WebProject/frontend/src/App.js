@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect }  from 'react';
+import React, { useState,useEffect }  from 'react';
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import AboutUs from './components/AboutUs';
@@ -42,9 +42,24 @@ useEffect(() => {
     <Routes>
 
 
-          {!isLoggedIn ? (
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
+
+            <Route path="/myProfile" element={<Profile />} />
+            <Route path="/postrecipe" element={<PostRecipe />} />
+            <Route path="/myRecipes" element={<MyRecipe />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/recipedetail" element={<RecipeDetail />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/home" element={<Homepage url=""/>} />
+            <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
+   
+
+
+          {/* {!isLoggedIn ? (
               <>
-            <Route path="/login" element={<Login />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
 
             </>
           ) : (
@@ -58,7 +73,7 @@ useEffect(() => {
             <Route path="/home" element={<Homepage url=""/>} />
             <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
             </>
-          ) }
+          ) } */}
         </Routes>
 
 

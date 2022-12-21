@@ -11,29 +11,30 @@ import Categories from "../Category/Categories";
             time: "",
             image:"",
             description: "",
-            image: "",
+            category: "",
+            
           });
-      const {name, time, image, description} = recipe;   
+      const {name, time, category, description} = recipe;   
       const recipeDataChange = (e) => {
         setRecipe({ ...recipe, [e.target.name]: e.target.value });
       };
 
-      const [ingredients, setIngredient] = useState([
-        {
-          name: "",
-          qty: "",
-          unit: "",
-        }
-      ]);
-      const selectIngredient = (e) => {
-         setIngredient({...ingredients, [e.target.name]: (e.target.value) })
-      }
+      // const [ingredients, setIngredient] = useState([
+      //   {
+      //     name: "",
+      //     qty: "",
+      //     unit: "",
+      //   }
+      // ]);
+      // const selectIngredient = (e) => {
+      //    setIngredient({...ingredients, [e.target.name]: (e.target.value) })
+      // }
       
-      const [category, setCategory] = useState('');
-      const selectcategory = (e) => {
-        setCategory( e.target.value );
+      // const [category, setCategory] = useState('');
+      // const selectcategory = (e) => {
+      //   setCategory( e.target.value );
         
-      };
+      // };
 
       //storing list of categories in an array
       // const [categories, setCategories] = useState([]);
@@ -49,17 +50,22 @@ import Categories from "../Category/Categories";
       //   )
       // })
 
+      const handlePhoto = (e) =>{
+        setRecipe({...recipe, image: e.target.files[0]});
+        console.log(recipe.image);
+      }
+
      
 
       const recipeSubmit = async(e) => {
         e.preventDefault();
        
-        const {name, time, category,  description, image, ingredients} = recipe;
+        const {name, time, category,  description, image, } = recipe;
 
         const res = await fetch("http://localhost:5000/recipe/postrecipe", {
           method: "POST",
           body: JSON.stringify({
-            name, time, category, description, image, ingredients
+            name, time, category, description, image, 
           }),
           headers: {
             "content-Type" : "application/json"
@@ -84,10 +90,17 @@ import Categories from "../Category/Categories";
     <div className='heading-postrecipe'>Add Recipe</div>
       
     <form method="POST" className="postrecipe-form">
-   
+  <label  htmlFor="image">Choose your image.</label> 
+  <br></br>
+    <input 
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="imagee"
+            onChange={handlePhoto}
+            />
       <ul>
-      <label className="labelinput" htmlFor="image">Add your image url</label>
-        <br></br>
+      {/* <label className="labelinput" htmlFor="image">Add your image url</label> */}
+        {/* <br></br>
             <input className="postrecipe-input"
            type="text"
            required
@@ -95,7 +108,7 @@ import Categories from "../Category/Categories";
            name="image"
            value={image}
            onChange={recipeDataChange}
-            />
+            /> */}
             <br></br>
             <label className="labelinput" htmlFor="name">Recipe Title</label>
             <br></br>
@@ -106,7 +119,18 @@ import Categories from "../Category/Categories";
                         value={name}
                         onChange={recipeDataChange}
                       /> <br></br>
+           
+
             <label className="labelinput" htmlFor="category">Category</label>
+            <br></br>
+                      <input className="postrecipe-input"
+                        type="text"
+                        required
+                        name="category"
+                        value={category}
+                        onChange={recipeDataChange}
+                      /> <br></br>
+            {/* <label className="labelinput" htmlFor="category">Category</label>
             <br></br>
             
             <Select variant="outlined" className="categoryinput"
@@ -117,7 +141,7 @@ import Categories from "../Category/Categories";
               <MenuItem value={4}>American</MenuItem>
               <MenuItem value={5}>Savoury</MenuItem>
             </Select>
-            
+             */}
             
             <label className="labelinput" htmlFor="time">Time</label>
             <br></br>
@@ -132,7 +156,7 @@ import Categories from "../Category/Categories";
             <br></br>
             <br></br>
             <hr className="divider"></hr>
-            <br></br>
+            {/* <br></br>
             <label htmlFor="name">Ingredient Name</label>
             <label className="qty" htmlFor="qty">Quantity</label>
             <label className="size" htmlFor="unit">Unit</label>
@@ -161,7 +185,7 @@ import Categories from "../Category/Categories";
                 /> <br></br>
                 
                 <br></br>
-
+ */}
 
             <br></br>
             <br></br>

@@ -6,23 +6,23 @@ import ApiFeatures from '../utils/apifeatures.js'
 export async function postrecipe(req, res, next) {
             const name = req.body.name;
             const cookingtime = req.body.cookingtime;
-            const ingredients = req.body.ingredients;
+           // const ingredients = req.body.ingredients;
             const description = req.body.description;
             const category = req.body.category;
-            const image = req.body.image;
-            const author = req.body.author;
+            const image = req.file.path;
+           // const author = req.body.author;
             const approved = "false";
             const result = new Recipe({
-              name, cookingtime, ingredients, description, category,
-              image, approved, author
+              name, cookingtime,  description, category,
+              image, approved,
             })
     try {
         
         console.log(result)
-        const user = await User.findById(author);
+        //const user = await User.findById(author);
         const savedRecipe = await result.save()
-        user.myrecipes = user.myrecipes.concat(savedRecipe)
-        await user.save()
+        // user.myrecipes = user.myrecipes.concat(savedRecipe)
+        // await user.save()
         res.send(savedRecipe)
     }
     catch (error) {
