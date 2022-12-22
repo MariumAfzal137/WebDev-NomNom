@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router= Router();
 import multer from 'multer';
+
 import { postrecipe, adminpostrecipe, allrecipes, getadminrecipes, approverecipe, 
     recipedetails, updaterecipe, deleterecipe, searchrecipes} from '../controllers/recipe-controller.js';
 import { verifyAccessToken, verifyAdminAccessToken} from '../middleware/check-auth.js';
@@ -30,11 +31,11 @@ router.get('/searchrecipes', searchrecipes);
 router.get('/recipedetails/:id',  recipedetails);
 
 router.patch('/:id',verifyAccessToken, updaterecipe);
-router.delete('/:id', verifyAccessToken,deleterecipe);
+router.delete('/delete/:id',deleterecipe);
 
 //Admin Routes
-router.post('/admin/adminpostrecipe', verifyAdminAccessToken, adminpostrecipe);
-router.get('/admin/getadminrecipes',verifyAdminAccessToken, getadminrecipes);
+router.post('/admin/adminpostrecipe',  adminpostrecipe);
+router.get('/admin/getadminrecipes', getadminrecipes);
 router.patch('/approverecipe/:id',verifyAdminAccessToken, approverecipe);
 
 export default router;

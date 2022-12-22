@@ -16,6 +16,7 @@ import RequireAuth from './components/RequireAuth';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import Main from './components/Admin/main'
+import RecipeCrud from './components/Admin/recipe-crud'
 
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store";
@@ -44,34 +45,25 @@ import { authActions } from "./store";
 //     <Routes>
 
 
-          {!isLoggedIn ? (
-              <>
-            <Route path="/login" element={<Login />} />
+          // {!isLoggedIn ? (
+          //     <>
+          //   <Route path="/login" element={<Login />} />
 
-            </>
-          ) : (
-            <>
-            <Route path="/myProfile" element={<Profile />} />
-            <Route path="/postrecipe" element={<PostRecipe />} />
-            <Route path="/myRecipes" element={<MyRecipe />} />
-            <Route path="/aboutUs" element={<AboutUs />} />
-            <Route path="/recipedetail" element={<RecipeDetail />} />
-            <Route path="/" element={<Homepage />} />
-            <Route path="/home" element={<Homepage url=""/>} />
-            <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
-            </>
-          ) }
-        <Route/>
+          //   </>
+          // ) : (
+          //   <>
+          //   <Route path="/myProfile" element={<Profile />} />
+          //   <Route path="/postrecipe" element={<PostRecipe />} />
+          //   <Route path="/myRecipes" element={<MyRecipe />} />
+          //   <Route path="/aboutUs" element={<AboutUs />} />
+          //   <Route path="/recipedetail" element={<RecipeDetail />} />
+          //   <Route path="/" element={<Homepage />} />
+          //   <Route path="/home" element={<Homepage url=""/>} />
+          //   <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
+          //   </>
+          // ) }
+       
 
-
-//   {/* { <Routes>
-
-//     <Route path="/" element={<Layout />}>
-//         <Route path="login" element={<Login />} />
-//         <Route path="signup" element={<Signup />} />
-//         <Route path="aboutUs" element={<AboutUs />} />
-//         <Route path="recipedetail" element={<RecipeDetail />} />
-//         <Route path="" element={<Homepage />} />
 
 
 
@@ -86,7 +78,7 @@ import { authActions } from "./store";
 
 
 //     </React.Fragment>
-return <Main/>
+return <RecipeCrud/>
      }
    
 
