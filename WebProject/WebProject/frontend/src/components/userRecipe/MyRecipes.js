@@ -13,7 +13,7 @@ export const MyRecipes = () =>{
 
     async function getAllRecipes() {
         try {
-          const response = await fetch('http://localhost:5000/user/allrecipes');
+          const response = await fetch('http://localhost:5000/recipe/allrecipes');
       
           if (!response.ok) {
             throw new Error(`Error! status: ${response.status}`);
@@ -32,7 +32,8 @@ export const MyRecipes = () =>{
       },[])
     return(
        
-    
+    <>
+     <Header/>
     <div >
     <h1 className="myrecipe-heading">My Recipes</h1>
     <Link to="/PostRecipe" className="post-btn">POST</Link> 
@@ -41,7 +42,7 @@ export const MyRecipes = () =>{
           <Card rItems={recipes} />
           </div>
     </div>
-   
+   </>
     )
 }
 

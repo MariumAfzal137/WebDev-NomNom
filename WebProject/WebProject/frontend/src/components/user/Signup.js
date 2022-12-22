@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
+import Header from '../Header';
+import {Link} from 'react-router-dom'
 
 export const Signup = () =>{
 
@@ -38,12 +40,15 @@ export const Signup = () =>{
         }else{
           window.alert("Registeration Successful");
           console.log("Registeration Successful");
+          <Link to="/Login"></Link>
 
     
         }
       }
 
     return (
+      <>
+       <Header/>
         <div className="register">
              
         <form method="POST" className="register-form">
@@ -80,11 +85,12 @@ export const Signup = () =>{
             <p>
               Already have an Account?
                <span className="line">
-                  <a href="/Login">Login</a>
+                  <a href="/login">Login</a>
                 </span>
             </p>
         </form>
         </div>
+        </>
     )
 }
 

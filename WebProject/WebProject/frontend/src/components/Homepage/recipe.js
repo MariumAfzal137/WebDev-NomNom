@@ -3,6 +3,7 @@ import { useEffect,useState } from "react";
 import { useLocation } from 'react-router-dom';
 import Category from "../Category/Categories";
 import Card from "./recipeCart";
+import Header from "../Header";
 const Recipe = (url) => {
 
 
@@ -56,6 +57,7 @@ const Recipe = (url) => {
     
         
           <div>
+          <Header/>
           <Category/>
           <div className="cards">
           <Card rItems={recipes} />
