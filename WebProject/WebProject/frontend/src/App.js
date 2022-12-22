@@ -4,6 +4,7 @@ import { Route, Routes} from "react-router-dom";
 
 import AboutUs from './components/AboutUs';
 import Header from './components/Header';
+import AdminHeader from './components/adminheader'
 import Profile from './components/Profile';
 import RecipeDetail from './components/RecipeDetail';
 import Login from './components/user/Login'
@@ -11,11 +12,16 @@ import Signup from './components/user/Signup'
 import Homepage from './components/Homepage/recipe';
 import PostRecipe from './components/userRecipe/postrecipe'
 import MyRecipe from './components/userRecipe/MyRecipes'
-import { useDispatch } from "react-redux";
 
+import Main from './components/Admin/main'
+import RecipeCrud from './components/Admin/recipe-crud'
 
-
-function App() {
+ function App() {
+  
+//   const [url, setUrl] = useState("");
+//     const dispath = useDispatch();
+//   const isLoggedIn = useSelector((state) => state.isLoggedIn);
+//   console.log(isLoggedIn);
 
   const loggedIn = localStorage.getItem('isLoggedIn');
   const loggedInRole = localStorage.getItem('role');

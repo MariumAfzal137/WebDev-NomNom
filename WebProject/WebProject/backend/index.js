@@ -1,10 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
-
 import userRouter from "./routes/user-routes.js";
 import categoryRouter from "./routes/category-routes.js";
 import recipeRouter from "./routes/recipe-routes.js";
 import cors from 'cors'
+import path from "path"
 
 const app = express();
 app.use(express.json());
@@ -12,6 +12,10 @@ app.use(cors())
 app.use("/user", userRouter);
 app.use("/category", categoryRouter);
 app.use("/recipe", recipeRouter);
+
+const __dirname = path.resolve();
+
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")))
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');

@@ -3,6 +3,8 @@ import "./Signup.css";
 import Header from '../Header';
 import {Link} from 'react-router-dom'
 
+
+
 export const Signup = () =>{
 
     const [user, setUser] = useState({
@@ -38,6 +40,7 @@ export const Signup = () =>{
           window.alert("Invalid Registeration");
           console.log("Invalid Registeration");
         }else{
+          
           window.alert("Registeration Successful");
           console.log("Registeration Successful");
           <Link to="/Login"></Link>

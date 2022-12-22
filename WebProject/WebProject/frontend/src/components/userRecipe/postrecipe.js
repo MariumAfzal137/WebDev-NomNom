@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Select, MenuItem,  } from '@material-ui/core';
+import { Select, MenuItem, ListItemSecondaryAction,  } from '@material-ui/core';
 import axios from 'axios';
 import "../Profile.css";
 import Categories from "../Category/Categories";
@@ -8,32 +8,45 @@ import Header from '../Header';
     export const PostRecipe = () =>{ 
         const [recipe, setRecipe] = useState({
             name: "",
-            time: "",
+            cookingtime: "",
             image:"",
             description: "",
             image: "",
+            category: "",
           });
-      const {name, time, image, description} = recipe;   
+      const {name, time, image, cookingtime, description, category} = recipe;   
       const recipeDataChange = (e) => {
         setRecipe({ ...recipe, [e.target.name]: e.target.value });
       };
 
-      const [ingredients, setIngredient] = useState([
-        {
-          name: "",
-          qty: "",
-          unit: "",
+      const [ingredient, setIngredient] = useState([]);
+      const [item, setitem] = useState('');
+      const [qty, setqty] = useState('');
+      const [unit, setunit] = useState('');
+
+      const addIngredients =() =>{
+        setIngredient([
+          ...ingredient, {
+            id: ingredient.length,
+          item: item,
+          qty: qty,
+          unit: unit,
         }
-      ]);
-      const selectIngredient = (e) => {
-         setIngredient({...ingredients, [e.target.name]: (e.target.value) })
+        ])
+        setitem('')
+        setqty('')
+        setunit('')
       }
+      console.log(typeof ingredient)
+      // const selectIngredient = (e) => {
+      //    setIngredient( JSON.parse(e.target.value) )
+      // }
       
-      const [category, setCategory] = useState('');
-      const selectcategory = (e) => {
-        setCategory( e.target.value );
+      // const [category, setCategory] = useState('');
+      // const selectcategory = (e) => {
+      //   setCategory( e.target.value );
         
-      };
+      // };
 
       //storing list of categories in an array
       // const [categories, setCategories] = useState([]);
@@ -49,17 +62,22 @@ import Header from '../Header';
       //   )
       // })
 
+      const handlePhoto = (e) =>{
+        setRecipe({...recipe, image: e.target.files[0]});
+        console.log(recipe.image);
+      }
+
      
 
       const recipeSubmit = async(e) => {
         e.preventDefault();
        
-        const {name, time, category,  description, image, ingredients} = recipe;
+        const {name, cookingtime, category,  description, image, ingredient} = recipe;
 
         const res = await fetch("http://localhost:5000/recipe/postrecipe", {
           method: "POST",
           body: JSON.stringify({
-            name, time, category, description, image, ingredients
+            name, cookingtime, category, description, image, ingredient
           }),
           headers: {
             "content-Type" : "application/json"
@@ -85,10 +103,17 @@ import Header from '../Header';
     <div className='heading-postrecipe'>Add Recipe</div>
       
     <form method="POST" className="postrecipe-form">
-   
+  <label  htmlFor="image">Choose your image.</label> 
+  <br></br>
+    <input 
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="imagee"
+            onChange={handlePhoto}
+            />
       <ul>
-      <label className="labelinput" htmlFor="image">Add your image url</label>
-        <br></br>
+      {/* <label className="labelinput" htmlFor="image">Add your image url</label> */}
+        {/* <br></br>
             <input className="postrecipe-input"
            type="text"
            required
@@ -96,7 +121,7 @@ import Header from '../Header';
            name="image"
            value={image}
            onChange={recipeDataChange}
-            />
+            /> */}
             <br></br>
             <label className="labelinput" htmlFor="name">Recipe Title</label>
             <br></br>
@@ -107,7 +132,18 @@ import Header from '../Header';
                         value={name}
                         onChange={recipeDataChange}
                       /> <br></br>
+           
+
             <label className="labelinput" htmlFor="category">Category</label>
+            <br></br>
+            <input className="postrecipe-input"
+                        type="text"
+                        required
+                        name="category"
+                        value={category}
+                        onChange={recipeDataChange}
+                      /> <br></br>
+            {/* <label className="labelinput" htmlFor="category">Category</label>
             <br></br>
             
             <Select variant="outlined" className="categoryinput"
@@ -118,51 +154,52 @@ import Header from '../Header';
               <MenuItem value={4}>American</MenuItem>
               <MenuItem value={5}>Savoury</MenuItem>
             </Select>
+             */}
             
-            
-            <label className="labelinput" htmlFor="time">Time</label>
+            <label className="labelinput" htmlFor="cookingtime">Cooking Time</label>
             <br></br>
             <input className="postrecipe-input"
                 type="text"
                 required
-                name="time"
-                value={time}
+                name="cookingtime"
+                value={cookingtime}
                 onChange={recipeDataChange}
                 /> 
             
             <br></br>
             <br></br>
             <hr className="divider"></hr>
-            <br></br>
+            {/* <br></br>
             <label htmlFor="name">Ingredient Name</label>
             <label className="qty" htmlFor="qty">Quantity</label>
             <label className="size" htmlFor="unit">Unit</label>
             <br></br>
-          
+             <div className="addingredients">
                 <input className="postrecipe-ing"
                 type="text"
-                required
-                name="name"
-                value={ingredients.name}
-                onChange={selectIngredient}
+                value={item}
+                onChange={e => setitem(e.target.value)}
                 /> 
                 <input className="postrecipe-qty"
                 type="text"
-                required
-                name="qty"
-                value={ingredients.qty}
-                onChange={selectIngredient}
+                value={qty}
+                onChange={e => setqty(e.target.value)}
                 /> 
                 <input className="postrecipe-size"
                 type="text"
                 required
-                name="unit"
-                value={ingredients.unit}
-                onChange={selectIngredient}
-                /> <br></br>
-                
+                value={unit}
+                onChange={e => setunit(e.target.value)}
+                /> 
+                <button onClick={addIngredients}>ADD</button>
+                <ul>
+                  {ingredient.map(ingredient =>(
+                    <li key={ingredient.id}>{ingredient.item},{ingredient.qty},{ingredient.unit}</li>
+                  ))}
+                </ul>
+                </div>
                 <br></br>
-
+ */}
 
             <br></br>
             <br></br>
