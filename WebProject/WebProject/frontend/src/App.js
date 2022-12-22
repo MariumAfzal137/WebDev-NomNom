@@ -1,6 +1,6 @@
 import './App.css';
-import React, { useState,useEffect }  from 'react';
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import React, { useEffect }  from 'react';
+import { Route, Routes} from "react-router-dom";
 
 import AboutUs from './components/AboutUs';
 import Header from './components/Header';
@@ -12,16 +12,10 @@ import Signup from './components/user/Signup'
 import Homepage from './components/Homepage/recipe';
 import PostRecipe from './components/userRecipe/postrecipe'
 import MyRecipe from './components/userRecipe/MyRecipes'
-import RequireAuth from './components/RequireAuth';
-import Layout from './components/Layout';
-import ProtectedRoute from './components/ProtectedRoute';
+
 import Main from './components/Admin/main'
 import RecipeCrud from './components/Admin/recipe-crud'
 import ApproveRecipe from './components/Admin/approverecipe';
-
-import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "./store";
-
 
  function App() {
   
@@ -30,57 +24,57 @@ import { authActions } from "./store";
 //   const isLoggedIn = useSelector((state) => state.isLoggedIn);
 //   console.log(isLoggedIn);
 
-// useEffect(() => {
-//     if (localStorage.getItem("email")); {
-//         dispath(authActions.login());
-//     }
-
-//   }, [dispath]);
-//   return <React.Fragment>
-//     <header>
-//       <Header/>
-//     </header>
-
-//     <main>
-
-//     <Routes>
+  const loggedIn = localStorage.getItem('isLoggedIn');
+  const loggedInRole = localStorage.getItem('role');
+  console.log(loggedIn);
 
 
-          // {!isLoggedIn ? (
-          //     <>
-          //   <Route path="/login" element={<Login />} />
+  return(
 
-          //   </>
-          // ) : (
-          //   <>
-          //   <Route path="/myProfile" element={<Profile />} />
-          //   <Route path="/postrecipe" element={<PostRecipe />} />
-          //   <Route path="/myRecipes" element={<MyRecipe />} />
-          //   <Route path="/aboutUs" element={<AboutUs />} />
-          //   <Route path="/recipedetail" element={<RecipeDetail />} />
-          //   <Route path="/" element={<Homepage />} />
-          //   <Route path="/home" element={<Homepage url=""/>} />
-          //   <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=s"/>} />
-          //   </>
-          // ) }
+    <Routes>
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+
+            <Route path="/myProfile" >
+                {loggedIn && loggedInRole == "user" && <Route index element={<Profile />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "admin" && <Route index element={<Login />} />}
+            </Route>
+
+            <Route path="/myrecipes" >
+            {loggedIn && loggedInRole == "user" && <Route index element={<MyRecipe />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "admin" && <Route index element={<Login />} />}
+            </Route>
+
+            <Route path="/postrecipe" >
+            {loggedIn && loggedInRole == "user" && <Route index element={<PostRecipe />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "admin" && <Route index element={<Login />} />}
+            </Route>
+
+            <Route path="/allrecipes" >
+                {loggedIn && loggedInRole == "admin" && <Route index element={<RecipeCrud />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "user" && <Route index element={<Login />} />}
+            </Route>
+            <Route path="/adminhome" >
+                {loggedIn && loggedInRole == "admin" && <Route index element={<Main url=""/>} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "user" && <Route index element={<Login />} />}
+            </Route>
+
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/recipedetail" element={<RecipeDetail />} />
+            <Route path="/home" element={<Homepage url=""/>} />
+            <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=fried"/>} />
+
+       </Routes>
        
 
 
-
-
-//         <Route element = {<RequireAuth/>}>
-//             <Route path="myProfile" element={<Profile />} />
-//             <Route path="postrecipe" element={<PostRecipe />} />
-//             <Route path="myRecipes" element={<MyRecipe />} />
-//     </Route>
-//     </Route>
-//     </Routes>} */}
-//     </main>
-
-
-//     </React.Fragment>
-return <ApproveRecipe/>
-     }
-   
+   )
+    }
 
 export default App;

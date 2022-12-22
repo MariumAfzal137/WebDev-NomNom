@@ -1,10 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
-import {AppBar, Toolbar, Typography, Box,  InputBase, Button} from '@mui/material'
+import {AppBar, Toolbar, Typography, Box,  InputBase} from '@mui/material'
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
-import Homepage from './Homepage/recipe';
-
+import { useState } from "react";
 
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -54,7 +53,8 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
   
- 
+
+
   export default function Header() {
 
     
@@ -66,7 +66,6 @@ const Search = styled('div')(({ theme }) => ({
       if (searchInput.length > 0) {
        const url="http://localhost:5000/recipe/searchrecipes?keyword="+searchInput;
         console.log(url);
-        localStorage.setItem('url',url)
         
 
       }
@@ -80,11 +79,20 @@ const Search = styled('div')(({ theme }) => ({
           <AppBar style = {{backgroundColor: "white", position: "sticky"}}>
           <div style = {{width: 100+'%',height: 1+'cm', backgroundColor: "#303030", textAlign: 'center'}}>
      
+          {!localStorage.getItem('isLoggedIn')? 
+          <> 
           <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
-          <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a>
+          <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a> 
           <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/login">Login</a>
+          </> :
+          <>
+
+          <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 70}} onClick={() => {
+           localStorage.removeItem('isLoggedIn'); console.log(localStorage.getItem('isLoggedIn'));}}href="/login">Logout</a>
+           </>
+           }
           </div>
-  
+          
             <Toolbar>
             
             <Box
@@ -100,7 +108,7 @@ const Search = styled('div')(({ theme }) => ({
   
               <a href="/home" >Home</a>
   
-              <a href="/myRecipes">My Recipes</a>
+              <a href="/myrecipes">My Recipes</a>
   
               <a href="/aboutUs">About Us</a>
   

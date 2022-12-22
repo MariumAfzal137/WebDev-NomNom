@@ -1,13 +1,14 @@
-import { Container } from '@mui/system';
+
 import React from 'react'
 import Header from './Header';
 import "./Profile.css";
 
-
+console.warn(localStorage.getItem("isLoggedIn"))
 export default function  Profile() {
   return (
 
         <>
+         <Header/>
         <img id="profile" src="nomnomgrey.png" alt="Avatar"></img>
 
         <h1 id="profile"> 

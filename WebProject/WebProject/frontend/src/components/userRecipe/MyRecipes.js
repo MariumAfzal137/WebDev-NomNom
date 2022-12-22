@@ -52,8 +52,8 @@ export const MyRecipes = () =>{
         getAllRecipes()
       },[])
     return(
-       
-    
+       <>
+    <Header/>
     <div >
     <h1 className="myrecipe-heading">My Recipes</h1>
     <Link to="/PostRecipe" className="post-btn">POST</Link> 
@@ -62,7 +62,7 @@ export const MyRecipes = () =>{
           <Card rItems={recipes} />
           </div>
     </div>
-   
+   </>
     )
 }
 

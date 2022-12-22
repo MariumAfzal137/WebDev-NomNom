@@ -3,7 +3,7 @@ import { Select, MenuItem, ListItemSecondaryAction,  } from '@material-ui/core';
 import axios from 'axios';
 import "../Profile.css";
 import Categories from "../Category/Categories";
-
+import Header from '../Header';
 
     export const PostRecipe = () =>{ 
         const [recipe, setRecipe] = useState({
@@ -98,6 +98,7 @@ import Categories from "../Category/Categories";
 
     return (
     <>
+     <Header/>
     <div id="postrecipe" >   
     <div className='heading-postrecipe'>Add Recipe</div>
       
