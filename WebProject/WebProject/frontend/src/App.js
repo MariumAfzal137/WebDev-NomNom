@@ -17,6 +17,7 @@ import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import Main from './components/Admin/main'
 import RecipeCrud from './components/Admin/recipe-crud'
+import ApproveRecipe from './components/Admin/approverecipe';
 
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store";
@@ -78,7 +79,7 @@ import { authActions } from "./store";
 
 
 //     </React.Fragment>
-return <RecipeCrud/>
+return <ApproveRecipe/>
      }
    
 

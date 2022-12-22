@@ -127,7 +127,7 @@ export async function getadminrecipes(req, res, next) {
 export async function approverecipe(req, res, next) {
     try {
         const id = req.params.id
-        const approved = req.body.approved
+        const approved = req.body
         const options = { new: true }
 
         const result = await Recipe.findByIdAndUpdate(id, approved, options)
