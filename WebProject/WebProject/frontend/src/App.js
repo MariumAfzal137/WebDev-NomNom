@@ -13,19 +13,27 @@ import Homepage from './components/Homepage/recipe';
 import PostRecipe from './components/userRecipe/postrecipe'
 import MyRecipe from './components/userRecipe/MyRecipes'
 
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "./store";
+
 import Main from './components/Admin/main'
 import RecipeCrud from './components/Admin/recipe-crud'
 
  function App() {
   
-//   const [url, setUrl] = useState("");
-//     const dispath = useDispatch();
-//   const isLoggedIn = useSelector((state) => state.isLoggedIn);
-//   console.log(isLoggedIn);
+  const dispatch = useDispatch();
 
-  const loggedIn = localStorage.getItem('isLoggedIn');
-  const loggedInRole = localStorage.getItem('role');
+  const loggedIn = useSelector((state) => state.isLoggedIn);
   console.log(loggedIn);
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      dispatch(authActions.login());
+    }
+  }, [dispatch]);
+
+  // const loggedIn = localStorage.getItem('isLoggedIn');
+  const loggedInRole = localStorage.getItem('role');
+  // console.log(loggedIn);
 
 
   return(

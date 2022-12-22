@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../../store"; 
 
 
-
 export const Login = () =>{
 
 
@@ -17,7 +16,7 @@ export const Login = () =>{
 
     const navigate = useNavigate();
     const location = useLocation();
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
     const from = localStorage.getItem('role')=='user'? "/home" : "/allrecipes";
 
     const LOGIN_URL = 'http://localhost:5000/user/login'
@@ -43,12 +42,12 @@ export const Login = () =>{
                 }
             );
             console.log(JSON.stringify(response?.data));
-            const data = await response.data;
             const accessToken = response?.data?.accessToken;
             const role = response?.data?.role;
             localStorage.setItem('user', email);
-            localStorage.setItem('isLoggedIn', accessToken);
+            localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('role', role);
+            dispatch(authActions.login());
 
             setEmail('');
             setPassword('');

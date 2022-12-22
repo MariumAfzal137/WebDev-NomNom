@@ -4,7 +4,8 @@ import {AppBar, Toolbar, Typography, Box,  InputBase} from '@mui/material'
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../store"; 
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -57,7 +58,9 @@ const Search = styled('div')(({ theme }) => ({
 
   export default function Header() {
 
-    
+    const dispatch = useDispatch();
+    const loggedIn = useSelector((state) => state.isLoggedIn);
+
     
     const [searchInput, setSearchInput] = useState("");
     const handleChange = (e) => {
@@ -79,7 +82,7 @@ const Search = styled('div')(({ theme }) => ({
           <AppBar style = {{backgroundColor: "white", position: "sticky"}}>
           <div style = {{width: 100+'%',height: 1+'cm', backgroundColor: "#303030", textAlign: 'center'}}>
      
-          {!localStorage.getItem('isLoggedIn')? 
+          {!loggedIn? 
           <> 
           <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
           <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a> 
@@ -88,7 +91,9 @@ const Search = styled('div')(({ theme }) => ({
           <>
 
           <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 70}} onClick={() => {
-           localStorage.removeItem('isLoggedIn'); console.log(localStorage.getItem('isLoggedIn'));}}href="/login">Logout</a>
+           //localStorage.removeItem('isLoggedIn'); console.log(localStorage.getItem('isLoggedIn'));
+           dispatch(authActions.logout());
+           }}href="/login">Logout</a>
            </>
            }
           </div>
