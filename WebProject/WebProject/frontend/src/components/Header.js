@@ -79,13 +79,20 @@ const Search = styled('div')(({ theme }) => ({
           <AppBar style = {{backgroundColor: "white", position: "sticky"}}>
           <div style = {{width: 100+'%',height: 1+'cm', backgroundColor: "#303030", textAlign: 'center'}}>
      
+          {!localStorage.getItem('isLoggedIn')? 
+          <> 
           <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
-          <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a>
+          <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a> 
           <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/login">Login</a>
+          </> :
+          <>
+
           <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 70}} onClick={() => {
            localStorage.removeItem('isLoggedIn'); console.log(localStorage.getItem('isLoggedIn'));}}href="/login">Logout</a>
+           </>
+           }
           </div>
-  
+          
             <Toolbar>
             
             <Box

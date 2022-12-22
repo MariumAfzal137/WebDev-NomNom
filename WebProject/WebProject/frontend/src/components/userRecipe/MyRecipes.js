@@ -11,11 +11,28 @@ import "../Profile.css";
 export const MyRecipes = () =>{
     let[recipes,setRecipes]=useState([])
 
-    async function getAllRecipes() {
-        try {
-          const response = await fetch('http://localhost:5000/recipe/allrecipes');
-      
+  
+    // async function getAllRecipes() {
+    //       const response = await fetch("http://localhost:5000/user/getUserRecipes",{
+            
+            
+    //                       method: "GET",
+    //                       headers:{
+    //                           "Content-Type" : "application/json"
+    //                       },
+    //                       body: JSON.stringify({
+    //                         myemail
 
+    //                       }),
+                      
+    //               });
+    //       if (!response.ok) {
+    //         throw new Error(`Error! status: ${response.status}`);
+    //       }
+      
+    //       const result = await response.json();
+    //       setRecipes(result)
+    //     } 
         async function getAllRecipes() {
           try {
             const response = await fetch('http://localhost:5000/recipe/allrecipes');
@@ -35,9 +52,8 @@ export const MyRecipes = () =>{
         getAllRecipes()
       },[])
     return(
-       
-    <>
-     <Header/>
+       <>
+    <Header/>
     <div >
     <h1 className="myrecipe-heading">My Recipes</h1>
     <Link to="/PostRecipe" className="post-btn">POST</Link> 

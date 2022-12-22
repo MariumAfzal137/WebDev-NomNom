@@ -36,19 +36,32 @@ import RecipeCrud from './components/Admin/recipe-crud'
             <Route path="/signup" element={<Signup />} />
 
             <Route path="/myProfile" >
-                {loggedIn && loggedInRole == "admin" && <Route index element={<Profile />} />}
+                {loggedIn && loggedInRole == "user" && <Route index element={<Profile />} />}
                 {!loggedIn && <Route index element={<Login />} />}
-                {loggedInRole == "user" && <Route index element={<Login />} />}
+                {loggedInRole == "admin" && <Route index element={<Login />} />}
             </Route>
 
             <Route path="/myrecipes" >
-                {loggedIn && <Route index element={<MyRecipe />} />}
+            {loggedIn && loggedInRole == "user" && <Route index element={<MyRecipe />} />}
                 {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "admin" && <Route index element={<Login />} />}
             </Route>
 
             <Route path="/postrecipe" >
-                {loggedIn && <Route index element={<PostRecipe />} />}
+            {loggedIn && loggedInRole == "user" && <Route index element={<PostRecipe />} />}
                 {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "admin" && <Route index element={<Login />} />}
+            </Route>
+
+            <Route path="/allrecipes" >
+                {loggedIn && loggedInRole == "admin" && <Route index element={<RecipeCrud />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "user" && <Route index element={<Login />} />}
+            </Route>
+            <Route path="/adminhome" >
+                {loggedIn && loggedInRole == "admin" && <Route index element={<Main url=""/>} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "user" && <Route index element={<Login />} />}
             </Route>
 
             <Route path="/aboutUs" element={<AboutUs />} />

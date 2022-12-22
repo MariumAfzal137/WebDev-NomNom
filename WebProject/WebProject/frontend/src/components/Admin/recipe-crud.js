@@ -7,12 +7,12 @@ import { useNavigate } from 'react-router-dom'
 import { BiEdit, } from 'react-icons/bi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import Header from '../adminheader'
-import UseAuth from '../../hooks/useAuth'
+// import UseAuth from '../../hooks/useAuth'
 
 const RecipeList = () => {
 
     const [recipe, SetRecipe] = useState([])
-    const { auth } = UseAuth()
+    // const { auth } = UseAuth()
     const navigate = useNavigate()
 
     async function getAllRecipes() {

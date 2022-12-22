@@ -18,7 +18,7 @@ export const Login = () =>{
     const navigate = useNavigate();
     const location = useLocation();
     const dispath = useDispatch();
-    const from = location.state?.from?.pathname || "/home";
+    const from = localStorage.getItem('role')=='user'? "/home" : "/allrecipes";
 
     const LOGIN_URL = 'http://localhost:5000/user/login'
     
@@ -52,7 +52,7 @@ export const Login = () =>{
 
             setEmail('');
             setPassword('');
-            navigate(from, { replace: true });
+            navigate(localStorage.getItem('role')=='user'? "/home" : "/adminhome",{replace: true} );
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');

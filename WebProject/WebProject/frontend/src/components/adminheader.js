@@ -7,10 +7,6 @@ import Homepage from './Homepage/recipe';
 
 
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
-
-
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -65,7 +61,18 @@ const Search = styled('div')(({ theme }) => ({
           <AppBar style = {{backgroundColor: "white", position: "sticky"}}>
           <div style = {{width: 100+'%',height: 1+'cm', backgroundColor: "#303030", textAlign: 'center'}}>
      
-          <a style={{ color: 'white', fontSize:20, marginTop:8, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 5}}>Admin Panel</a>
+          {!localStorage.getItem('isLoggedIn')? 
+          <> 
+          <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
+          <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a> 
+          <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/login">Login</a>
+          </> :
+          <>
+
+          <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 70}} onClick={() => {
+           localStorage.removeItem('isLoggedIn'); console.log(localStorage.getItem('isLoggedIn'));}}href="/login">Logout</a>
+           </>
+           }
           </div>
   
             <Toolbar>
@@ -81,19 +88,14 @@ const Search = styled('div')(({ theme }) => ({
           <ul className="navbar__ul">
   
   
-              <a style={{ fontWeight:'bold',marginLeft:300, fontSize:20}}>Users</a>
+              <a href="" style={{ fontWeight:'bold',marginLeft:300, fontSize:20}}>Users</a>
   
-              <a style={{ fontWeight:'bold',  fontSize:20}} >Recipes</a>
+              <a href="/allrecipes" style={{ fontWeight:'bold',  fontSize:20}} >Recipes</a>
   
               <a style={{ fontWeight:'bold', fontSize:20}} >Ingredients</a>
   
           </ul>
           
-             
-  
-              <Link to="/myProfile">
-                <AccountCircleIcon fontSize="large" style={{ fill: 'black', marginLeft: '15rem'}} />  
-              </Link>
             </Toolbar>
           </AppBar>
         </Box>
