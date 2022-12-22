@@ -30,6 +30,7 @@
 
 .tableHead {
     background-Color: rgb(217, 217, 217);
+    font-size: 16px;
 }
 
 #recipeListHeading {
@@ -40,10 +41,40 @@
     transition: all 0.5s;
     margin: 2rem;
     text-align: center;
+    border-color: black;
 }
 
 .recipeListTable {
     background-color: white;
     text-align: center;
+    font-size: 13px;
+    border-color: black;
 }
 
+.recipebutton{
+   width: 20px;
+}
+
+/* .approverecipe{
+    background-image: url("/public/backgroundplain.jpg");
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-box{
+    align-self: center;
+    border: #303030;
+    width: 80%;
+    height: max-content;
+    background-color: #fff;
+} */
+
+.approve-btn{
+    align-self: center; 
+    margin-left: 45%;
+    margin-top: -15px;
+    margin-bottom: 10px;
+   
+    
+}

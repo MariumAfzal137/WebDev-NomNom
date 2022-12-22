@@ -19,9 +19,9 @@ const RecipeList = () => {
         axios.get(
             'http://localhost:5000/recipe/admin/getadminrecipes',
             // {
-            //     // headers: {
-            //     //     'Authorization': `Bearer ${auth.accessToken}`
-            //     // }
+            //      headers: {
+            //          'Authorization': `Bearer ${auth.accessToken}`
+            //      }
             // }
         ).then(response => {
             SetRecipe(response.data)
@@ -34,7 +34,7 @@ const RecipeList = () => {
 
     const handleUpdate = async (val) => {
         localStorage.setItem("recipe", JSON.stringify(val))
-        navigate(`/approverecipe/${val._id}`, { replace: true })
+        navigate(`/admin/approverecipe/${val._id}`, { replace: true })
     }
 
     const deleteRecipe = async (id, name) => {
@@ -98,7 +98,6 @@ const RecipeList = () => {
                             <th>
                                 Category
                             </th>
-                            
                             <th>
                                 Approved
                             </th>
@@ -114,14 +113,8 @@ const RecipeList = () => {
                                     <td>{val.description}</td>
                                     <td>{val.category}</td>
                                     <td>{val.approved}</td>
-                                    <td>
-                                        <button onClick={(e) => handleUpdate(val)}>
-                                            <BiEdit />
-                                        </button> 
-                                        <button onClick={(e) => deleteRecipe(val._id, val.name, e)}>
-                                            <RiDeleteBin6Line />
-                                        </button>
-                                    </td>
+                                     <BiEdit onClick={(e) => handleUpdate(val)}/>
+                                     <RiDeleteBin6Line onClick={(e) => deleteRecipe(val._id, val.name, e)}/>
                                 </tr>
                             )
                         })}

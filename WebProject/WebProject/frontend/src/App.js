@@ -18,6 +18,7 @@ import { authActions } from "./store";
 
 import Main from './components/Admin/main'
 import RecipeCrud from './components/Admin/recipe-crud'
+import ApproveRecipe from './components/Admin/approverecipe';
 
  function App() {
   

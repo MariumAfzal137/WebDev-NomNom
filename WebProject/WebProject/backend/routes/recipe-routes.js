@@ -30,12 +30,12 @@ router.get('/allrecipes', allrecipes);
 router.get('/searchrecipes', searchrecipes);
 router.get('/recipedetails/:id',  recipedetails);
 
-router.patch('/:id',verifyAccessToken, updaterecipe);
+router.patch('/updaterecipe/:id',verifyAccessToken, updaterecipe);
 router.delete('/delete/:id',deleterecipe);
 
 //Admin Routes
 router.post('/admin/adminpostrecipe',  adminpostrecipe);
 router.get('/admin/getadminrecipes', getadminrecipes);
-router.patch('/approverecipe/:id',verifyAdminAccessToken, approverecipe);
+router.put('/approverecipe/:id', approverecipe);
 
 export default router;
