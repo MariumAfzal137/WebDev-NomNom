@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios'
-import UseAuth from '../../hooks/useAuth'
+
 import Header from '../adminheader'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ const ApproveRecipe= () => {
     const [recipe, setrecipe] = useState(JSON.parse(localStorage.getItem("recipe")))
     const [approve, setapprove] = useState(recipe.approve)
 
-    const { auth } = UseAuth()
+
     const navigate = useNavigate()
 
     const DataChange = (e) => {
