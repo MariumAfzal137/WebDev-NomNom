@@ -113,8 +113,8 @@ const RecipeList = () => {
                                     <td>{val.description}</td>
                                     <td>{val.category}</td>
                                     <td>{val.approved}</td>
-                                     <BiEdit onClick={(e) => handleUpdate(val)}/>
-                                     <RiDeleteBin6Line onClick={(e) => deleteRecipe(val._id, val.name, e)}/>
+                                    <BiEdit onClick={(e) => handleUpdate(val)}/>
+                                    <RiDeleteBin6Line onClick={(e) => deleteRecipe(val._id, val.name, e)}/>
                                 </tr>
                             )
                         })}
