@@ -9,7 +9,7 @@ router.post("/login", login);
 router.get("/getProfile",verifyAccessToken || verifyAdminAccessToken, getProfile);
 router.get("/getAllUsers",verifyAdminAccessToken,getAllUser);
 router.get("/getUser/:id", getUserById);
-router.get("/getUserRecipes/:id", getUserRecipes);
+router.get("/getUserRecipes", getUserRecipes);
 router.post("/updateUser/:id", updateUser);
 router.get("/deleteUser/:id", deleteUser);
 
