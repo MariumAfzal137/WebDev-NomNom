@@ -1,10 +1,10 @@
 import React, { useEffect,useState } from "react"
+import {Link, useNavigate} from 'react-router-dom';
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import Tdata from "./Tdata"
 
 const SampleNextArrow = (props) => {
   const { onClick } = props
@@ -65,17 +65,29 @@ const CatCard = () => {
     getAllCategory()
   },[])
 
+  const navigate = useNavigate()
+  const handleClick = (value) => () => {
+    
+    localStorage.setItem('URL',"http://localhost:5000/recipe/searchrecipes?category="+value.name); 
+    console.log(value.name);
+    <Link to ="/homesearch"></Link>
+  };
+
   return (
     <>
       <Slider {...settings}>
         {category.map((value, index) => {
           return (
+            <Link onClick={handleClick(value)}  >
             <>
+
             <div className='product' key={index}>
+              
                 <div className='d_flex'>{value.name}
                 </div>
             </div>
             </>
+            </Link>
           )
         })}
       </Slider>

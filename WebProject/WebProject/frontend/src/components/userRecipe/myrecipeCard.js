@@ -8,7 +8,7 @@ const Card = ({rItems}) => {
     return (
     <>
       {rItems.map((rItems, index) => {
-          if(rItems.approved==true)
+         
           
         return (
           <Link to={'/recipedetail'} state={{rItems}}> 
