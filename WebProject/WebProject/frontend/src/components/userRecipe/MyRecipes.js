@@ -3,39 +3,42 @@ import Header from '../Header';
 import {Link, useLocation} from 'react-router-dom';
 import Category from "../Category/Categories";
 import Card from "./myrecipeCard";
+import axios from "axios";
 
 import "../Profile.css";
   
 
 
 export const MyRecipes = () =>{
-    let[recipes,setRecipes]=useState([])
-    const user =(localStorage.getItem("user"))
-  
-    // async function getAllRecipes() {
-    //       const response = await fetch("http://localhost:5000/user/getUserRecipes",{
-            
-            
-    //                       method: "GET",
-    //                       headers:{
-    //                           "Content-Type" : "application/json"
-    //                       },
-    //                       body: JSON.stringify({
-    //                         myemail
+    let[recipes, setRecipes]=useState([])
+    let[userid, setuserid] = useState('')
+    
+    // useEffect(() => {
+    //   setuserid(localStorage.getItems("user"))
+    // }, [userid])
+    const user =localStorage.getItem("id")
 
-    //                       }),
-                      
-    //               });
-    //       if (!response.ok) {
-    //         throw new Error(`Error! status: ${response.status}`);
-    //       }
-      
-    //       const result = await response.json();
-    //       setRecipes(result)
-    //     } 
+  //   const getAllRecipes = async(user) => {
+     
+  //     axios.get(
+  //         `http://localhost:5000/recipe/user/getuserrecipes/${userid}`,
+  //          {
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             //"Authorization": `Bearer ${auth.accessToken}`
+  //         }
+  //         }
+  //     ).then(response => {
+  //         setRecipes(response.data)
+  //     })
+  // }
+  
+  // useEffect(()=>{
+  //   getAllRecipes()
+  // },[])
         async function getAllRecipes() {
           try {
-            const response = await fetch('http://localhost:5000/user/getuserrecipes/${user._id}');
+            const response = await fetch( `http://localhost:5000/user/getUserRecipes/${user}`);
         
             if (!response.ok) {
               throw new Error(`Error! status: ${response.status}`);

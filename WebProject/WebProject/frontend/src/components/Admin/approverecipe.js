@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 const ApproveRecipe= () => {
 
     const [recipe, setrecipe] = useState(JSON.parse(localStorage.getItem("recipe")))
-    const [approve, setapprove] = useState(recipe.approve)
+    const [approved, setapprove] = useState(recipe.approve)
              
 
     const navigate = useNavigate()
@@ -21,9 +21,9 @@ const ApproveRecipe= () => {
         e.preventDefault()
        
                 axios.put(
-            `http://localhost:5000/approverecipe/${recipe._id}`,
+            `http://localhost:5000/recipe/approverecipe/${recipe._id}`,
             JSON.stringify({
-                approve 
+                approved 
             }),
             {
                 headers: {
@@ -34,11 +34,12 @@ const ApproveRecipe= () => {
         ).then(() => {
             window.alert("Updated")
             localStorage.removeItem("recipe")
-            navigate(`/admin/recipe-crud`, { replace: true })
+            navigate(`/allrecipes`, { replace: true })
         }
         ).catch(err => {
             window.alert("Failed to update")
         })
+        
     }
     
     const ing=recipe.ingredients
@@ -54,8 +55,9 @@ const ApproveRecipe= () => {
               <text className="recipe-subtitle"><u>safahai</u> <br></br>
               {recipe.category} <br></br>
               {recipe.cookingtime}<br></br>
-              
               </text>
+              
+              
       
               </ul>
               <br></br>
@@ -91,7 +93,7 @@ const ApproveRecipe= () => {
           </div>
           <button className='approve-btn'
           
-         value={approve}
+         value={approved}
          onChange={DataChange}
           onClick={approveRecipe}>APPROVE</button>
           
