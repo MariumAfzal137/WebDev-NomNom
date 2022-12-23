@@ -34,10 +34,10 @@ const UserList = () => {
         console.log(users)
     },[])
 
-    const handleUpdate = async (val) => {
-        localStorage.setItem("user", JSON.stringify(val))
-        //navigate(`/admin/approverecipe/${val._id}`, { replace: true })
-    }
+    // const handleUpdate = async (val) => {
+    //     localStorage.setItem("user", JSON.stringify(val))
+    //     //navigate(`/admin/approverecipe/${val._id}`, { replace: true })
+    // }
 
     const deleteUser = async (id, email) => {
         confirmAlert({
@@ -49,11 +49,7 @@ const UserList = () => {
                     onClick: async () => {
                         await axios.delete(
                             `http://localhost:5000/user/deleteUser/${id}`,
-                            // {
-                            //     headers: {
-                            //         'Authorization': `Bearer ${auth.accessToken}`
-                            //     }
-                            // }
+                            
                         ).then(response => {
                             window.alert("This user was deleted")
                         }).catch(err => {
@@ -112,10 +108,7 @@ const UserList = () => {
                                             </Link>
                                         )
                                     })}</td>
-                                    <Link to={'/'} state={{}}>
-                                     <BiEdit onClick={
-                                        (e) => handleUpdate(val)
-                                        }/> </Link>
+                                   
                                      <RiDeleteBin6Line onClick={(e) => deleteUser(val._id, val.email, e)}/>
                                 </tr>
                             )

@@ -112,7 +112,7 @@ const RecipeList = () => {
                                     <td>{val1.approved}</td>
                                     <Link to={'/admin/approverecipe/'} state={{val1}}>
                                      <BiEdit /> </Link>
-                                     <RiDeleteBin6Line onClick={(e) => deleteRecipe(val._id, val.name, e)}/>
+                                     <RiDeleteBin6Line onClick={(e) => deleteRecipe(val1._id, val1.name, e)}/>
                                 </tr>
                             )
                         })}

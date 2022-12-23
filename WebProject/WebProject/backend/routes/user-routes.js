@@ -11,6 +11,6 @@ router.get("/getAllUsers",verifyAdminAccessToken,getAllUser);
 router.get("/getUser/:id", getUserById);
 router.get("/getUserRecipes/:id", getUserRecipes);
 router.post("/updateUser/:id", updateUser);
-router.get("/deleteUser/:id", deleteUser);
+router.delete("/deleteUser/:id", deleteUser);
 
 export default router;

@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from 'react-router-dom';
 import RecipeDetail from "../RecipeDetail";
 const Card = ({rItems}) => { 
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PF = 'http://localhost:5000/';
 
     return (
     <>
