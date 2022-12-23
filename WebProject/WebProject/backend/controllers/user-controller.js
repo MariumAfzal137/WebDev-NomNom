@@ -148,33 +148,43 @@ export const updateUser= async (req, res, next) => {
 
 //employeeRoute.route('/deleteEmployee/:id').get(function (req, res) 
 
-export const deleteUser = async (req, res, next) => {
+// export const deleteUser = async (req, res, next) => {
 
-  let id = req.params.id
-  let existingUser;
-  try {
-    existingUser = await User.findOne({ id });
-    res
-          .status(400)
-          .json({ message: 'User found' });
+//   let id = req.params.id
+//   // let existingUser;
+//   // try {
+//   //   existingUser = await User.findOne({ id });
+//   //   res
+//   //         .status(400)
+//   //         .json({ message: 'User found' });
     
-  } catch (err) {
-    return console.log(err);
-  }
-  if (existingUser) 
-    try{
-      User.deleteOne({ _id: req.params.id }, function (err, user){
-        return res
-          .status(400)
-          .json({ message: 'User Deleted Successfully' });
+//   // } catch (err) {
+//   //   return console.log(err);
+//   // }
+//   // if (existingUser) 
+//     try{
+//       await User.deleteOne({ _id: req.params.id }, function (err, user){
+//         return res
+//           .status(400)
+//           .json({ message: 'User Deleted Successfully' });
+        
+//         });
+//     }
+//     catch(err){
+//       return res
+//           .json({ message: 'User not deleted' });
       
-        });
-    }
-    catch(err){
-      return res
-          .json({ message: 'User not deleted' });
-      
-    }
+//     }
   
 
-  };
+//   };
+export async function deleteUser (req, res, next) {
+  const id = req.params.id;
+  try{
+     const result = await User.findByIdAndDelete(id);
+     console.log(result);
+     res.send(result);
+  }catch(error){
+      console.log(error.message);
+  }
+}

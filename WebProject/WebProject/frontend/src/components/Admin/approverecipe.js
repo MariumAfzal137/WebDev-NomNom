@@ -2,12 +2,12 @@ import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios'
 
 import Header from '../adminheader'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 
 const ApproveRecipe= () => {
-
-    const [recipe, setrecipe] = useState(JSON.parse(localStorage.getItem("recipe")))
-    const [approved, setapprove] = useState(recipe.approve)
+    const location = useLocation()
+    const [recipe, setrecipe] = useState(location.state.val1)
+    const [approved, setapprove] = useState(recipe.approved)
              
 
     const navigate = useNavigate()
@@ -23,7 +23,7 @@ const ApproveRecipe= () => {
                 axios.put(
             `http://localhost:5000/recipe/approverecipe/${recipe._id}`,
             JSON.stringify({
-                approved 
+                "approved":true
             }),
             {
                 headers: {
@@ -91,6 +91,7 @@ const ApproveRecipe= () => {
               </text>
       
           </div>
+          
           <button className='approve-btn'
           
          value={approved}
