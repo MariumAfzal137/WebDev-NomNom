@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import RecipeDetail from "../RecipeDetail";
 const Card = ({rItems}) => { 
   const PF = 'http://localhost:5000/';
+
   console.log(PF)
     return (
     <>
