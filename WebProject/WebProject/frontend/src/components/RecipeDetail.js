@@ -2,9 +2,10 @@ import React from 'react'
 import Header from './Header';
 import "./Profile.css";
 import { useLocation } from 'react-router-dom';
+const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
 
-const RecipeDetail = (props) => {
+const RecipeDetail = () => {
   const location = useLocation()
   const recipe=location.state.rItems
   const ing=recipe.ingredients
@@ -15,7 +16,7 @@ const RecipeDetail = (props) => {
   <>
    <Header/>
     <div id="recipe" >        
-        <img id="recipe" src={recipe.image} alt="Avatar"></img>
+        <img id="recipe" src={PF+recipe.image} alt="Avatar"></img>
         <ul>
         <text className="recipe-title" >{recipe.name}</text> <br></br>
         <text className="recipe-subtitle"><u>safahai</u> <br></br>
@@ -23,7 +24,6 @@ const RecipeDetail = (props) => {
         {recipe.cookingtime}<br></br>
         
         </text>
-
         </ul>
         <br></br>
         <br></br>
@@ -31,9 +31,6 @@ const RecipeDetail = (props) => {
         <br></br>
         <br></br>
         <br></br>
-        
-        
-
         <hr></hr>
         
         <text className="recipe-subtitle2">Ingredients</text> <br></br>
@@ -47,11 +44,7 @@ const RecipeDetail = (props) => {
           
         )
       })}
-          
-            
-            
-        
-          <br></br>
+        <br></br>
         <hr></hr>
         <br></br>
         <text className="recipe-subtitle2">Directions</text> <br></br>
