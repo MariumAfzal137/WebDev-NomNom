@@ -7,7 +7,7 @@ import { postrecipe, adminpostrecipe, allrecipes, getadminrecipes, approverecipe
 import { verifyAccessToken, verifyAdminAccessToken} from '../middleware/check-auth.js';
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/recipes');
+        cb(null, 'public/uploads/recipes');
       },
     filename: function (req, file, cb) {
         cb(null, file.originalname);

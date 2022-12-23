@@ -62,7 +62,7 @@ import Header from '../Header';
       // })
 
       const handlePhoto = (e) =>{
-        setRecipe({...recipe, image: e.target.files[0]});
+        setRecipe({...recipe, image: e.target.file});
         console.log(recipe.image);
       }
 
@@ -85,7 +85,7 @@ import Header from '../Header';
         
           const res = await axios({
             method: "post",
-            url: "http://localhost:5000/recipe/postrecipe",
+            url: `http://localhost:5000/recipe/postrecipe`,
             data: postFormData,
             headers: { "Content-Type": "application/json" },
           });
@@ -100,14 +100,14 @@ import Header from '../Header';
         //   },
           
         // })
-        const data = await res.json();
+        const recipedata = await res.json();
 
-        if(res.status=== 400 ||!data ){
+        if(res.status=== 400 ||!recipedata ){
           window.alert("Failed to post recipe.");
           console.log("Failed to post recipe");
         }else{
           window.alert("Recipe posted successfully");
-          console.log("Recipe posted successfully");
+          //console.log("Recipe posted successfully");
         }
       }
 

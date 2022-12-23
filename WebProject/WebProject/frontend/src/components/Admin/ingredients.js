@@ -37,11 +37,11 @@ const Ingredients = () => {
         const newIngredient  = prompt("Please enter the ingredient name");
         console.log(newIngredient);
 
-        const res = await fetch('http://localhost:5000/ingredient/addIngredient', {
+        const res = await fetch("http://localhost:5000/ingredient/addIngredient", {
           method: "POST",
           
           body: JSON.stringify({
-              newIngredient 
+              name: newIngredient 
             }),
           headers: {
             "content-Type" : "application/json"
@@ -49,14 +49,14 @@ const Ingredients = () => {
           
         })
         const data = await res.json();
-        console.log(data);
+       
         if(res.status == 400 || !data ){
           window.alert("Ingredient not added");
 
         }else{
           
           window.alert("Ingredient added successfully");
-          //getAllIngredients();
+          getAllIngredients();
 
     
         }
@@ -111,6 +111,7 @@ const Ingredients = () => {
             <Header />
             <div className="recipeListContainer">
                 <h2 id="recipeListHeading">Ingredients</h2>
+                <button onClick={(e) => addIngredient(e)} style={{position: 'absolute',right: 20, fontSize: 20}}> Add Ingredient</button>
                 <table className="recipeListTable">
                     <thead className="tableHead">
                         <tr>
