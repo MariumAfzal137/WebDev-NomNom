@@ -10,7 +10,7 @@ export async function postrecipe(req, res, next) {
             const description = req.body.description;
             const category = req.body.category;
             const image = req.file.path;
-           // const author = req.body.author;
+            const email = req.body.email;
             const approved = "false";
             const result = new Recipe({
               name, cookingtime,  description, category,
@@ -19,10 +19,10 @@ export async function postrecipe(req, res, next) {
     try {
         
         console.log(result)
-        //const user = await User.findById(author);
+        const user = await User.findOne({ email });;
         const savedRecipe = await result.save()
-        // user.myrecipes = user.myrecipes.concat(savedRecipe)
-        // await user.save()
+        user.myrecipes = user.myrecipes.concat(savedRecipe)
+        await user.save()
         res.send(savedRecipe)
     }
     catch (error) {

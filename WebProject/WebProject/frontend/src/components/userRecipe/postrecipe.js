@@ -9,7 +9,6 @@ import Header from '../Header';
         const [recipe, setRecipe] = useState({
             name: "",
             cookingtime: "",
-            image:"",
             description: "",
             image: "",
             category: "",
@@ -37,7 +36,7 @@ import Header from '../Header';
         setqty('')
         setunit('')
       }
-      console.log(typeof ingredient)
+      //console.log(typeof ingredient)
       // const selectIngredient = (e) => {
       //    setIngredient( JSON.parse(e.target.value) )
       // }
@@ -67,23 +66,40 @@ import Header from '../Header';
         console.log(recipe.image);
       }
 
-     
-
+      const user =localStorage.getItem("user")
+      const myemail = user.email
+      
       const recipeSubmit = async(e) => {
         e.preventDefault();
        
         const {name, cookingtime, category,  description, image, ingredient} = recipe;
+         
+        const postFormData = new FormData();
+        postFormData.append("name", name)
+        postFormData.append("cookingtime", cookingtime)
+        postFormData.append("description", description)
+        postFormData.append("category", category)
+        postFormData.append("image", image)
+        postFormData.append("email", myemail)
 
-        const res = await fetch("http://localhost:5000/recipe/postrecipe", {
-          method: "POST",
-          body: JSON.stringify({
-            name, cookingtime, category, description, image, ingredient
-          }),
-          headers: {
-            "content-Type" : "application/json"
-          },
+        
+          const res = await axios({
+            method: "post",
+            url: "http://localhost:5000/recipe/postrecipe",
+            data: postFormData,
+            headers: { "Content-Type": "application/json" },
+          });
+       
+        // const res = await fetch("http://localhost:5000/recipe/postrecipe", {
+        //   method: "POST",
+        //   body: JSON.stringify({
+        //     name, cookingtime, category, description, image, ingredient
+        //   }),
+        //   headers: {
+        //     "content-Type" : "application/json"
+        //   },
           
-        })
+        // })
         const data = await res.json();
 
         if(res.status=== 400 ||!data ){
