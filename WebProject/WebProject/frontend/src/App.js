@@ -19,6 +19,7 @@ import { authActions } from "./store";
 import Main from './components/Admin/main'
 import RecipeCrud from './components/Admin/recipe-crud'
 import UserCrud from './components/Admin/user-crud'
+import IngredientCrud from './components/Admin/ingredients'
 import ApproveRecipe from './components/Admin/approverecipe';
 
  function App() {
@@ -73,6 +74,13 @@ import ApproveRecipe from './components/Admin/approverecipe';
                 {!loggedIn && <Route index element={<Login />} />}
                 {loggedInRole == "user" && <Route index element={<Login />} />}
             </Route>
+
+            <Route path="/allingredients" >
+                {loggedIn && loggedInRole == "admin" && <Route index element={<IngredientCrud />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "user" && <Route index element={<Login />} />}
+            </Route>
+
             <Route path="/adminhome" >
                 {loggedIn && loggedInRole == "admin" && <Route index element={<Main url=""/>} />}
                 {!loggedIn && <Route index element={<Login />} />}

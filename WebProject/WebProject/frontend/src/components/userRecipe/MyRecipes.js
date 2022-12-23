@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Header from '../Header';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import Category from "../Category/Categories";
 import Card from "./myrecipeCard";
 
@@ -10,7 +10,7 @@ import "../Profile.css";
 
 export const MyRecipes = () =>{
     let[recipes,setRecipes]=useState([])
-
+    const user =(localStorage.getItem("user"))
   
     // async function getAllRecipes() {
     //       const response = await fetch("http://localhost:5000/user/getUserRecipes",{
@@ -35,7 +35,7 @@ export const MyRecipes = () =>{
     //     } 
         async function getAllRecipes() {
           try {
-            const response = await fetch('http://localhost:5000/recipe/allrecipes');
+            const response = await fetch('http://localhost:5000/user/getuserrecipes/${user._id}');
         
             if (!response.ok) {
               throw new Error(`Error! status: ${response.status}`);
