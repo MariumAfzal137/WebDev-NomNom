@@ -8,21 +8,22 @@ const ApproveRecipe= () => {
 
     const [recipe, setrecipe] = useState(JSON.parse(localStorage.getItem("recipe")))
     const [approve, setapprove] = useState(recipe.approve)
-
+             
 
     const navigate = useNavigate()
 
-    const DataChange = (e) => {
-        setapprove({[e.target.approve]: e.target.value});
+    const DataChange = () => {
+        setapprove(value => true);
       };
+      
 
     const approveRecipe= (e) => {
         e.preventDefault()
-        const approve = approve
+       
                 axios.put(
             `http://localhost:5000/approverecipe/${recipe._id}`,
             JSON.stringify({
-                approve: true
+                approve 
             }),
             {
                 headers: {
@@ -39,8 +40,7 @@ const ApproveRecipe= () => {
             window.alert("Failed to update")
         })
     }
-    const location = useLocation()
-    //const recipe=location.state.rItems
+    
     const ing=recipe.ingredients
     return (
 
@@ -64,9 +64,6 @@ const ApproveRecipe= () => {
               <br></br>
               <br></br>
               <br></br>
-              
-              
-      
               <hr></hr>
               
               <text className="recipe-subtitle2">Ingredients</text> <br></br>
@@ -81,11 +78,7 @@ const ApproveRecipe= () => {
                 
               )
             })}
-                
-                  
-                  
-              
-                <br></br>
+              <br></br>
               <hr></hr>
               <br></br>
               <text className="recipe-subtitle2">Directions</text> <br></br>
@@ -97,8 +90,9 @@ const ApproveRecipe= () => {
       
           </div>
           <button className='approve-btn'
-          value="true"
-          onChange={DataChange}
+          
+         value={approve}
+         onChange={DataChange}
           onClick={approveRecipe}>APPROVE</button>
           
           </div>

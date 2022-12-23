@@ -17,7 +17,7 @@ app.use("/recipe", recipeRouter);
 
 const __dirname = path.resolve();
 
-app.use("/uploads", express.static(path.join(__dirname, "public/uploads")))
+app.use("/uploads/recipes", express.static(path.join(__dirname, "public/uploads/recipes")))
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');

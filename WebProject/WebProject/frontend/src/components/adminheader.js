@@ -23,9 +23,8 @@ import { authActions } from "../store";
      
           {!loggedIn? 
           <> 
-          <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
-          <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a> 
-          <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/login">Login</a>
+          
+          <a style={{ color: 'white', fontSize:20, marginTop:5, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}>Admin Panel</a>
           </> :
           <>
 
@@ -51,7 +50,7 @@ import { authActions } from "../store";
   
               <a href="" style={{ fontWeight:'bold',marginLeft:300, fontSize:20}}>Users</a>
   
-              <a href="/allrecipes" style={{ fontWeight:'bold',  fontSize:20}} >Recipes</a>
+              <a href="/allrecipes" style={{ fontWeight:'bold',  fontSize:20}}>Recipes</a>
   
               <a href="/allingredients" style={{ fontWeight:'bold', fontSize:20}} >Ingredients</a>
   
