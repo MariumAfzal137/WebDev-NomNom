@@ -2,12 +2,12 @@ import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios'
 
 import Header from '../adminheader'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 
 const ApproveRecipe= () => {
-
-    const [recipe, setrecipe] = useState(JSON.parse(localStorage.getItem("recipe")))
-    const [approve, setapprove] = useState(recipe.approve)
+    const location = useLocation()
+    const [recipe, setrecipe] = useState(location.state.val1)
+    const [approved, setapprove] = useState(recipe.approved)
              
 
     const navigate = useNavigate()
@@ -21,9 +21,9 @@ const ApproveRecipe= () => {
         e.preventDefault()
        
                 axios.put(
-            `http://localhost:5000/approverecipe/${recipe._id}`,
+            `http://localhost:5000/recipe/approverecipe/${recipe._id}`,
             JSON.stringify({
-                approve 
+                "approved":true
             }),
             {
                 headers: {
@@ -34,7 +34,7 @@ const ApproveRecipe= () => {
         ).then(() => {
             window.alert("Updated")
             localStorage.removeItem("recipe")
-            navigate(`/admin/recipe-crud`, { replace: true })
+            navigate(`/allrecipes`, { replace: true })
         }
         ).catch(err => {
             window.alert("Failed to update")
@@ -89,9 +89,10 @@ const ApproveRecipe= () => {
               </text>
       
           </div>
+          
           <button className='approve-btn'
           
-         value={approve}
+         value={approved}
          onChange={DataChange}
           onClick={approveRecipe}>APPROVE</button>
           

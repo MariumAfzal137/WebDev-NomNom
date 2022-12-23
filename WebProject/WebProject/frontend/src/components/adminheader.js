@@ -51,7 +51,7 @@ const Search = styled('div')(({ theme }) => ({
   
  
 
-  export default function adminheader() {
+export default function adminheader() {
 
     const dispatch = useDispatch();
     const loggedIn = useSelector((state) => state.isLoggedIn);
@@ -63,8 +63,9 @@ const Search = styled('div')(({ theme }) => ({
      
           {!loggedIn? 
           <> 
-          
-          <a style={{ color: 'white', fontSize:20, marginTop:5, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}>Admin Panel</a>
+          <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
+          <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a> 
+          <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 2}}href="/login">Login</a>
           </> :
           <>
 
@@ -89,11 +90,11 @@ const Search = styled('div')(({ theme }) => ({
           <ul className="navbar__ul">
   
   
-              <a href="" style={{ fontWeight:'bold',marginLeft:300, fontSize:20}}>Users</a>
+              <a href="/allusersforadmin" style={{ fontWeight:'bold',marginLeft:300, fontSize:20}}>Users</a>
   
-              <a href="/allrecipes" style={{ fontWeight:'bold',  fontSize:20}}>Recipes</a>
+              <a href="/allrecipes" style={{ fontWeight:'bold',  fontSize:20}} >Recipes</a>
   
-              <a style={{ fontWeight:'bold', fontSize:20}} >Ingredients</a>
+              <a href="" style={{ fontWeight:'bold', fontSize:20}} >Ingredients</a>
   
           </ul>
           

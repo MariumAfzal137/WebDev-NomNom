@@ -18,6 +18,7 @@ import { authActions } from "./store";
 
 import Main from './components/Admin/main'
 import RecipeCrud from './components/Admin/recipe-crud'
+import UserCrud from './components/Admin/user-crud'
 import ApproveRecipe from './components/Admin/approverecipe';
 
  function App() {
@@ -67,6 +68,11 @@ import ApproveRecipe from './components/Admin/approverecipe';
                 {!loggedIn && <Route index element={<Login />} />}
                 {loggedInRole == "user" && <Route index element={<Login />} />}
             </Route>
+            <Route path="/allusersforadmin" >
+                {loggedIn && loggedInRole == "admin" && <Route index element={<UserCrud />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "user" && <Route index element={<Login />} />}
+            </Route>
             <Route path="/adminhome" >
                 {loggedIn && loggedInRole == "admin" && <Route index element={<Main url=""/>} />}
                 {!loggedIn && <Route index element={<Login />} />}
@@ -86,7 +92,7 @@ import ApproveRecipe from './components/Admin/approverecipe';
  
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/recipedetail" element={<RecipeDetail />} />
-            <Route path="/home" element={<Homepage url=""/>} />
+            <Route path="/" element={<Homepage url=""/>} />
             <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=fried"/>} />
 
        </Routes>

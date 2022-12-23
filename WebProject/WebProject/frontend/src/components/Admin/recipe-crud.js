@@ -6,7 +6,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { useNavigate, Link } from 'react-router-dom'
 import { BiEdit, } from 'react-icons/bi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
-import {Link} from 'react-router-dom';
 import Header from '../adminheader'
 // import UseAuth from '../../hooks/useAuth'
 
@@ -33,10 +32,7 @@ const RecipeList = () => {
       getAllRecipes()
     },[])
 
-    const handleUpdate = async (val) => {
-        localStorage.setItem("recipe", JSON.stringify(val))
-        //navigate(`/admin/approverecipe/${val._id}`, { replace: true })
-    }
+   
 
     const deleteRecipe = async (id, name) => {
         confirmAlert({
@@ -105,19 +101,17 @@ const RecipeList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {recipe.map((val, key) => {
+                        {recipe.map((val1, key) => {
                             return (
                                 <tr key={key}>
-                                    <td>{val._id}</td>
-                                    <td>{val.name}</td>
-                                    <td>{val.cookingtime}</td>
-                                    <td>{val.description}</td>
-                                    <td>{val.category}</td>
-                                    <td>{val.approved}</td>
-                                    <Link to={'/admin/approverecipe/'} state={{val}}>
-                                     <BiEdit onClick={
-                                        (e) => handleUpdate(val)
-                                        }/> </Link>
+                                    <td>{val1._id}</td>
+                                    <td>{val1.name}</td>
+                                    <td>{val1.cookingtime}</td>
+                                    <td>{val1.description}</td>
+                                    <td>{val1.category}</td>
+                                    <td>{val1.approved}</td>
+                                    <Link to={'/admin/approverecipe/'} state={{val1}}>
+                                     <BiEdit /> </Link>
                                      <RiDeleteBin6Line onClick={(e) => deleteRecipe(val._id, val.name, e)}/>
                                 </tr>
                             )
