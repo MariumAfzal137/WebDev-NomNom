@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 import RecipeDetail from "../RecipeDetail";
 
 const Card = ({rItems}) => { 
-
+   
+ 
     return (
     <>
       {rItems.map((rItems, index) => {
