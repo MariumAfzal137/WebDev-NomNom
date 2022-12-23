@@ -6,6 +6,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { useNavigate } from 'react-router-dom'
 import { BiEdit, } from 'react-icons/bi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
+import {Link} from 'react-router-dom';
 import Header from '../adminheader'
 // import UseAuth from '../../hooks/useAuth'
 
@@ -34,7 +35,7 @@ const RecipeList = () => {
 
     const handleUpdate = async (val) => {
         localStorage.setItem("recipe", JSON.stringify(val))
-        navigate(`/admin/approverecipe/${val._id}`, { replace: true })
+       // navigate(`/admin/approverecipe/${val._id}`, { replace: true })
     }
 
     const deleteRecipe = async (id, name) => {
@@ -113,7 +114,10 @@ const RecipeList = () => {
                                     <td>{val.description}</td>
                                     <td>{val.category}</td>
                                     <td>{val.approved}</td>
-                                     <BiEdit onClick={(e) => handleUpdate(val)}/>
+                                    <Link to={'/admin/approverecipe/'} state={{val}}>
+                                     <BiEdit onClick={
+                                        (e) => handleUpdate(val)
+                                        }/> </Link>
                                      <RiDeleteBin6Line onClick={(e) => deleteRecipe(val._id, val.name, e)}/>
                                 </tr>
                             )

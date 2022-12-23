@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import {AppBar, Toolbar, Typography, Box,  InputBase, Button} from '@mui/material'
 import { styled, alpha } from '@mui/material/styles';
-import SearchIcon from '@mui/icons-material/Search';
-import Homepage from './Homepage/recipe';
+import { useDispatch, useSelector } from "react-redux";
 
 
 
@@ -54,14 +53,15 @@ const Search = styled('div')(({ theme }) => ({
 
   export default function adminheader() {
 
-    
+    const dispatch = useDispatch();
+    const loggedIn = useSelector((state) => state.isLoggedIn);
       return (
         <>
         <Box sx={{ flexGrow: 1 }}>
           <AppBar style = {{backgroundColor: "white", position: "sticky"}}>
           <div style = {{width: 100+'%',height: 1+'cm', backgroundColor: "#303030", textAlign: 'center'}}>
      
-          {!localStorage.getItem('isLoggedIn')? 
+          {!loggedIn? 
           <> 
           <text style={{ color: 'white', fontSize:16, letterSpacing:2}}>Want to share your recipe?</text>
           <a style={{ color: 'white',fontSize:16, letterSpacing:2, fontWeight:'bold'}}href="/signup">Sign Up</a> 
@@ -70,7 +70,9 @@ const Search = styled('div')(({ theme }) => ({
           <>
 
           <a style={{ color: 'white', fontSize:16, letterSpacing:2, fontWeight:'bold', position:'absolute', right: 70}} onClick={() => {
-           localStorage.removeItem('isLoggedIn'); console.log(localStorage.getItem('isLoggedIn'));}}href="/login">Logout</a>
+           //localStorage.removeItem('isLoggedIn'); console.log(localStorage.getItem('isLoggedIn'));
+           dispatch(authActions.logout());
+           }}href="/login">Logout</a>
            </>
            }
           </div>

@@ -72,6 +72,11 @@ import ApproveRecipe from './components/Admin/approverecipe';
                 {!loggedIn && <Route index element={<Login />} />}
                 {loggedInRole == "user" && <Route index element={<Login />} />}
             </Route>
+            <Route path="/admin/approverecipe/" >
+                {loggedIn && loggedInRole == "admin" && <Route index element={<ApproveRecipe/>} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "user" && <Route index element={<Login />} />}
+            </Route>
 
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/recipedetail" element={<RecipeDetail />} />
