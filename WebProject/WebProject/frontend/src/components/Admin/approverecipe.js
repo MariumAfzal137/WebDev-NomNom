@@ -39,6 +39,7 @@ const ApproveRecipe= () => {
         ).catch(err => {
             window.alert("Failed to update")
         })
+        
     }
     
     const ing=recipe.ingredients
@@ -54,8 +55,9 @@ const ApproveRecipe= () => {
               <text className="recipe-subtitle"><u>safahai</u> <br></br>
               {recipe.category} <br></br>
               {recipe.cookingtime}<br></br>
-              
               </text>
+              
+              
       
               </ul>
               <br></br>
