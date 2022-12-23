@@ -6,6 +6,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { useNavigate, Link } from 'react-router-dom'
 import { BiEdit, } from 'react-icons/bi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
+import {Link} from 'react-router-dom';
 import Header from '../adminheader'
 // import UseAuth from '../../hooks/useAuth'
 
