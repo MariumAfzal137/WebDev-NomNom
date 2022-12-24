@@ -12,7 +12,7 @@ export async function postrecipe(req, res, next) {
             const email = req.body.email;
             
             const image = req.file.path;
-            
+            console.log(req.file.path)
             const approved = "false";
             console.log(req.body)
             const result = new Recipe({
