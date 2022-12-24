@@ -11,7 +11,7 @@ const Card = ({rItems}) => {
           if(rItems.approved==true)
           
         return (
-          <Link to={'/recipedetail'} state={{rItems}}> 
+          <Link to={'/recipedetail'} state={{rItems}} > 
           <div className="card">
             <img src={PF+rItems.image} alt="recipe pic" id="cardimage"></img>
             

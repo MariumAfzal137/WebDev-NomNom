@@ -38,9 +38,11 @@ import ApproveRecipe from './components/Admin/approverecipe';
   // const loggedIn = localStorage.getItem('isLoggedIn');
   const loggedInRole = localStorage.getItem('role');
   // console.log(loggedIn);
+  const input=localStorage.getItem('URL');
 
 
   return(
+
 
     <Routes>
 
@@ -109,7 +111,7 @@ import ApproveRecipe from './components/Admin/approverecipe';
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/recipedetail" element={<RecipeDetail />} />
             <Route path="/" element={<Homepage url=""/>} />
-            <Route path="/homesearch" element={<Homepage url="http://localhost:5000/recipe/searchrecipes?keyword=fried"/>} />
+            <Route path="/homesearch" element={<Homepage url={input}/>} />
 
        </Routes>
        
