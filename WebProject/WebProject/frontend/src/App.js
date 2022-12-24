@@ -12,6 +12,7 @@ import Signup from './components/user/Signup'
 import Homepage from './components/Homepage/recipe';
 import PostRecipe from './components/userRecipe/postrecipe'
 import MyRecipe from './components/userRecipe/MyRecipes'
+// import EditRecipe from './components/userRecipe/editRecipes'
 
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store";
@@ -65,6 +66,12 @@ import ApproveRecipe from './components/Admin/approverecipe';
                 {!loggedIn && <Route index element={<Login />} />}
                 {loggedInRole == "admin" && <Route index element={<Login />} />}
             </Route>
+
+            {/* <Route path="/editrecipe" >
+            {loggedIn && loggedInRole == "user" && <Route index element={<EditRecipe />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "admin" && <Route index element={<Login />} />}
+            </Route> */}
 
             <Route path="/allrecipes" >
                 {loggedIn && loggedInRole == "admin" && <Route index element={<RecipeCrud />} />}

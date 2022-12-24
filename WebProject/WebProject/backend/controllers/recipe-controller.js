@@ -4,6 +4,7 @@ import User from '../model/User'
 import ApiFeatures from '../utils/apifeatures.js'
 
 export async function postrecipe(req, res, next) {
+    console.log(req.file)
             const name = req.body.name;
             const cookingtime = req.body.cookingtime;
            // const ingredients = req.body.ingredients;
@@ -14,7 +15,7 @@ export async function postrecipe(req, res, next) {
             const image = req.file.path;
             console.log(req.file.path)
             const approved = "false";
-            console.log(req.body)
+           
             const result = new Recipe({
               name, cookingtime,  description, category,
               image, approved,
