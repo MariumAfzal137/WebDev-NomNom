@@ -83,23 +83,21 @@ import Header from '../Header';
         postFormData.append("email", myemail)
 
         
-          const res = await axios({
-            method: "post",
-            url: `http://localhost:5000/recipe/postrecipe`,
-            data: postFormData,
-            headers: { "Content-Type": "application/json" },
-          });
+          // const res = await axios({
+          //   method: "post",
+          //   url: `http://localhost:5000/recipe/postrecipe`,
+          //   data: postFormData,
+          //   headers: { "Content-Type": "application/json" },
+          // });
        
-        // const res = await fetch("http://localhost:5000/recipe/postrecipe", {
-        //   method: "POST",
-        //   body: JSON.stringify({
-        //     name, cookingtime, category, description, image, ingredient
-        //   }),
-        //   headers: {
-        //     "content-Type" : "application/json"
-        //   },
+        const res = await fetch("http://localhost:5000/recipe/postrecipe", {
+          method: "POST",
+          postFormData,
+          // headers: {
+          //   "content-Type" : "application/json"
+          // },
           
-        // })
+        });
         const recipedata = await res.json();
 
         if(res.status=== 400 ||!recipedata ){

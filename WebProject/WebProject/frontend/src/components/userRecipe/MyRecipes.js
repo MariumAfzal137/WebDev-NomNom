@@ -9,7 +9,7 @@ import "../Profile.css";
   
 
 
-export const MyRecipes = () =>{
+export const MyRecipes = (url) =>{
     let[recipes, setRecipes]=useState([])
     let[userid, setuserid] = useState('')
     
@@ -22,6 +22,7 @@ export const MyRecipes = () =>{
   
         
             async function getAllRecipes() {
+              try{
                     const response = await fetch("http://localhost:5000/user/getUserRecipes",{
                       
                       
@@ -39,6 +40,20 @@ export const MyRecipes = () =>{
             const result = await response.json();
                   setRecipes(result)
                 } 
+               catch (err) {
+                  console.log(err);
+                }
+                console.log(recipes)
+              };
+                // useEffect(()=>{
+                //   if(url.url=="/myrecipes"){
+                //     getAllRecipes()
+                //   }
+                //   else if(url!=""){
+                //     console.log(url.url)
+                //   }
+                  
+                // },[])
     return(
        <>
     <Header/>
