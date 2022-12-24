@@ -31,7 +31,7 @@ export const MyRecipes = (url) =>{
                                         "Content-Type" : "application/json"
                                     },
                                     body: JSON.stringify({
-                                      myemail
+                                      email: myemail
             }),
           });
             if (!response.ok) {
@@ -45,6 +45,9 @@ export const MyRecipes = (url) =>{
                 }
                 console.log(recipes)
               };
+              useEffect(()=>{
+                getAllRecipes()
+              },[])
                 // useEffect(()=>{
                 //   if(url.url=="/myrecipes"){
                 //     getAllRecipes()
