@@ -6,9 +6,13 @@ import ingredientRouter from "./routes/ingredient-routes.js";
 import recipeRouter from "./routes/recipe-routes.js";
 import cors from 'cors'
 import path from "path"
+import fileUpload from "express-fileupload"
 
 const app = express();
 app.use(express.json());
+app.use(fileUpload({
+  useTempFiles:true
+}))
 app.use(cors())
 app.use("/user", userRouter);
 app.use("/category", categoryRouter);
