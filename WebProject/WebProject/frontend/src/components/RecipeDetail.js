@@ -9,6 +9,8 @@ const RecipeDetail = () => {
   const location = useLocation()
   const recipe=location.state.rItems
   const ing=recipe.ingredients
+  const PF = 'http://localhost:5000/';
+
 
 
   return (
