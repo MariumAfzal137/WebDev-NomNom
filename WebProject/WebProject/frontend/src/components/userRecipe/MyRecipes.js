@@ -21,7 +21,29 @@ export const MyRecipes = (url) =>{
     console.log(myemail)
 
   
-        
+//     async function getAllRecipes() {
+//       try {
+//         const response = await fetch('http://localhost:5000/user/getUserRecipes', {
+//           method: "POST",
+//           headers:{
+//               "Content-Type" : "application/json"
+//           },
+//           body: JSON.stringify({
+//             email: myemail
+// }),
+// });
+    
+//         if (!response.ok) {
+//           throw new Error(`Error! status: ${response.status}`);
+//         }
+    
+//         const result = await response.json();
+//         setRecipes(result)
+//       } catch (err) {
+//         console.log(err);
+//       }
+//       console.log(recipes)
+//     }
             async function getAllRecipes() {
               try{
                     const response = await post("http://localhost:5000/user/getUserRecipes",{
@@ -39,6 +61,7 @@ export const MyRecipes = (url) =>{
               throw new Error(`Error! status: ${response.status}`);
             }
             const result = await response.json();
+            console.log(result)
                   setRecipes(result)
                 } 
                catch (err) {
@@ -46,15 +69,18 @@ export const MyRecipes = (url) =>{
                 }
                 console.log(recipes)
               };
-                // useEffect(()=>{
-                //   if(url.url=="/myrecipes"){
-                //     getAllRecipes()
-                //   }
-                //   else if(url!=""){
-                //     console.log(url.url)
-                //   }
+              // useEffect(()=>{
+              //   getAllRecipes()
+              // },[])
+                useEffect(()=>{
+                  if(url.url=="/myrecipes"){
+                    getAllRecipes()
+                  }
+                  else if(url!=""){
+                    console.log(url.url)
+                  }
                   
-                // },[])
+                 },[])
     return(
        <>
     <Header/>

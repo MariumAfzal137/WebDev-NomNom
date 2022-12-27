@@ -54,6 +54,8 @@ import { authActions } from "../store";
               <a href="/allrecipes" style={{ fontWeight:'bold',  fontSize:20}} >Recipes</a>
   
               <a href="/allingredients" style={{ fontWeight:'bold', fontSize:20}} >Ingredients</a>
+
+              <a href="/allcategories" style={{ fontWeight:'bold', fontSize:20}} >Categories</a>
   
           </ul>
           

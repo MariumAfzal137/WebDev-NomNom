@@ -22,6 +22,7 @@ import RecipeCrud from './components/Admin/recipe-crud'
 import UserCrud from './components/Admin/user-crud'
 import IngredientCrud from './components/Admin/ingredients'
 import ApproveRecipe from './components/Admin/approverecipe';
+import CategoryCrud from './components/Admin/categories'
 
  function App() {
   
@@ -86,6 +87,12 @@ import ApproveRecipe from './components/Admin/approverecipe';
 
             <Route path="/allingredients" >
                 {loggedIn && loggedInRole == "admin" && <Route index element={<IngredientCrud />} />}
+                {!loggedIn && <Route index element={<Login />} />}
+                {loggedInRole == "user" && <Route index element={<Login />} />}
+            </Route>
+
+            <Route path="/allcategories" >
+                {loggedIn && loggedInRole == "admin" && <Route index element={<CategoryCrud />} />}
                 {!loggedIn && <Route index element={<Login />} />}
                 {loggedInRole == "user" && <Route index element={<Login />} />}
             </Route>

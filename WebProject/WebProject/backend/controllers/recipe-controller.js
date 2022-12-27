@@ -2,36 +2,44 @@
 import Recipe from '../model/recipe.js';
 import User from '../model/User'
 import ApiFeatures from '../utils/apifeatures.js'
+import { v2 as cloudinary } from 'cloudinary'
+
+cloudinary.config({ 
+    cloud_name: 'dfmnc4vgf', 
+    api_key: '793147823848954', 
+    api_secret: 'qhD7CbNM1w8SqKqCoPLakh6A4AI',
+  });
 
 export async function postrecipe(req, res, next) {
     console.log(req.file)
-            const name = req.body.name;
-            const cookingtime = req.body.cookingtime;
+        const file = req.files.photo;
+        cloudinary.uploader.upload(file.tempFilePath, (err, result)=>{
+            console.log(result);
+            const result1 = new Recipe({
+            name: req.body.name,
+             cookingtime: req.body.cookingtime,
            // const ingredients = req.body.ingredients;
-            const description = req.body.description;
-            const category = req.body.category;
-            const email = req.body.email;
-            
-            const image = req.file.path;
-            console.log(req.file.path)
-            const approved = "false";
-           
-            const result = new Recipe({
-              name, cookingtime,  description, category,
-              image, approved,
+             description: req.body.description,
+             category: req.body.category,
+             email: req.body.email,
+             approved: "false",
+             photo: result.url,
             })
+       
     try {
         
-        console.log(result)
-        const user = await User.findOne({ email });;
-        const savedRecipe = await result.save()
+        console.log(result1)
+        const user =  User.findOne({ email });;
+        const savedRecipe = result.save()
         user.myrecipes = user.myrecipes.concat(savedRecipe)
-        await user.save()
+        user.save()
         res.send(savedRecipe)
     }
     catch (error) {
         console.log(error.message)
     }
+        });
+           
 }
 
 export async function allrecipes(req, res, next) {

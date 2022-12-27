@@ -3,6 +3,8 @@ import axios from 'axios'
 
 import Header from '../adminheader'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
+const PF = 'http://localhost:5000/';
+
 
 const ApproveRecipe= () => {
     const location = useLocation()
@@ -49,7 +51,7 @@ const ApproveRecipe= () => {
         <Header/>
           <div id="recipe" > 
                
-              <img id="recipe" src={recipe.image} alt="Avatar"></img>
+              <img id="recipe" src={PF+recipe.image} alt="Avatar"></img>
               <ul>
               <text className="recipe-title" >{recipe.name}</text> <br></br>
               <text className="recipe-subtitle"><u>safahai</u> <br></br>

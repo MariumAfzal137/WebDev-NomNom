@@ -59,7 +59,8 @@ const Card = ({rItems}) => {
             
             <div style={{marginLeft : 0.5 +'cm', postion:'absolute'}}>
               <div style={{fontSize:20+"px",color:'black', fontFamily:'Raleway', lineHeight: 0.5 +'cm'}}>{rItems.name}
-              <RiDeleteBin6Line onClick={(e) => deleteRecipe(rItems._id, rItems.name, e)}/></div>
+              <RiDeleteBin6Line onClick={(e) => deleteRecipe(rItems._id, rItems.name, e)}/>
+              </div>
               <div style={{fontSize:15+"px",color:'grey', fontFamily:'Raleway'}}>{rItems.category}</div>
             </div>
             

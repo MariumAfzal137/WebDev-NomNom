@@ -26,6 +26,7 @@ const Recipe = (url) => {
     }
     console.log(recipes)
   }
+  
   async function searchRecipe(url)  {
     try{
     const response = await fetch(url);
