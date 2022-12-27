@@ -11,13 +11,7 @@ const recipeSchema = new Schema({
         type: Boolean,
         required: true
       },
-      // ingredients:[
-      //   {
-      //     item: String,
-      //      qty: String,
-      //      unit: String,
-      //   }
-      // ],
+      
       
       cookingtime: {
         type: String,
