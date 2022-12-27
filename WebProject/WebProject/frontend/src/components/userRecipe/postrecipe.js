@@ -19,72 +19,47 @@ export const PostRecipe = () =>{
 
 
 const handlePhoto = (e) =>{
-  // const image =e.target.files[0];
-  setfile( e.target.files[0]);
-  
-  console.log(e.target.files);
+  setfile(e.target.files[0]);
 }
 
 const user =localStorage.getItem("user")
 const myemail = user
 
-const recipeSubmit = async(e) => {
-  e.preventDefault();
- 
-  console.log(name);
-   
+const recipeSubmit =() =>  {
   var postFormData = new FormData();
-  
-  postFormData.append("name", name)
-  postFormData.append("cookingtime", cookingtime)
-  postFormData.append("description", description)
-  postFormData.append("category", category)
-  // postFormData.append("image", createReadStream(file))
-  postFormData.append("image", file)
-  postFormData.append("email", myemail)
-  for (var pair of postFormData.entries())
-{
-console.log(pair[0]+ ', '+ pair[1]); 
-}
- 
-  const config = {     
-    headers: { 'content-type': 'application/json' }
-}
 
-axios.post('http://localhost:5000/recipe/postrecipe', postFormData, config)
-    .then(response => {
-        console.log(response);
-    })
-    .catch(error => {
-        console.log(error);
-    });
-  // console.log(postFormData.FormData);
-    // const res = await axios({
-    //   method: "post",
-    //   url: `http://localhost:5000/recipe/postrecipe`,
-    //   data: postFormData,
-    //   headers: { "Content-Type": "application/json" },
-    // });
- 
-  // const res = await fetch("http://localhost:5000/recipe/postrecipe", {
-   
-  //   method: "POST",
-  //   body: postFormData,
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data; ',
-  //   },
-    
-  // });
-  
-  // const recipedata = await res.json();
+//   postFormData.append("name", name)
+//   postFormData.append("cookingtime", cookingtime)
+//   postFormData.append("description", description)
+//   postFormData.append("category", category)
 
-  // if(res.status=== 400 ||!recipedata ){
-  //   window.alert("Failed to post recipe.");
-  //   console.log("Failed to post recipe");
-  // }else{
-  //   window.alert("Recipe posted successfully");
-  //   //console.log("Recipe posted successfully");
-  // }
+//   postFormData.append("email", myemail)
+
+// const config = {     
+//     headers: { 'content-type': 'application/json' }
+// }
+
+// axios.post('http://localhost:5000/recipe/postrecipe', postFormData, config)
+//     .then(response => {
+//         console.log(response);
+//     })
+//     .catch(error => {
+//         console.log(error);
+//     });
+
+  
+  postFormData.append("photo", file)
+  postFormData.append("upload_preset","ml_default")
+  postFormData.append("cloud_name","dfmnc4vgf")
+  fetch("https://api.cloudinary.com/v1_1/dfmnc4vgf/image/upload",{
+    method:"post",
+    body:postFormData
+  }).then((res)=>res.json()).then((data)=>{
+    console.log(data)
+  })
+ 
+ 
+  
 }
    
 
