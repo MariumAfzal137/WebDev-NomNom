@@ -18,6 +18,7 @@ export const MyRecipes = (url) =>{
     // }, [userid])
     const user =localStorage.getItem("user")
     const myemail = user
+    console.log(myemail)
 
   
 //     async function getAllRecipes() {
@@ -45,7 +46,7 @@ export const MyRecipes = (url) =>{
 //     }
             async function getAllRecipes() {
               try{
-                    const response = await fetch("http://localhost:5000/user/getUserRecipes",{
+                    const response = await post("http://localhost:5000/user/getUserRecipes",{
                       
                       
                                     method: "POST",
