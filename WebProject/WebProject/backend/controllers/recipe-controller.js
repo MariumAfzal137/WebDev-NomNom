@@ -11,9 +11,12 @@ cloudinary.config({
   });
 
 export async function postrecipe(req, res, next) {
-    console.log(req.file)
+    let email=req.body.email;
+    console.log('this is file photo')
+    console.log(req.files.photo)
         const file = req.files.photo;
-        cloudinary.uploader.upload(file.tempFilePath, (err, result)=>{
+        cloudinary.uploader.upload(file.tempFilePath, async (err, result)=> {
+            console.log('heyyyyyy')
             console.log(result);
             const result1 = new Recipe({
             name: req.body.name,
@@ -29,10 +32,10 @@ export async function postrecipe(req, res, next) {
     try {
         
         console.log(result1)
-        const user =  User.findOne({ email });;
-        const savedRecipe = result.save()
+        const user = await User.findOne({ email });
+        const savedRecipe = await result1.save()
         user.myrecipes = user.myrecipes.concat(savedRecipe)
-        user.save()
+        await user.save()
         res.send(savedRecipe)
     }
     catch (error) {
